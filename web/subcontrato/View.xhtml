@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/templates/ModalTemplate.xhtml">
+
+    <ui:define name="titleModal">
+        <h:outputText value="#{bundle.ViewSubcontratoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="contentModal">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <p><strong><h:outputText value="#{bundle.ViewSubcontratoLabel_id}"/></strong></p>
+                <p><h:outputText value="#{subcontratoController.selected.id}" title="#{bundle.ViewSubcontratoTitle_id}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewSubcontratoLabel_numero}"/></strong></p>
+                <p><h:outputText value="#{subcontratoController.selected.numero}" title="#{bundle.ViewSubcontratoTitle_numero}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewSubcontratoLabel_descricao}"/></strong></p>
+                <p><h:outputText value="#{subcontratoController.selected.descricao}" title="#{bundle.ViewSubcontratoTitle_descricao}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewSubcontratoLabel_prazo}"/></strong></p>
+                <p><h:outputText value="#{subcontratoController.selected.prazo}" title="#{bundle.ViewSubcontratoTitle_prazo}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewSubcontratoLabel_inicio}"/></strong></p>
+                <p><h:outputText value="#{subcontratoController.selected.inicio}" title="#{bundle.ViewSubcontratoTitle_inicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText></p>
+                <p><strong><h:outputText value="#{bundle.ViewSubcontratoLabel_valor}"/></strong></p>
+                <p><h:outputText value="#{subcontratoController.selected.valor}" title="#{bundle.ViewSubcontratoTitle_valor}"/></p>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

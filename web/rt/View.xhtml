@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/templates/ModalTemplate.xhtml">
+
+    <ui:define name="titleModal">
+        <h:outputText value="#{bundle.ViewRtTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="contentModal">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_id}"/></strong></p>
+                <p><h:outputText value="#{rtController.selected.id}" title="#{bundle.ViewRtTitle_id}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_tipo}"/></strong></p>
+                <p><h:outputText value="#{rtController.selected.tipo}" title="#{bundle.ViewRtTitle_tipo}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_dataViagem}"/></strong></p>
+                <p><h:outputText value="#{rtController.selected.dataViagem}" title="#{bundle.ViewRtTitle_dataViagem}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_horaViagem}"/></strong></p>
+                <p><h:outputText value="#{rtController.selected.horaViagem}" title="#{bundle.ViewRtTitle_horaViagem}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_comentario}"/></strong></p>
+                <p><h:outputText value="#{rtController.selected.comentario}" title="#{bundle.ViewRtTitle_comentario}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_localEmbarqueId}"/></strong></p>
+                <p><h:outputText value="#{rtController.selected.localEmbarqueId}" title="#{bundle.ViewRtTitle_localEmbarqueId}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_localDesembarqueId}"/></strong></p>
+                <p><h:outputText value="#{rtController.selected.localDesembarqueId}" title="#{bundle.ViewRtTitle_localDesembarqueId}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_statusId}"/></strong></p>
+                <p><h:outputText value="#{rtController.selected.statusId}" title="#{bundle.ViewRtTitle_statusId}"/></p>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/templates/ModalTemplate.xhtml">
+
+    <ui:define name="titleModal">
+        <h:outputText value="#{bundle.CreateRtTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="contentModal">
+        <div class="row col-md-12">
+            <h:panelGrid class="form-group col-md-6">
+                <h:outputLabel value="#{bundle.CreateRtLabel_id}" for="id" />
+                <h:inputText class="form-control" id="id" value="#{rtController.selected.id}" title="#{bundle.CreateRtTitle_id}" required="true" requiredMessage="#{bundle.CreateRtRequiredMessage_id}"/>
+                <h:message for="id" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateRtLabel_tipo}" for="tipo" />
+                <h:inputText class="form-control" id="tipo" value="#{rtController.selected.tipo}" title="#{bundle.CreateRtTitle_tipo}" required="true" requiredMessage="#{bundle.CreateRtRequiredMessage_tipo}"/>
+                <h:message for="tipo" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateRtLabel_dataViagem}" for="dataViagem" />
+                <h:inputText class="form-control" id="dataViagem" value="#{rtController.selected.dataViagem}" title="#{bundle.CreateRtTitle_dataViagem}" required="true" requiredMessage="#{bundle.CreateRtRequiredMessage_dataViagem}">
+                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                </h:inputText>
+                <h:message for="dataViagem" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateRtLabel_horaViagem}" for="horaViagem" />
+                <h:inputText class="form-control" id="horaViagem" value="#{rtController.selected.horaViagem}" title="#{bundle.CreateRtTitle_horaViagem}" required="true" requiredMessage="#{bundle.CreateRtRequiredMessage_horaViagem}">
+                    <f:convertDateTime pattern="HH:mm:ss" />
+                </h:inputText>
+                <h:message for="horaViagem" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateRtLabel_comentario}" for="comentario" />
+                <h:inputTextarea class="form-control" rows="4" cols="30" id="comentario" value="#{rtController.selected.comentario}" title="#{bundle.CreateRtTitle_comentario}" />
+                <h:message for="comentario" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateRtLabel_localEmbarqueId}" for="localEmbarqueId" />
+                <h:selectOneMenu class="form-control" id="localEmbarqueId" value="#{rtController.selected.localEmbarqueId}" title="#{bundle.CreateRtTitle_localEmbarqueId}" required="true" requiredMessage="#{bundle.CreateRtRequiredMessage_localEmbarqueId}">
+                    <f:selectItems value="#{localController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:message for="localEmbarqueId" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateRtLabel_localDesembarqueId}" for="localDesembarqueId" />
+                <h:selectOneMenu class="form-control" id="localDesembarqueId" value="#{rtController.selected.localDesembarqueId}" title="#{bundle.CreateRtTitle_localDesembarqueId}" required="true" requiredMessage="#{bundle.CreateRtRequiredMessage_localDesembarqueId}">
+                    <f:selectItems value="#{localController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:message for="localDesembarqueId" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateRtLabel_statusId}" for="statusId" />
+                <h:selectOneMenu class="form-control" id="statusId" value="#{rtController.selected.statusId}" title="#{bundle.CreateRtTitle_statusId}" required="true" requiredMessage="#{bundle.CreateRtRequiredMessage_statusId}">
+                    <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:message for="statusId" style="color: red" />
+            </h:panelGrid>
+        </div>
+    </ui:define>
+</ui:composition>

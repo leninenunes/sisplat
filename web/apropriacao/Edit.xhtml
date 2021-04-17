@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/templates/ModalTemplate.xhtml">
+
+    <ui:define name="titleModal">
+        <h:outputText value="#{bundle.EditApropriacaoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="contentModal">
+        <div class="row col-md-12">
+            <h:panelGrid class="form-group col-md-6">
+                <h:outputLabel value="#{bundle.EditApropriacaoLabel_id}" for="id" />
+                <h:inputText class="form-control" id="id" value="#{apropriacaoController.selected.id}" title="#{bundle.EditApropriacaoTitle_id}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_id}"/>
+                <h:message for="id" style="color: red" />
+                <h:outputLabel value="#{bundle.EditApropriacaoLabel_data}" for="data" />
+                <h:inputText class="form-control" id="data" value="#{apropriacaoController.selected.data}" title="#{bundle.EditApropriacaoTitle_data}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_data}">
+                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                </h:inputText>
+                <h:message for="data" style="color: red" />
+                <h:outputLabel value="#{bundle.EditApropriacaoLabel_inicio}" for="inicio" />
+                <h:inputText class="form-control" id="inicio" value="#{apropriacaoController.selected.inicio}" title="#{bundle.EditApropriacaoTitle_inicio}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_inicio}">
+                    <f:convertDateTime pattern="HH:mm:ss" />
+                </h:inputText>
+                <h:message for="inicio" style="color: red" />
+                <h:outputLabel value="#{bundle.EditApropriacaoLabel_termino}" for="termino" />
+                <h:inputText class="form-control" id="termino" value="#{apropriacaoController.selected.termino}" title="#{bundle.EditApropriacaoTitle_termino}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_termino}">
+                    <f:convertDateTime pattern="HH:mm:ss" />
+                </h:inputText>
+                <h:message for="termino" style="color: red" />
+                <h:outputLabel value="#{bundle.EditApropriacaoLabel_intervalo}" for="intervalo" />
+                <h:inputText class="form-control" id="intervalo" value="#{apropriacaoController.selected.intervalo}" title="#{bundle.EditApropriacaoTitle_intervalo}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_intervalo}"/>
+                <h:message for="intervalo" style="color: red" />
+                <h:outputLabel value="#{bundle.EditApropriacaoLabel_tag}" for="tag" />
+                <h:inputText class="form-control" id="tag" value="#{apropriacaoController.selected.tag}" title="#{bundle.EditApropriacaoTitle_tag}" />
+                <h:message for="tag" style="color: red" />
+                <h:outputLabel value="#{bundle.EditApropriacaoLabel_escopoId}" for="escopoId" />
+                <h:selectOneMenu class="form-control" id="escopoId" value="#{apropriacaoController.selected.escopoId}" title="#{bundle.EditApropriacaoTitle_escopoId}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_escopoId}">
+                    <f:selectItems value="#{escopoController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:message for="escopoId" style="color: red" />
+                <h:outputLabel value="#{bundle.EditApropriacaoLabel_profissionalId}" for="profissionalId" />
+                <h:selectOneMenu class="form-control" id="profissionalId" value="#{apropriacaoController.selected.profissionalId}" title="#{bundle.EditApropriacaoTitle_profissionalId}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_profissionalId}">
+                    <f:selectItems value="#{profissionalController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:message for="profissionalId" style="color: red" />
+            </h:panelGrid>
+        </div>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/templates/ModalTemplate.xhtml">
+
+    <ui:define name="titleModal">
+        <h:outputText value="#{bundle.EditEscopoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="contentModal">
+        <div class="row col-md-12">
+            <h:panelGrid class="form-group col-md-6">
+                <h:outputLabel value="#{bundle.EditEscopoLabel_id}" for="id" />
+                <h:inputText class="form-control" id="id" value="#{escopoController.selected.id}" title="#{bundle.EditEscopoTitle_id}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_id}"/>
+                <h:message for="id" style="color: red" />
+                <h:outputLabel value="#{bundle.EditEscopoLabel_descricao}" for="descricao" />
+                <h:inputText class="form-control" id="descricao" value="#{escopoController.selected.descricao}" title="#{bundle.EditEscopoTitle_descricao}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_descricao}"/>
+                <h:message for="descricao" style="color: red" />
+                <h:outputLabel value="#{bundle.EditEscopoLabel_quantidade}" for="quantidade" />
+                <h:inputText class="form-control" id="quantidade" value="#{escopoController.selected.quantidade}" title="#{bundle.EditEscopoTitle_quantidade}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_quantidade}"/>
+                <h:message for="quantidade" style="color: red" />
+                <h:outputLabel value="#{bundle.EditEscopoLabel_valor}" for="valor" />
+                <h:inputText class="form-control" id="valor" value="#{escopoController.selected.valor}" title="#{bundle.EditEscopoTitle_valor}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_valor}"/>
+                <h:message for="valor" style="color: red" />
+                <h:outputLabel value="#{bundle.EditEscopoLabel_contratoId}" for="contratoId" />
+                <h:selectOneMenu class="form-control" id="contratoId" value="#{escopoController.selected.contratoId}" title="#{bundle.EditEscopoTitle_contratoId}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_contratoId}">
+                    <f:selectItems value="#{contratoController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:message for="contratoId" style="color: red" />
+                <h:outputLabel value="#{bundle.EditEscopoLabel_unidadeMedidaId}" for="unidadeMedidaId" />
+                <h:selectOneMenu class="form-control" id="unidadeMedidaId" value="#{escopoController.selected.unidadeMedidaId}" title="#{bundle.EditEscopoTitle_unidadeMedidaId}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_unidadeMedidaId}">
+                    <f:selectItems value="#{unidadeMedidaController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:message for="unidadeMedidaId" style="color: red" />
+            </h:panelGrid>
+        </div>
+    </ui:define>
+</ui:composition>

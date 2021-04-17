@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <h:form>
+            <nav class="navbar navbar-dark fixed-top bg-dark navbar-expand-lg shadow">
+                <h:link outcome="/index"><h:graphicImage library="images" name="logo_ufpr_branca.png" width="50px" title="Sisplat" alt="Sisplat" /> </h:link>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="mn_rt" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Requisição de Transporte</a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <h:commandLink class="dropdown-item" action="#{navigationController.rt}" value="Programar RT" />
+                              <a class="dropdown-item" href="rtLiberacao">Liberar RT</a>
+                          </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="mn_apropriacao" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Apropriação</a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <h:commandLink class="dropdown-item" action="#{navigationController.apropriacao}" value="Apropriar" />
+                              <a class="dropdown-item" href="rtLiberacao">Aprovar</a>
+                          </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="mn_administracao" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administração</a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <h:commandLink class="dropdown-item" action="#{navigationController.local}" value="Locais" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.status}" value="Status" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.contrato}" value="Contratos" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.escopo}" value="Escopos" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.unidadeMedida}" value="Unidade de Medida" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.subcontrato}" value="Subcontratos" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.profissional}" value="Profissional" />
+                          </div>
+                      </li>
+                  </ul>
+                </div>
+                <div class="float-right">
+                    <h:commandLink class="#{localeMB.classEn}" value="English" action="#{localeMB.englishLocale}" style="padding-right: 12px;" />
+                    <h:commandLink class="#{localeMB.classPt}" value="Português" action="#{localeMB.portugueseLocale}" />
+                </div>
+            </nav>
+        </h:form>
+    </h:body>
+</html>
+

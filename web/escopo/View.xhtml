@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/templates/ModalTemplate.xhtml">
+
+    <ui:define name="titleModal">
+        <h:outputText value="#{bundle.ViewEscopoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="contentModal">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_id}"/></strong></p>
+                <p><h:outputText value="#{escopoController.selected.id}" title="#{bundle.ViewEscopoTitle_id}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_descricao}"/></strong></p>
+                <p><h:outputText value="#{escopoController.selected.descricao}" title="#{bundle.ViewEscopoTitle_descricao}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_quantidade}"/></strong></p>
+                <p><h:outputText value="#{escopoController.selected.quantidade}" title="#{bundle.ViewEscopoTitle_quantidade}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_valor}"/></strong></p>
+                <p><h:outputText value="#{escopoController.selected.valor}" title="#{bundle.ViewEscopoTitle_valor}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_contratoId}"/></strong></p>
+                <p><h:outputText value="#{escopoController.selected.contratoId}" title="#{bundle.ViewEscopoTitle_contratoId}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_unidadeMedidaId}"/></strong></p>
+                <p><h:outputText value="#{escopoController.selected.unidadeMedidaId}" title="#{bundle.ViewEscopoTitle_unidadeMedidaId}"/></p>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
