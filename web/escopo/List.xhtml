@@ -190,7 +190,7 @@
                 </div>
             </h:form>
         </main>
-        <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal fade" id="modalCreate" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <h:form id="formCreate">
@@ -199,6 +199,7 @@
                         </div>
                         <div class="modal-body">
                             <ui:include src="Create.xhtml" />
+                            <script>maskInput();</script>
                         </div>
                         <div class="modal-footer">
                             <h:commandLink class="btn btn-primary" value="#{bundle.CreateEscopoSaveLink}">
@@ -210,7 +211,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal fade" id="modalEdit" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <h:form id="formEdit">
@@ -219,6 +220,7 @@
                         </div>
                         <div class="modal-body">
                             <ui:include src="Edit.xhtml" />
+                            <script>maskInput();</script>
                         </div>
                         <div class="modal-footer">
                             <h:commandLink class="btn btn-primary" value="#{bundle.EditEscopoSaveLink}">

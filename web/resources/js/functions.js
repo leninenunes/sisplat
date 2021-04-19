@@ -17,4 +17,5 @@ function validationSucess(){
 function maskInput(){
     $(".date").datepicker({ nextText: "", prevText: "", changeMonth: true, changeYear: true, dateFormat: 'dd/mm/yy'}).mask("99/99/9999");
     $(".money").maskMoney({thousands:'.', decimal:',', prefix: 'R$ '});
+    $(".number").maskMoney({thousands:'.', decimal:','});
 }

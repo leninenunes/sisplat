@@ -16,12 +16,12 @@
                 <h:inputText class="form-control" id="descricao" value="#{escopoController.selected.descricao}" title="#{bundle.CreateEscopoTitle_descricao}" required="true" requiredMessage="#{bundle.CreateEscopoRequiredMessage_descricao}"/>
                 <h:message for="descricao" style="color: red" />
                 <h:outputLabel value="#{bundle.CreateEscopoLabel_quantidade}" for="quantidade" />
-                <h:inputText class="form-control" id="quantidade" value="#{escopoController.selected.quantidade}" title="#{bundle.CreateEscopoTitle_quantidade}" required="true" requiredMessage="#{bundle.CreateEscopoRequiredMessage_quantidade}">
+                <h:inputText class="form-control number" id="quantidade" value="#{escopoController.selected.quantidade}" title="#{bundle.CreateEscopoTitle_quantidade}" required="true" requiredMessage="#{bundle.CreateEscopoRequiredMessage_quantidade}">
                     <f:convertNumber type="number" />
                 </h:inputText>
                 <h:message for="quantidade" style="color: red" />
                 <h:outputLabel value="#{bundle.CreateEscopoLabel_valor}" for="valor" />
-                <h:inputText class="form-control" id="valor" value="#{escopoController.selected.valor}" title="#{bundle.CreateEscopoTitle_valor}" required="true" requiredMessage="#{bundle.CreateEscopoRequiredMessage_valor}">
+                <h:inputText class="form-control money" id="valor" value="#{escopoController.selected.valor}" title="#{bundle.CreateEscopoTitle_valor}" required="true" requiredMessage="#{bundle.CreateEscopoRequiredMessage_valor}">
                     <f:convertNumber type="currency" />
                 </h:inputText>
                 <h:message for="valor" style="color: red" />
