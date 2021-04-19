@@ -22,12 +22,14 @@
                 <h:inputText class="form-control" id="prazo" value="#{contratoController.selected.prazo}" title="#{bundle.EditContratoTitle_prazo}" required="true" requiredMessage="#{bundle.EditContratoRequiredMessage_prazo}"/>
                 <h:message for="prazo" style="color: red" />
                 <h:outputLabel value="#{bundle.EditContratoLabel_inicio}" for="inicio" />
-                <h:inputText class="form-control" id="inicio" value="#{contratoController.selected.inicio}" title="#{bundle.EditContratoTitle_inicio}" required="true" requiredMessage="#{bundle.EditContratoRequiredMessage_inicio}">
-                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                <h:inputText class="form-control date" id="inicio" value="#{contratoController.selected.inicio}" title="#{bundle.EditContratoTitle_inicio}" required="true" requiredMessage="#{bundle.EditContratoRequiredMessage_inicio}">
+                    <f:convertDateTime type="date" />
                 </h:inputText>
                 <h:message for="inicio" style="color: red" />
                 <h:outputLabel value="#{bundle.EditContratoLabel_valor}" for="valor" />
-                <h:inputText class="form-control" id="valor" value="#{contratoController.selected.valor}" title="#{bundle.EditContratoTitle_valor}" required="true" requiredMessage="#{bundle.EditContratoRequiredMessage_valor}"/>
+                <h:inputText class="form-control money" id="valor" value="#{contratoController.selected.valor}" title="#{bundle.EditContratoTitle_valor}" required="true" requiredMessage="#{bundle.EditContratoRequiredMessage_valor}">
+                    <f:convertNumber type="currency" />
+                </h:inputText>
                 <h:message for="valor" style="color: red" />
             </h:panelGrid>
         </div>

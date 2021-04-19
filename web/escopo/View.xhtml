@@ -17,13 +17,21 @@
                 <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_descricao}"/></strong></p>
                 <p><h:outputText value="#{escopoController.selected.descricao}" title="#{bundle.ViewEscopoTitle_descricao}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_quantidade}"/></strong></p>
-                <p><h:outputText value="#{escopoController.selected.quantidade}" title="#{bundle.ViewEscopoTitle_quantidade}"/></p>
+                <p>
+                    <h:outputText value="#{escopoController.selected.quantidade}" title="#{bundle.ViewEscopoTitle_quantidade}">
+                        <f:convertNumber type="number" />
+                    </h:outputText>
+                </p>
                 <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_valor}"/></strong></p>
-                <p><h:outputText value="#{escopoController.selected.valor}" title="#{bundle.ViewEscopoTitle_valor}"/></p>
+                <p>
+                    <h:outputText value="#{escopoController.selected.valor}" title="#{bundle.ViewEscopoTitle_valor}">
+                        <f:convertNumber type="currency" />
+                    </h:outputText>
+                </p>
                 <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_contratoId}"/></strong></p>
-                <p><h:outputText value="#{escopoController.selected.contratoId}" title="#{bundle.ViewEscopoTitle_contratoId}"/></p>
+                <p><h:outputText value="#{escopoController.selected.contratoDescricao}" title="#{bundle.ViewEscopoTitle_contratoId}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_unidadeMedidaId}"/></strong></p>
-                <p><h:outputText value="#{escopoController.selected.unidadeMedidaId}" title="#{bundle.ViewEscopoTitle_unidadeMedidaId}"/></p>
+                <p><h:outputText value="#{escopoController.selected.unidadeMedidaNome}" title="#{bundle.ViewEscopoTitle_unidadeMedidaId}"/></p>
             </div>
         </div>
     </ui:define>

@@ -16,10 +16,14 @@
                 <h:inputText class="form-control" id="descricao" value="#{escopoController.selected.descricao}" title="#{bundle.EditEscopoTitle_descricao}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_descricao}"/>
                 <h:message for="descricao" style="color: red" />
                 <h:outputLabel value="#{bundle.EditEscopoLabel_quantidade}" for="quantidade" />
-                <h:inputText class="form-control" id="quantidade" value="#{escopoController.selected.quantidade}" title="#{bundle.EditEscopoTitle_quantidade}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_quantidade}"/>
+                <h:inputText class="form-control" id="quantidade" value="#{escopoController.selected.quantidade}" title="#{bundle.EditEscopoTitle_quantidade}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_quantidade}">
+                    <f:convertNumber type="number" />
+                </h:inputText>
                 <h:message for="quantidade" style="color: red" />
                 <h:outputLabel value="#{bundle.EditEscopoLabel_valor}" for="valor" />
-                <h:inputText class="form-control" id="valor" value="#{escopoController.selected.valor}" title="#{bundle.EditEscopoTitle_valor}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_valor}"/>
+                <h:inputText class="form-control" id="valor" value="#{escopoController.selected.valor}" title="#{bundle.EditEscopoTitle_valor}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_valor}">
+                    <f:convertNumber type="currency" />
+                </h:inputText>
                 <h:message for="valor" style="color: red" />
                 <h:outputLabel value="#{bundle.EditEscopoLabel_contratoId}" for="contratoId" />
                 <h:selectOneMenu class="form-control" id="contratoId" value="#{escopoController.selected.contratoId}" title="#{bundle.EditEscopoTitle_contratoId}" required="true" requiredMessage="#{bundle.EditEscopoRequiredMessage_contratoId}">

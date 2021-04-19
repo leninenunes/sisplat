@@ -21,11 +21,17 @@
                 <p><strong><h:outputText value="#{bundle.ViewContratoLabel_prazo}"/></strong></p>
                 <p><h:outputText value="#{contratoController.selected.prazo}" title="#{bundle.ViewContratoTitle_prazo}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewContratoLabel_inicio}"/></strong></p>
-                <p><h:outputText value="#{contratoController.selected.inicio}" title="#{bundle.ViewContratoTitle_inicio}">
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
-                    </h:outputText></p>
+                <p>
+                    <h:outputText value="#{contratoController.selected.inicio}" title="#{bundle.ViewContratoTitle_inicio}">
+                        <f:convertDateTime type="date" />
+                    </h:outputText>
+                </p>
                 <p><strong><h:outputText value="#{bundle.ViewContratoLabel_valor}"/></strong></p>
-                <p><h:outputText value="#{contratoController.selected.valor}" title="#{bundle.ViewContratoTitle_valor}"/></p>
+                <p>
+                    <h:outputText value="#{contratoController.selected.valor}" title="#{bundle.ViewContratoTitle_valor}">
+                        <f:convertNumber type="currency" />
+                    </h:outputText>
+                </p>
             </div>
         </div>
     </ui:define>

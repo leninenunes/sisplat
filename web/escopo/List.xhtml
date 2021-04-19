@@ -86,13 +86,17 @@
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListEscopoTitle_quantidade}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.quantidade}"/>
+                                <h:outputText value="#{item.quantidade}">
+                                    <f:convertNumber type="number" />
+                                </h:outputText>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListEscopoTitle_valor}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.valor}"/>
+                                <h:outputText value="#{item.valor}">
+                                    <f:convertNumber type="currency" />
+                                </h:outputText>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">

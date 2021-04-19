@@ -22,12 +22,14 @@
                 <h:inputText class="form-control" id="prazo" value="#{subcontratoController.selected.prazo}" title="#{bundle.CreateSubcontratoTitle_prazo}" required="true" requiredMessage="#{bundle.CreateSubcontratoRequiredMessage_prazo}"/>
                 <h:message for="prazo" style="color: red" />
                 <h:outputLabel value="#{bundle.CreateSubcontratoLabel_inicio}" for="inicio" />
-                <h:inputText class="form-control" id="inicio" value="#{subcontratoController.selected.inicio}" title="#{bundle.CreateSubcontratoTitle_inicio}" required="true" requiredMessage="#{bundle.CreateSubcontratoRequiredMessage_inicio}">
-                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                <h:inputText class="form-control date" id="inicio" value="#{subcontratoController.selected.inicio}" title="#{bundle.CreateSubcontratoTitle_inicio}" required="true" requiredMessage="#{bundle.CreateSubcontratoRequiredMessage_inicio}">
+                    <f:convertDateTime type="date" />
                 </h:inputText>
                 <h:message for="inicio" style="color: red" />
                 <h:outputLabel value="#{bundle.CreateSubcontratoLabel_valor}" for="valor" />
-                <h:inputText class="form-control" id="valor" value="#{subcontratoController.selected.valor}" title="#{bundle.CreateSubcontratoTitle_valor}" required="true" requiredMessage="#{bundle.CreateSubcontratoRequiredMessage_valor}"/>
+                <h:inputText class="form-control money" id="valor" value="#{subcontratoController.selected.valor}" title="#{bundle.CreateSubcontratoTitle_valor}" required="true" requiredMessage="#{bundle.CreateSubcontratoRequiredMessage_valor}">
+                    <f:convertNumber type="currency" />
+                </h:inputText>
                 <h:message for="valor" style="color: red" />
             </h:panelGrid>
         </div>

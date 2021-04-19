@@ -47,13 +47,15 @@
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateContratoLabel_inicio}" for="inicio" />
-                        <h:inputText class="form-control" id="inicio" value="#{contratoController.filtered.inicio}" title="#{bundle.CreateContratoTitle_inicio}">
-                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        <h:inputText class="form-control date" id="inicio" value="#{contratoController.filtered.inicio}" title="#{bundle.CreateContratoTitle_inicio}">
+                            <f:convertDateTime type="date" />
                         </h:inputText>
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateContratoLabel_valor}" for="valor" />
-                        <h:inputText class="form-control" id="valor" value="#{contratoController.filtered.valor}" title="#{bundle.CreateContratoTitle_valor}"/>
+                        <h:inputText class="form-control" id="valor" value="#{contratoController.filtered.valor}" title="#{bundle.CreateContratoTitle_valor}">
+                            <f:convertNumber type="number" />
+                        </h:inputText>
                     </div>
                     <div class="form-group col-md-3" style="margin-top: auto;">
                         <h:commandButton class="btn btn-primary" value="#{bundle.Search}">
@@ -63,6 +65,7 @@
                             <f:ajax event="click" render="formList" listener="#{contratoController.clearFilter}" execute="@form" />
                         </h:commandButton>
                     </div>
+                    <script>maskInput();</script>
                 </div>
                 <div class="table-responsive">
                     <h:outputText escape="false" value="#{bundle.ListContratoEmpty}" rendered="#{contratoController.items.rowCount == 0}"/>
@@ -97,14 +100,16 @@
                                     <h:outputText value="#{bundle.ListContratoTitle_inicio}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.inicio}">
-                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    <f:convertDateTime type="date" />
                                 </h:outputText>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListContratoTitle_valor}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.valor}"/>
+                                <h:outputText value="#{item.valor}">
+                                    <f:convertNumber type="currency" />
+                                </h:outputText>
                             </h:column>
                             <h:column>
                                 <h:commandLink 
@@ -186,7 +191,7 @@
                 </div>
             </h:form>
         </main>
-        <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal fade" id="modalCreate" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <h:form id="formCreate">
@@ -195,6 +200,7 @@
                         </div>
                         <div class="modal-body">
                             <ui:include src="Create.xhtml" />
+                            <script>maskInput();</script>
                         </div>
                         <div class="modal-footer">
                             <h:commandLink class="btn btn-primary" value="#{bundle.CreateContratoSaveLink}">
@@ -206,7 +212,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal fade" id="modalEdit" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <h:form id="formEdit">
@@ -215,6 +221,7 @@
                         </div>
                         <div class="modal-body">
                             <ui:include src="Edit.xhtml" />
+                            <script>maskInput();</script>
                         </div>
                         <div class="modal-footer">
                             <h:commandLink class="btn btn-primary" value="#{bundle.EditContratoSaveLink}">
