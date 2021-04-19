@@ -12,9 +12,6 @@
     <ui:define name="contentModal">
         <div class="row col-md-12">
             <h:panelGrid class="form-group col-md-6">
-                <h:outputLabel value="#{bundle.EditSubcontratoLabel_id}" for="id" />
-                <h:inputText class="form-control" id="id" value="#{subcontratoController.selected.id}" title="#{bundle.EditSubcontratoTitle_id}" required="true" requiredMessage="#{bundle.EditSubcontratoRequiredMessage_id}"/>
-                <h:message for="id" style="color: red" />
                 <h:outputLabel value="#{bundle.EditSubcontratoLabel_numero}" for="numero" />
                 <h:inputText class="form-control" id="numero" value="#{subcontratoController.selected.numero}" title="#{bundle.EditSubcontratoTitle_numero}" required="true" requiredMessage="#{bundle.EditSubcontratoRequiredMessage_numero}"/>
                 <h:message for="numero" style="color: red" />
@@ -26,7 +23,7 @@
                 <h:message for="prazo" style="color: red" />
                 <h:outputLabel value="#{bundle.EditSubcontratoLabel_inicio}" for="inicio" />
                 <h:inputText class="form-control" id="inicio" value="#{subcontratoController.selected.inicio}" title="#{bundle.EditSubcontratoTitle_inicio}" required="true" requiredMessage="#{bundle.EditSubcontratoRequiredMessage_inicio}">
-                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
                 </h:inputText>
                 <h:message for="inicio" style="color: red" />
                 <h:outputLabel value="#{bundle.EditSubcontratoLabel_valor}" for="valor" />

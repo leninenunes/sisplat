@@ -1,5 +1,6 @@
 $(document).ready(function() {
     validationSucess();
+    $("#inicio").datepicker({ nextText: "", prevText: "", changeMonth: true, changeYear: true }).mask("99/99/9999");
 });
 
 function validationSucess(){

@@ -11,10 +11,7 @@
     </ui:define>
     <ui:define name="contentModal">
         <div class="row col-md-12">
-            <h:panelGrid class="form-group col-md-6">
-                <h:outputLabel value="#{bundle.CreateLocalLabel_id}" for="id" />
-                <h:inputText class="form-control" id="id" value="#{localController.selected.id}" title="#{bundle.CreateLocalTitle_id}" required="true" requiredMessage="#{bundle.CreateLocalRequiredMessage_id}"/>
-                <h:message for="id" style="color: red" />
+            <h:panelGrid class="form-group col-md-12">
                 <h:outputLabel value="#{bundle.CreateLocalLabel_nome}" for="nome" />
                 <h:inputText class="form-control" id="nome" value="#{localController.selected.nome}" title="#{bundle.CreateLocalTitle_nome}" required="true" requiredMessage="#{bundle.CreateLocalRequiredMessage_nome}"/>
                 <h:message for="nome" style="color: red" />

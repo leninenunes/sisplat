@@ -48,7 +48,7 @@
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateContratoLabel_inicio}" for="inicio" />
                         <h:inputText class="form-control" id="inicio" value="#{contratoController.filtered.inicio}" title="#{bundle.CreateContratoTitle_inicio}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:inputText>
                     </div>
                     <div class="form-group col-md-3">
@@ -97,7 +97,7 @@
                                     <h:outputText value="#{bundle.ListContratoTitle_inicio}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.inicio}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
                             </h:column>
                             <h:column>

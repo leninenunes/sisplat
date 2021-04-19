@@ -192,8 +192,20 @@ public class ContratoJpaController implements Serializable {
             if(contrato.getId() != null && contrato.getId() != 0){
                 predicates.add(cb.equal(rt.get(Contrato_.id), contrato.getId()));
             }
+            if(contrato.getNumero() != null && contrato.getNumero() != 0){
+                predicates.add(cb.equal(rt.get(Contrato_.numero), contrato.getNumero()));
+            }
             if(contrato.getDescricao() != null && !contrato.getDescricao().equals("")){
                 predicates.add(cb.like(rt.get(Contrato_.descricao), "%" + contrato.getDescricao() + "%"));
+            }
+            if(contrato.getPrazo() != null && contrato.getPrazo() != 0){
+                predicates.add(cb.equal(rt.get(Contrato_.prazo), contrato.getPrazo()));
+            }
+            if(contrato.getInicio() != null && !contrato.getInicio().equals("")){
+                predicates.add(cb.equal(rt.get(Contrato_.inicio), contrato.getInicio()));
+            }
+            if(contrato.getValor() != null && contrato.getValor() != 0){
+                predicates.add(cb.equal(rt.get(Contrato_.valor), contrato.getValor()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
@@ -226,8 +238,20 @@ public class ContratoJpaController implements Serializable {
             if(contrato.getId() != null && contrato.getId() != 0){
                 predicates.add(cb.equal(rt.get(Contrato_.id), contrato.getId()));
             }
+            if(contrato.getNumero() != null && contrato.getNumero() != 0){
+                predicates.add(cb.equal(rt.get(Contrato_.numero), contrato.getNumero()));
+            }
             if(contrato.getDescricao() != null && !contrato.getDescricao().equals("")){
                 predicates.add(cb.like(rt.get(Contrato_.descricao), "%" + contrato.getDescricao() + "%"));
+            }
+            if(contrato.getPrazo() != null && contrato.getPrazo() != 0){
+                predicates.add(cb.equal(rt.get(Contrato_.prazo), contrato.getPrazo()));
+            }
+            if(contrato.getInicio() != null && !contrato.getInicio().equals("")){
+                predicates.add(cb.equal(rt.get(Contrato_.inicio), contrato.getInicio()));
+            }
+            if(contrato.getValor() != null && contrato.getValor() != 0){
+                predicates.add(cb.equal(rt.get(Contrato_.valor), contrato.getValor()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(rt));

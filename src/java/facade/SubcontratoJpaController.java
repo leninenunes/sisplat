@@ -127,8 +127,20 @@ public class SubcontratoJpaController implements Serializable {
             if(subcontrato.getId() != null && subcontrato.getId() != 0){
                 predicates.add(cb.equal(rt.get(Subcontrato_.id), subcontrato.getId()));
             }
+            if(subcontrato.getNumero() != null && subcontrato.getNumero() != 0){
+                predicates.add(cb.equal(rt.get(Subcontrato_.numero), subcontrato.getNumero()));
+            }
             if(subcontrato.getDescricao() != null && !subcontrato.getDescricao().equals("")){
                 predicates.add(cb.like(rt.get(Subcontrato_.descricao), "%" + subcontrato.getDescricao() + "%"));
+            }
+            if(subcontrato.getPrazo() != null && subcontrato.getPrazo() != 0){
+                predicates.add(cb.equal(rt.get(Subcontrato_.prazo), subcontrato.getPrazo()));
+            }
+            if(subcontrato.getInicio() != null && !subcontrato.getInicio().equals("")){
+                predicates.add(cb.equal(rt.get(Subcontrato_.inicio), subcontrato.getInicio()));
+            }
+            if(subcontrato.getValor() != null && subcontrato.getValor() != 0){
+                predicates.add(cb.equal(rt.get(Subcontrato_.valor), subcontrato.getValor()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
@@ -161,8 +173,17 @@ public class SubcontratoJpaController implements Serializable {
             if(subcontrato.getId() != null && subcontrato.getId() != 0){
                 predicates.add(cb.equal(rt.get(Subcontrato_.id), subcontrato.getId()));
             }
+            if(subcontrato.getNumero() != null && subcontrato.getNumero() != 0){
+                predicates.add(cb.equal(rt.get(Subcontrato_.numero), subcontrato.getNumero()));
+            }
             if(subcontrato.getDescricao() != null && !subcontrato.getDescricao().equals("")){
                 predicates.add(cb.like(rt.get(Subcontrato_.descricao), "%" + subcontrato.getDescricao() + "%"));
+            }
+            if(subcontrato.getInicio() != null && !subcontrato.getInicio().equals("")){
+                predicates.add(cb.equal(rt.get(Subcontrato_.inicio), subcontrato.getInicio()));
+            }
+            if(subcontrato.getPrazo() != null && subcontrato.getPrazo() != 0){
+                predicates.add(cb.equal(rt.get(Subcontrato_.prazo), subcontrato.getPrazo()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(rt));

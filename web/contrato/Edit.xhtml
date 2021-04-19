@@ -12,9 +12,6 @@
     <ui:define name="contentModal">
         <div class="row col-md-12">
             <h:panelGrid class="form-group col-md-6">
-                <h:outputLabel value="#{bundle.EditContratoLabel_id}" for="id" />
-                <h:inputText class="form-control" id="id" value="#{contratoController.selected.id}" title="#{bundle.EditContratoTitle_id}" required="true" requiredMessage="#{bundle.EditContratoRequiredMessage_id}"/>
-                <h:message for="id" style="color: red" />
                 <h:outputLabel value="#{bundle.EditContratoLabel_numero}" for="numero" />
                 <h:inputText class="form-control" id="numero" value="#{contratoController.selected.numero}" title="#{bundle.EditContratoTitle_numero}" required="true" requiredMessage="#{bundle.EditContratoRequiredMessage_numero}"/>
                 <h:message for="numero" style="color: red" />
@@ -26,7 +23,7 @@
                 <h:message for="prazo" style="color: red" />
                 <h:outputLabel value="#{bundle.EditContratoLabel_inicio}" for="inicio" />
                 <h:inputText class="form-control" id="inicio" value="#{contratoController.selected.inicio}" title="#{bundle.EditContratoTitle_inicio}" required="true" requiredMessage="#{bundle.EditContratoRequiredMessage_inicio}">
-                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
                 </h:inputText>
                 <h:message for="inicio" style="color: red" />
                 <h:outputLabel value="#{bundle.EditContratoLabel_valor}" for="valor" />

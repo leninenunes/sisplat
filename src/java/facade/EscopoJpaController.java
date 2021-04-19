@@ -250,8 +250,20 @@ public class EscopoJpaController implements Serializable {
             if(escopo.getId() != null && escopo.getId() != 0){
                 predicates.add(cb.equal(rt.get(Escopo_.id), escopo.getId()));
             }
+            if(escopo.getContratoId()!= null){
+                predicates.add(cb.equal(rt.get(Escopo_.contratoId), escopo.getContratoId()));
+            }
+            if(escopo.getUnidadeMedidaId()!= null){
+                predicates.add(cb.equal(rt.get(Escopo_.unidadeMedidaId), escopo.getUnidadeMedidaId()));
+            }
             if(escopo.getDescricao() != null && !escopo.getDescricao().equals("")){
                 predicates.add(cb.like(rt.get(Escopo_.descricao), "%" + escopo.getDescricao() + "%"));
+            }
+            if(escopo.getQuantidade() != null && escopo.getQuantidade() != 0){
+                predicates.add(cb.equal(rt.get(Escopo_.quantidade), escopo.getQuantidade()));
+            }
+            if(escopo.getValor() != null && escopo.getValor() != 0){
+                predicates.add(cb.equal(rt.get(Escopo_.valor), escopo.getValor()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
@@ -284,8 +296,20 @@ public class EscopoJpaController implements Serializable {
             if(escopo.getId() != null && escopo.getId() != 0){
                 predicates.add(cb.equal(rt.get(Escopo_.id), escopo.getId()));
             }
+            if(escopo.getContratoId()!= null){
+                predicates.add(cb.equal(rt.get(Escopo_.contratoId), escopo.getContratoId()));
+            }
+            if(escopo.getUnidadeMedidaId()!= null){
+                predicates.add(cb.equal(rt.get(Escopo_.unidadeMedidaId), escopo.getUnidadeMedidaId()));
+            }
             if(escopo.getDescricao() != null && !escopo.getDescricao().equals("")){
                 predicates.add(cb.like(rt.get(Escopo_.descricao), "%" + escopo.getDescricao() + "%"));
+            }
+            if(escopo.getQuantidade() != null && escopo.getQuantidade() != 0){
+                predicates.add(cb.equal(rt.get(Escopo_.quantidade), escopo.getQuantidade()));
+            }
+            if(escopo.getValor() != null && escopo.getValor() != 0){
+                predicates.add(cb.equal(rt.get(Escopo_.valor), escopo.getValor()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(rt));

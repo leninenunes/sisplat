@@ -118,7 +118,7 @@ public class UnidadeMedida implements Serializable {
 
     @Override
     public String toString() {
-        return "model.UnidadeMedida[ id=" + id + " ]";
+        return nome;
     }
     
 }

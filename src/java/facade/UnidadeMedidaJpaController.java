@@ -195,6 +195,9 @@ public class UnidadeMedidaJpaController implements Serializable {
             if(unidadeMedida.getNome() != null && !unidadeMedida.getNome().equals("")){
                 predicates.add(cb.like(rt.get(UnidadeMedida_.nome), "%" + unidadeMedida.getNome() + "%"));
             }
+            if(unidadeMedida.getDescricao() != null && !unidadeMedida.getDescricao().equals("")){
+                predicates.add(cb.like(rt.get(UnidadeMedida_.descricao), "%" + unidadeMedida.getDescricao() + "%"));
+            }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
             
@@ -228,6 +231,9 @@ public class UnidadeMedidaJpaController implements Serializable {
             }
             if(unidadeMedida.getNome() != null && !unidadeMedida.getNome().equals("")){
                 predicates.add(cb.like(rt.get(UnidadeMedida_.nome), "%" + unidadeMedida.getNome() + "%"));
+            }
+            if(unidadeMedida.getDescricao() != null && !unidadeMedida.getDescricao().equals("")){
+                predicates.add(cb.like(rt.get(UnidadeMedida_.descricao), "%" + unidadeMedida.getDescricao() + "%"));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(rt));

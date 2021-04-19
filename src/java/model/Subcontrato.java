@@ -45,20 +45,20 @@ public class Subcontrato implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "numero")
-    private int numero;
+    private Integer numero;
     @Basic(optional = false)
     @Column(name = "descricao")
     private String descricao;
     @Basic(optional = false)
     @Column(name = "prazo")
-    private int prazo;
+    private Integer prazo;
     @Basic(optional = false)
     @Column(name = "inicio")
     @Temporal(TemporalType.TIMESTAMP)
     private Date inicio;
     @Basic(optional = false)
     @Column(name = "valor")
-    private double valor;
+    private Double valor;
 
     public Subcontrato() {
     }
@@ -67,7 +67,7 @@ public class Subcontrato implements Serializable {
         this.id = id;
     }
 
-    public Subcontrato(Integer id, int numero, String descricao, int prazo, Date inicio, double valor) {
+    public Subcontrato(Integer id, Integer numero, String descricao, Integer prazo, Date inicio, Double valor) {
         this.id = id;
         this.numero = numero;
         this.descricao = descricao;
@@ -84,11 +84,11 @@ public class Subcontrato implements Serializable {
         this.id = id;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
@@ -100,11 +100,11 @@ public class Subcontrato implements Serializable {
         this.descricao = descricao;
     }
 
-    public int getPrazo() {
+    public Integer getPrazo() {
         return prazo;
     }
 
-    public void setPrazo(int prazo) {
+    public void setPrazo(Integer prazo) {
         this.prazo = prazo;
     }
 
@@ -116,11 +116,11 @@ public class Subcontrato implements Serializable {
         this.inicio = inicio;
     }
 
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 

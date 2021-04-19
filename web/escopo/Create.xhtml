@@ -12,9 +12,6 @@
     <ui:define name="contentModal">
         <div class="row col-md-12">
             <h:panelGrid class="form-group col-md-6">
-                <h:outputLabel value="#{bundle.CreateEscopoLabel_id}" for="id" />
-                <h:inputText class="form-control" id="id" value="#{escopoController.selected.id}" title="#{bundle.CreateEscopoTitle_id}" required="true" requiredMessage="#{bundle.CreateEscopoRequiredMessage_id}"/>
-                <h:message for="id" style="color: red" />
                 <h:outputLabel value="#{bundle.CreateEscopoLabel_descricao}" for="descricao" />
                 <h:inputText class="form-control" id="descricao" value="#{escopoController.selected.descricao}" title="#{bundle.CreateEscopoTitle_descricao}" required="true" requiredMessage="#{bundle.CreateEscopoRequiredMessage_descricao}"/>
                 <h:message for="descricao" style="color: red" />

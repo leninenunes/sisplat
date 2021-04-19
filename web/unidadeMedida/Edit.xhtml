@@ -12,9 +12,6 @@
     <ui:define name="contentModal">
         <div class="row col-md-12">
             <h:panelGrid class="form-group col-md-6">
-                <h:outputLabel value="#{bundle.EditUnidadeMedidaLabel_id}" for="id" />
-                <h:inputText class="form-control" id="id" value="#{unidadeMedidaController.selected.id}" title="#{bundle.EditUnidadeMedidaTitle_id}" required="true" requiredMessage="#{bundle.EditUnidadeMedidaRequiredMessage_id}"/>
-                <h:message for="id" style="color: red" />
                 <h:outputLabel value="#{bundle.EditUnidadeMedidaLabel_nome}" for="nome" />
                 <h:inputText class="form-control" id="nome" value="#{unidadeMedidaController.selected.nome}" title="#{bundle.EditUnidadeMedidaTitle_nome}" required="true" requiredMessage="#{bundle.EditUnidadeMedidaRequiredMessage_nome}"/>
                 <h:message for="nome" style="color: red" />

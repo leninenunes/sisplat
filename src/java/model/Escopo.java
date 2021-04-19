@@ -49,10 +49,10 @@ public class Escopo implements Serializable {
     private String descricao;
     @Basic(optional = false)
     @Column(name = "quantidade")
-    private double quantidade;
+    private Double quantidade;
     @Basic(optional = false)
     @Column(name = "valor")
-    private double valor;
+    private Double valor;
     @JoinColumn(name = "contrato_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Contrato contratoId;
@@ -69,7 +69,7 @@ public class Escopo implements Serializable {
         this.id = id;
     }
 
-    public Escopo(Integer id, String descricao, double quantidade, double valor) {
+    public Escopo(Integer id, String descricao, Double quantidade, Double valor) {
         this.id = id;
         this.descricao = descricao;
         this.quantidade = quantidade;
@@ -92,24 +92,28 @@ public class Escopo implements Serializable {
         this.descricao = descricao;
     }
 
-    public double getQuantidade() {
+    public Double getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(double quantidade) {
+    public void setQuantidade(Double quantidade) {
         this.quantidade = quantidade;
     }
 
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
     public Contrato getContratoId() {
         return contratoId;
+    }
+    
+    public String getContratoDescricao(){
+        return contratoId.getDescricao();
     }
 
     public void setContratoId(Contrato contratoId) {
@@ -118,6 +122,10 @@ public class Escopo implements Serializable {
 
     public UnidadeMedida getUnidadeMedidaId() {
         return unidadeMedidaId;
+    }
+    
+    public String getUnidadeMedidaNome(){
+        return unidadeMedidaId.getNome();
     }
 
     public void setUnidadeMedidaId(UnidadeMedida unidadeMedidaId) {
