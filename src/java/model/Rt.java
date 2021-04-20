@@ -42,6 +42,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Rt.findByHoraViagem", query = "SELECT r FROM Rt r WHERE r.horaViagem = :horaViagem")})
 public class Rt implements Serializable {
 
+    @Lob
+    @Column(name = "comentario")
+    private String comentario;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,9 +63,6 @@ public class Rt implements Serializable {
     @Column(name = "hora_viagem")
     @Temporal(TemporalType.TIME)
     private Date horaViagem;
-    @Lob
-    @Column(name = "comentario")
-    private byte[] comentario;
     @JoinColumn(name = "local_embarque_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Local localEmbarqueId;
@@ -120,13 +121,6 @@ public class Rt implements Serializable {
         this.horaViagem = horaViagem;
     }
 
-    public byte[] getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(byte[] comentario) {
-        this.comentario = comentario;
-    }
 
     public Local getLocalEmbarqueId() {
         return localEmbarqueId;
@@ -184,6 +178,14 @@ public class Rt implements Serializable {
     @Override
     public String toString() {
         return "model.Rt[ id=" + id + " ]";
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
     
 }
