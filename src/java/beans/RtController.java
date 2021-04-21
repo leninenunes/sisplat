@@ -280,7 +280,16 @@ public class RtController implements Serializable {
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(getJpaController().findRtEntities(), true);
     }
-
+    
+    public List<SelectItem> getItemsRtTipo(){
+        List<SelectItem> tipos = new ArrayList<SelectItem>();
+        tipos.add(new SelectItem("", "---"));
+        tipos.add(new SelectItem(1, "EMBARQUE"));
+        tipos.add(new SelectItem(2, "DESEMBARQUE"));
+        tipos.add(new SelectItem(3, "TRANSFERÊNCIA"));
+        return tipos;
+    }
+    
     @FacesConverter(forClass = Rt.class)
     public static class RtControllerConverter implements Converter {
 

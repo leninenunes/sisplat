@@ -15,6 +15,11 @@
                 <h:outputLabel value="#{bundle.CreateLocalLabel_nome}" for="nome" />
                 <h:inputText class="form-control" id="nome" value="#{localController.selected.nome}" title="#{bundle.CreateLocalTitle_nome}" required="true" requiredMessage="#{bundle.CreateLocalRequiredMessage_nome}"/>
                 <h:message for="nome" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateLocalLabel_tipo}" for="tipo" />
+                <h:selectOneMenu class="form-control" id="tipo" value="#{localController.selected.tipo}" title="#{bundle.CreateLocalLabel_tipo}" required="true" requiredMessage="#{bundle.CreateLocalRequiredMessage_tipo}" >
+                    <f:selectItems value="#{localController.itemsLocalTipo}" />
+                </h:selectOneMenu>
+                <h:message for="tipo" style="color: red" />
             </h:panelGrid>
         </div>
     </ui:define>

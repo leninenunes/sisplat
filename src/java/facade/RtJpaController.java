@@ -278,8 +278,8 @@ public class RtJpaController implements Serializable {
             if(rt.getId() != null && rt.getId() != 0){
                 predicates.add(cb.equal(root.get(Rt_.id), rt.getId()));
             }
-            if(rt.getTipo() != null && !rt.getTipo().equals("")){
-                predicates.add(cb.like(root.get(Rt_.tipo), "%" + rt.getTipo() + "%"));
+            if(rt.getTipo() != null && rt.getTipo() != 0){
+                predicates.add(cb.equal(root.get(Rt_.tipo), rt.getTipo()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
@@ -312,8 +312,8 @@ public class RtJpaController implements Serializable {
             if(rt.getId() != null && rt.getId() != 0){
                 predicates.add(cb.equal(root.get(Rt_.id), rt.getId()));
             }
-            if(rt.getTipo() != null && !rt.getTipo().equals("")){
-                predicates.add(cb.like(root.get(Rt_.tipo), "%" + rt.getTipo() + "%"));
+            if(rt.getTipo() != null && rt.getTipo() != 0){
+                predicates.add(cb.equal(root.get(Rt_.tipo), rt.getTipo()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(root));

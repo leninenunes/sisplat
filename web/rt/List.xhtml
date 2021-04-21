@@ -35,7 +35,9 @@
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateRtLabel_tipo}" for="tipo" />
-                        <h:inputText class="form-control" id="tipo" value="#{rtController.filtered.tipo}" title="#{bundle.CreateRtTitle_tipo}"/>
+                        <h:selectOneMenu class="form-control" id="tipo" value="#{rtController.filtered.tipo}" title="#{bundle.CreateRtTitle_tipo}">
+                            <f:selectItems value="#{rtController.itemsRtTipo}" />
+                        </h:selectOneMenu>
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateRtLabel_dataViagem}" for="dataViagem" />
@@ -94,7 +96,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListRtTitle_tipo}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.tipo}"/>
+                                <h:outputText value="#{item.tipoNome}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">

@@ -54,7 +54,7 @@ public class Rt implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "tipo")
-    private String tipo;
+    private Integer tipo;
     @Basic(optional = false)
     @Column(name = "data_viagem")
     @Temporal(TemporalType.TIMESTAMP)
@@ -82,7 +82,7 @@ public class Rt implements Serializable {
         this.id = id;
     }
 
-    public Rt(Integer id, String tipo, Date dataViagem, Date horaViagem) {
+    public Rt(Integer id, Integer tipo, Date dataViagem, Date horaViagem) {
         this.id = id;
         this.tipo = tipo;
         this.dataViagem = dataViagem;
@@ -97,14 +97,32 @@ public class Rt implements Serializable {
         this.id = id;
     }
 
-    public String getTipo() {
+    public Integer getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Integer tipo) {
         this.tipo = tipo;
     }
-
+    
+    public String getTipoNome(){
+        String tipoNome = "";
+        if(this.tipo != null){
+            switch (this.tipo) {
+                case 1 :
+                    tipoNome = "EMBARQUE";
+                    break;
+                case 2 :
+                    tipoNome = "DESEMBARQUE";
+                    break;
+                case 3 :
+                    tipoNome = "TRANSFERÊNCIA";
+                    break;
+            }
+        }
+        return tipoNome;
+    }
+    
     public Date getDataViagem() {
         return dataViagem;
     }
@@ -187,5 +205,5 @@ public class Rt implements Serializable {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-    
+
 }

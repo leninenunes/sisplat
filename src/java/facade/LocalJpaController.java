@@ -245,6 +245,9 @@ public class LocalJpaController implements Serializable {
             if(local.getId() != null && local.getId() != 0){
                 predicates.add(cb.equal(rt.get(Local_.id), local.getId()));
             }
+            if(local.getTipo() != null && local.getTipo() != 0){
+                predicates.add(cb.equal(rt.get(Local_.tipo), local.getTipo()));
+            }
             if(local.getNome() != null && !local.getNome().equals("")){
                 predicates.add(cb.like(rt.get(Local_.nome), "%" + local.getNome() + "%"));
             }
@@ -278,6 +281,9 @@ public class LocalJpaController implements Serializable {
             List<Predicate> predicates = new ArrayList<Predicate>();
             if(local.getId() != null && local.getId() != 0){
                 predicates.add(cb.equal(rt.get(Local_.id), local.getId()));
+            }
+            if(local.getTipo() != null && local.getTipo() != 0){
+                predicates.add(cb.equal(rt.get(Local_.tipo), local.getTipo()));
             }
             if(local.getNome() != null && !local.getNome().equals("")){
                 predicates.add(cb.like(rt.get(Local_.nome), "%" + local.getNome() + "%"));

@@ -280,6 +280,14 @@ public class LocalController implements Serializable {
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(getJpaController().findLocalEntities(), true);
     }
+    
+    public List<SelectItem> getItemsLocalTipo(){
+        List<SelectItem> tipos = new ArrayList<SelectItem>();
+        tipos.add(new SelectItem("", "---"));
+        tipos.add(new SelectItem(1, "BASE"));
+        tipos.add(new SelectItem(2, "EMBARCAÇÃO"));
+        return tipos;
+    }
 
     @FacesConverter(forClass = Local.class)
     public static class LocalControllerConverter implements Converter {

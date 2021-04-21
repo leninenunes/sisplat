@@ -11,27 +11,27 @@
     </ui:define>
     <ui:define name="contentModal">
         <div class="row col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_id}"/></strong></p>
                 <p><h:outputText value="#{rtController.selected.id}" title="#{bundle.ViewRtTitle_id}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_tipo}"/></strong></p>
-                <p><h:outputText value="#{rtController.selected.tipo}" title="#{bundle.ViewRtTitle_tipo}"/></p>
+                <p><h:outputText value="#{rtController.selected.tipoNome}" title="#{bundle.ViewRtTitle_tipo}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_dataViagem}"/></strong></p>
                 <p><h:outputText value="#{rtController.selected.dataViagem}" title="#{bundle.ViewRtTitle_dataViagem}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <f:convertDateTime type="date" />
                     </h:outputText></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_horaViagem}"/></strong></p>
                 <p><h:outputText value="#{rtController.selected.horaViagem}" title="#{bundle.ViewRtTitle_horaViagem}">
-                        <f:convertDateTime pattern="HH:mm:ss" />
+                        <f:convertDateTime type="time" pattern="HH:mm" />
                     </h:outputText></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_comentario}"/></strong></p>
                 <p><h:outputText value="#{rtController.selected.comentario}" title="#{bundle.ViewRtTitle_comentario}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_localEmbarqueId}"/></strong></p>
-                <p><h:outputText value="#{rtController.selected.localEmbarqueId}" title="#{bundle.ViewRtTitle_localEmbarqueId}"/></p>
+                <p><h:outputText value="#{rtController.selected.localEmbarqueId.nome}" title="#{bundle.ViewRtTitle_localEmbarqueId}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_localDesembarqueId}"/></strong></p>
-                <p><h:outputText value="#{rtController.selected.localDesembarqueId}" title="#{bundle.ViewRtTitle_localDesembarqueId}"/></p>
+                <p><h:outputText value="#{rtController.selected.localDesembarqueId.nome}" title="#{bundle.ViewRtTitle_localDesembarqueId}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_statusId}"/></strong></p>
-                <p><h:outputText value="#{rtController.selected.statusId}" title="#{bundle.ViewRtTitle_statusId}"/></p>
+                <p><h:outputText value="#{rtController.selected.statusId.nome}" title="#{bundle.ViewRtTitle_statusId}"/></p>
             </div>
         </div>
     </ui:define>

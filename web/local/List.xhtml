@@ -37,6 +37,12 @@
                         <h:outputLabel value="#{bundle.CreateLocalLabel_nome}" for="nome" />
                         <h:inputText class="form-control" id="nome" value="#{localController.filtered.nome}" title="#{bundle.CreateLocalTitle_nome}"/>
                     </div>
+                    <div class="form-group col-md-3">
+                        <h:outputLabel value="#{bundle.CreateLocalLabel_tipo}" for="tipo" />
+                        <h:selectOneMenu class="form-control" id="tipo" value="#{localController.filtered.tipo}">
+                            <f:selectItems value="#{localController.itemsLocalTipo}" />
+                        </h:selectOneMenu>
+                    </div>
                     <div class="form-group col-md-3" style="margin-top: auto;">
                         <h:commandButton class="btn btn-primary" value="#{bundle.Search}">
                             <f:ajax event="click" render="formList" listener="#{localController.filter}" execute="@form" />
@@ -61,6 +67,12 @@
                                     <h:outputText value="#{bundle.ListLocalTitle_nome}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.nome}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLocalTitle_nome}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.tipoNome}"/>
                             </h:column>
                             <h:column>
                                 <h:commandLink 

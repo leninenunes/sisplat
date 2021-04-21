@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -43,11 +44,14 @@ public class Local implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
+    @Basic(optional = false)
+    @Column(name = "tipo")
+    private Integer tipo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "localEmbarqueId")
     private Collection<Rt> rtCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "localDesembarqueId")
     private Collection<Rt> rtCollection1;
-
+    
     public Local() {
     }
 
@@ -55,9 +59,10 @@ public class Local implements Serializable {
         this.id = id;
     }
 
-    public Local(Integer id, String nome) {
+    public Local(Integer id, String nome, Integer tipo) {
         this.id = id;
         this.nome = nome;
+        this.tipo = tipo;
     }
 
     public Integer getId() {
@@ -75,7 +80,30 @@ public class Local implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    public Integer getTipo() {
+        return tipo;
+    }
 
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
+    
+    public String getTipoNome(){
+        String tipoNome = "";
+        if(this.tipo != null){
+            switch (this.tipo) {
+                case 1 :
+                    tipoNome = "BASE";
+                    break;
+                case 2 :
+                    tipoNome = "EMBARCAÇÃO";
+                    break;
+            }
+        }
+        return tipoNome;
+    }
+    
     @XmlTransient
     public Collection<Rt> getRtCollection() {
         return rtCollection;
