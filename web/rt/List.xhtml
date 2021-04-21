@@ -41,14 +41,14 @@
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateRtLabel_dataViagem}" for="dataViagem" />
-                        <h:inputText class="form-control" id="dataViagem" value="#{rtController.filtered.dataViagem}" title="#{bundle.CreateRtTitle_dataViagem}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <h:inputText class="form-control date" id="dataViagem" value="#{rtController.filtered.dataViagem}" title="#{bundle.CreateRtTitle_dataViagem}">
+                            <f:convertDateTime type="date" />
                         </h:inputText>
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateRtLabel_horaViagem}" for="horaViagem" />
-                        <h:inputText class="form-control" id="horaViagem" value="#{rtController.filtered.horaViagem}" title="#{bundle.CreateRtTitle_horaViagem}">
-                            <f:convertDateTime pattern="HH:mm:ss" />
+                        <h:inputText class="form-control hora" id="horaViagem" value="#{rtController.filtered.horaViagem}" title="#{bundle.CreateRtTitle_horaViagem}">
+                            <f:convertDateTime type="time" pattern="HH:mm" />
                         </h:inputText>
                     </div>
                     <div class="form-group col-md-3">

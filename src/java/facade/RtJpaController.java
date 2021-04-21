@@ -278,8 +278,26 @@ public class RtJpaController implements Serializable {
             if(rt.getId() != null && rt.getId() != 0){
                 predicates.add(cb.equal(root.get(Rt_.id), rt.getId()));
             }
+            if(rt.getLocalEmbarqueId() != null){
+                predicates.add(cb.equal(root.get(Rt_.localEmbarqueId), rt.getLocalEmbarqueId()));
+            }
+            if(rt.getLocalDesembarqueId() != null){
+                predicates.add(cb.equal(root.get(Rt_.localDesembarqueId), rt.getLocalDesembarqueId()));
+            }
+            if(rt.getStatusId() != null){
+                predicates.add(cb.equal(root.get(Rt_.statusId), rt.getStatusId()));
+            }
             if(rt.getTipo() != null && rt.getTipo() != 0){
                 predicates.add(cb.equal(root.get(Rt_.tipo), rt.getTipo()));
+            }
+            if(rt.getDataViagem() != null){
+                predicates.add(cb.equal(root.get(Rt_.dataViagem), rt.getDataViagem()));
+            }
+            if(rt.getHoraViagem() != null){
+                predicates.add(cb.equal(root.get(Rt_.horaViagem), rt.getHoraViagem()));
+            }
+            if(rt.getComentario() != null && !rt.getComentario().equals("")){
+                predicates.add(cb.like(root.get(Rt_.comentario), "%" + rt.getComentario() + "%"));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
@@ -312,8 +330,26 @@ public class RtJpaController implements Serializable {
             if(rt.getId() != null && rt.getId() != 0){
                 predicates.add(cb.equal(root.get(Rt_.id), rt.getId()));
             }
+            if(rt.getLocalEmbarqueId() != null){
+                predicates.add(cb.equal(root.get(Rt_.localEmbarqueId), rt.getLocalEmbarqueId()));
+            }
+            if(rt.getLocalDesembarqueId() != null){
+                predicates.add(cb.equal(root.get(Rt_.localDesembarqueId), rt.getLocalDesembarqueId()));
+            }
+            if(rt.getStatusId() != null){
+                predicates.add(cb.equal(root.get(Rt_.statusId), rt.getStatusId()));
+            }
             if(rt.getTipo() != null && rt.getTipo() != 0){
                 predicates.add(cb.equal(root.get(Rt_.tipo), rt.getTipo()));
+            }
+            if(rt.getDataViagem() != null){
+                predicates.add(cb.equal(root.get(Rt_.dataViagem), rt.getDataViagem()));
+            }
+            if(rt.getHoraViagem() != null){
+                predicates.add(cb.equal(root.get(Rt_.horaViagem), rt.getHoraViagem()));
+            }
+            if(rt.getComentario() != null && !rt.getComentario().equals("")){
+                predicates.add(cb.like(root.get(Rt_.comentario), "%" + rt.getComentario() + "%"));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(root));

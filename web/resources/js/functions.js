@@ -26,4 +26,5 @@ function maskInput(){
     $.mask.definitions['m'] = "[0-9]";
 
     $(".hora-viagem").mask("Hh:Mm");
+    $(".hora").mask("Hh:Mm");
 }
