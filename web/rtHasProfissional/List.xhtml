@@ -28,11 +28,7 @@
                     </h:commandLink>
                 </div>
                 <a class="btn btn-primary" data-toggle="collapse" href="#filter" role="button" aria-expanded="false">#{bundle.Filter}</a>
-                <div id="filter" class="row collapse #{rtHasProfissionalController.filterShow}">					
-                    <div class="form-group col-md-3">
-                        <h:outputLabel value="#{bundle.CreateRtHasProfissionalLabel_rtHasProfissionalPK_id}" for="rtHasProfissionalPK_id" />
-                        <h:inputText class="form-control" id="rtHasProfissionalPK_id" value="#{rtHasProfissionalController.filtered.rtHasProfissionalPK_id}" title="#{bundle.CreateRtHasProfissionalTitle_rtHasProfissionalPK_id}"/>
-                    </div>
+                <div id="filter" class="row collapse #{rtHasProfissionalController.filterShow}">					                    
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateRtHasProfissionalLabel_profissional}" for="profissional" />
                         <h:selectOneMenu class="form-control" id="profissional" value="#{rtHasProfissionalController.filtered.profissional}" title="#{bundle.CreateRtHasProfissionalTitle_profissional}">
@@ -193,7 +189,7 @@
                 <div class="modal-content">
                     <h:form id="formEdit">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="modalLabel">#{bundle.EditRtHasProfissionalTitle} <h:outputText value="#{rtHasProfissionalController.selected.id}" title="#{bundle.EditRtHasProfissionalTitle_id}" /></h4>
+                            <h4 class="modal-title" id="modalLabel">#{bundle.EditRtHasProfissionalTitle} <h:outputText value="#{rtHasProfissionalController.selected.rt}" title="#{bundle.EditRtHasProfissionalTitle_id}" /></h4>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Edit.xhtml" />
@@ -213,10 +209,10 @@
                 <div class="modal-content">
                     <h:form id="formDelete">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="modalLabel">#{bundle.DeleteRtHasProfissionalTitle} <h:outputText value="#{rtHasProfissionalController.selected.id}" /></h4>
+                            <h4 class="modal-title" id="modalLabel">#{bundle.DeleteRtHasProfissionalTitle} <h:outputText value="#{rtHasProfissionalController.selected.rt}" /></h4>
                         </div>
                         <div class="modal-body">
-                            #{bundle.DeleteRtHasProfissionalTitleQuestion} <h:outputText value="#{rtHasProfissionalController.selected.id}" title="#{bundle.ListRtHasProfissionalTitle_id}" />?
+                            #{bundle.DeleteRtHasProfissionalTitleQuestion} <h:outputText value="#{rtHasProfissionalController.selected.rt}" title="#{bundle.ListRtHasProfissionalTitle_id}" />?
                         </div>
                         <div class="modal-footer">
                             <h:commandLink class="btn btn-primary" value="#{bundle.Yes}">
@@ -233,7 +229,7 @@
                 <div class="modal-content">
                     <h:form id="formView">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="modalLabel">#{bundle.ViewRtHasProfissionalTitle} <h:outputText value="#{rtHasProfissionalController.selected.id}" title="#{bundle.ViewRtHasProfissionalTitle_id}"/></h4>
+                            <h4 class="modal-title" id="modalLabel">#{bundle.ViewRtHasProfissionalTitle} <h:outputText value="#{rtHasProfissionalController.selected.rt}" title="#{bundle.ViewRtHasProfissionalTitle_id}"/></h4>
                         </div>
                         <div class="modal-body">
                             <ui:include src="View.xhtml" />

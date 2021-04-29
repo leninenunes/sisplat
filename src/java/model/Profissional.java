@@ -129,7 +129,7 @@ public class Profissional implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Profissional[ id=" + id + " ]";
+        return nome + " - " + matricula;
     }
     
 }

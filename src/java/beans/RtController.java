@@ -19,6 +19,8 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.persistence.Persistence;
+import model.Profissional;
+import model.RtHasProfissional;
 
 @ManagedBean(name = "rtController")
 @SessionScoped
@@ -32,10 +34,67 @@ public class RtController implements Serializable {
     private Integer pageSize = 10;
     private Rt filtered;
     private String filterShow;
+    private List<SelectItem> leftSelected;
+    private SelectItem[] leftAvailable;
+    private List<?> rightSelected;
+    private SelectItem[] rightAvailable;
+    private ProfissionalController profissionalController = new ProfissionalController();
+    private List<Profissional> profissionalSelected = new ArrayList<Profissional>();
 
     public RtController() {
+//        leftAvailable = profissionalController.getItemsAvailableSelectMany();
+//        leftAvailable = new SelectItem[2];
+//        leftAvailable[0] = new SelectItem(1, "x");
+//        leftAvailable[1] = new SelectItem(2, "s");
+//        leftAvailable = new ArrayList<String>(Arrays.asList("one", "two", "three", "four", "five"));
+        rightAvailable = null;
+    }  
+    
+    public void leftToRight(){
+//        leftAvailable.removeAll(leftSelected);
+//        rightAvailable = leftSelected;
+        rightAvailable = new SelectItem[leftSelected.size()];
+        int i = 0;
+        for(Object x : leftSelected){
+//            rightAvailable[i++] = new SelectItem(x, x.toString());
+            rightAvailable[i++] = new SelectItem(x, x.toString());
+        }
+//        for(int i=0; i<leftSelected.size();i++){
+//            rightAvailable[i] = new SelectItem(i, leftSelected.toString());
+//        }
+        leftSelected = null;
     }
-
+    
+    public void rightToLeft(){
+//        rightAvailable.removeAll(rightSelected);
+//        leftAvailable.addAll(rightSelected);
+        rightSelected = null;
+    }
+    
+    public List<SelectItem> getLeftSelected(){
+        return leftSelected;
+    }
+    
+    public void setLeftSelected(List<SelectItem> leftSelected){
+        this.leftSelected = leftSelected;
+    }
+    
+    public List<?> getRightSelected(){
+        return rightSelected;
+    }
+    
+    public void setRightSelected(List<?> rightSelected){
+        this.rightSelected = rightSelected;
+    }
+    
+    public SelectItem[] getLeftAvailable(){
+        return leftAvailable;
+    }
+    
+    public SelectItem[] getRightAvailable(){
+        return rightAvailable;
+    }
+    
     public Rt getSelected() {
         if (current == null) {
             current = new Rt();
@@ -147,6 +206,10 @@ public class RtController implements Serializable {
     public void prepareEdit() {
         current = (Rt) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        profissionalSelected.clear();
+        for(RtHasProfissional prof : current.getRtHasProfissionalCollection()){
+            profissionalSelected.add(prof.getProfissional());
+        }
     }
 
     public void update() {
@@ -279,6 +342,10 @@ public class RtController implements Serializable {
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(getJpaController().findRtEntities(), true);
+    }
+    
+    public List<Profissional> getProfissionalSelected(){
+        return profissionalSelected;
     }
     
     public List<SelectItem> getItemsRtTipo(){
