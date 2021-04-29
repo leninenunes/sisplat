@@ -190,12 +190,13 @@
                 </div>
             </h:form>
         </main>
-        <div class="modal fade" id="modalCreate" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <h:form id="formCreate">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.CreateEscopoTitle}</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Create.xhtml" />
@@ -211,12 +212,13 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modalEdit" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <h:form id="formEdit">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.EditEscopoTitle} <h:outputText value="#{escopoController.selected.id}" title="#{bundle.EditEscopoTitle_id}" /></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Edit.xhtml" />
@@ -238,6 +240,7 @@
                     <h:form id="formDelete">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.DeleteEscopoTitle} <h:outputText value="#{escopoController.selected.id}" /></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             #{bundle.DeleteEscopoTitleQuestion} <h:outputText value="#{escopoController.selected.id}" title="#{bundle.ListEscopoTitle_id}" />?
@@ -258,6 +261,7 @@
                     <h:form id="formView">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.ViewEscopoTitle} <h:outputText value="#{escopoController.selected.id}" title="#{bundle.ViewEscopoTitle_id}"/></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="View.xhtml" />

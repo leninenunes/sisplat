@@ -158,6 +158,7 @@
                     <h:form id="formCreate">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.CreateProfissionalTitle}</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Create.xhtml" />
@@ -178,6 +179,7 @@
                     <h:form id="formEdit">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.EditProfissionalTitle} <h:outputText value="#{profissionalController.selected.id}" title="#{bundle.EditProfissionalTitle_id}" /></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Edit.xhtml" />
@@ -198,6 +200,7 @@
                     <h:form id="formDelete">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.DeleteProfissionalTitle} <h:outputText value="#{profissionalController.selected.id}" /></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             #{bundle.DeleteProfissionalTitleQuestion} <h:outputText value="#{profissionalController.selected.id}" title="#{bundle.ListProfissionalTitle_id}" />?
@@ -218,6 +221,7 @@
                     <h:form id="formView">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.ViewProfissionalTitle} <h:outputText value="#{profissionalController.selected.id}" title="#{bundle.ViewProfissionalTitle_id}"/></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="View.xhtml" />

@@ -170,6 +170,7 @@
                     <h:form id="formCreate">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.CreateRtHasProfissionalTitle}</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Create.xhtml" />
@@ -190,6 +191,7 @@
                     <h:form id="formEdit">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.EditRtHasProfissionalTitle} <h:outputText value="#{rtHasProfissionalController.selected.rt}" title="#{bundle.EditRtHasProfissionalTitle_id}" /></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Edit.xhtml" />
@@ -210,6 +212,7 @@
                     <h:form id="formDelete">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.DeleteRtHasProfissionalTitle} <h:outputText value="#{rtHasProfissionalController.selected.rt}" /></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             #{bundle.DeleteRtHasProfissionalTitleQuestion} <h:outputText value="#{rtHasProfissionalController.selected.rt}" title="#{bundle.ListRtHasProfissionalTitle_id}" />?
@@ -230,6 +233,7 @@
                     <h:form id="formView">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.ViewRtHasProfissionalTitle} <h:outputText value="#{rtHasProfissionalController.selected.rt}" title="#{bundle.ViewRtHasProfissionalTitle_id}"/></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="View.xhtml" />

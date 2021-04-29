@@ -197,6 +197,7 @@
                     <h:form id="formCreate">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.CreateContratoTitle}</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Create.xhtml" />
@@ -218,6 +219,7 @@
                     <h:form id="formEdit">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.EditContratoTitle} <h:outputText value="#{contratoController.selected.id}" title="#{bundle.EditContratoTitle_id}" /></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Edit.xhtml" />
@@ -239,6 +241,7 @@
                     <h:form id="formDelete">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.DeleteContratoTitle} <h:outputText value="#{contratoController.selected.id}" /></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             #{bundle.DeleteContratoTitleQuestion} <h:outputText value="#{contratoController.selected.id}" title="#{bundle.ListContratoTitle_id}" />?
@@ -259,6 +262,7 @@
                     <h:form id="formView">
                         <div class="modal-header">
                             <h4 class="modal-title" id="modalLabel">#{bundle.ViewContratoTitle} <h:outputText value="#{contratoController.selected.id}" title="#{bundle.ViewContratoTitle_id}"/></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="View.xhtml" />
