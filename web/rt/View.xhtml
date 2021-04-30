@@ -32,12 +32,23 @@
                 <p><h:outputText value="#{rtController.selected.localDesembarqueId.nome}" title="#{bundle.ViewRtTitle_localDesembarqueId}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_statusId}"/></strong></p>
                 <p><h:outputText value="#{rtController.selected.statusId.nome}" title="#{bundle.ViewRtTitle_statusId}"/></p>
-                <p><strong><h:outputText value="#{bundle.ViewRtHasProfissionalLabel_profissional}"/></strong></p>
-                <p>
-                    <ui:repeat var="profissionalCollection" value="#{rtController.selected.rtHasProfissionalCollection}">
-                        <h:outputText value="#{profissionalCollection.profissional.nome}"/><br/>
-                    </ui:repeat>
-                </p>
+                <p><strong><h:outputText value="#{bundle.ListRtHasProfissionalTitle_profissional}"/></strong></p>
+                <h:panelGroup>
+                    <h:dataTable value="#{rtController.selected.rtHasProfissionalCollection}" var="item" border="0" cellpadding="2" cellspacing="0" class="table table-striped table-hover table-bordered" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfissionalTitle_matricula}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profissional.matricula}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfissionalTitle_nome}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profissional.nome}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
             </div>
         </div>
     </ui:define>
