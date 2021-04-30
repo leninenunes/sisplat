@@ -3,12 +3,12 @@ package beans;
 import model.Rt;
 import beans.util.JsfUtil;
 import beans.util.PaginationHelper;
+import facade.ProfissionalJpaController;
 import facade.RtJpaController;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
@@ -34,64 +34,48 @@ public class RtController implements Serializable {
     private Integer pageSize = 10;
     private Rt filtered;
     private String filterShow;
-    private List<SelectItem> leftSelected;
-    private SelectItem[] leftAvailable;
-    private List<?> rightSelected;
-    private SelectItem[] rightAvailable;
-    private ProfissionalController profissionalController = new ProfissionalController();
-    private List<Profissional> profissionalSelected = new ArrayList<Profissional>();
-
+    private List<Profissional> leftSelected;
+    private List<Profissional> leftAvailable;
+    private List<Profissional> rightSelected;
+    private List<Profissional> rightAvailable;
+    ProfissionalJpaController profissionalJpaController = new ProfissionalJpaController(Persistence.createEntityManagerFactory("sisplatPU"));
+    
     public RtController() {
-//        leftAvailable = profissionalController.getItemsAvailableSelectMany();
-//        leftAvailable = new SelectItem[2];
-//        leftAvailable[0] = new SelectItem(1, "x");
-//        leftAvailable[1] = new SelectItem(2, "s");
-//        leftAvailable = new ArrayList<String>(Arrays.asList("one", "two", "three", "four", "five"));
-        rightAvailable = null;
     }  
     
     public void leftToRight(){
-//        leftAvailable.removeAll(leftSelected);
-//        rightAvailable = leftSelected;
-        rightAvailable = new SelectItem[leftSelected.size()];
-        int i = 0;
-        for(Object x : leftSelected){
-//            rightAvailable[i++] = new SelectItem(x, x.toString());
-            rightAvailable[i++] = new SelectItem(x, x.toString());
-        }
-//        for(int i=0; i<leftSelected.size();i++){
-//            rightAvailable[i] = new SelectItem(i, leftSelected.toString());
-//        }
+        leftAvailable.removeAll(leftSelected);
+        rightAvailable.addAll(leftSelected);
         leftSelected = null;
     }
     
     public void rightToLeft(){
-//        rightAvailable.removeAll(rightSelected);
-//        leftAvailable.addAll(rightSelected);
+        rightAvailable.removeAll(rightSelected);
+        leftAvailable.addAll(rightSelected);
         rightSelected = null;
     }
     
-    public List<SelectItem> getLeftSelected(){
+    public List<Profissional> getLeftSelected(){
         return leftSelected;
     }
     
-    public void setLeftSelected(List<SelectItem> leftSelected){
+    public void setLeftSelected(List<Profissional> leftSelected){
         this.leftSelected = leftSelected;
     }
     
-    public List<?> getRightSelected(){
+    public List<Profissional> getRightSelected(){
         return rightSelected;
     }
     
-    public void setRightSelected(List<?> rightSelected){
+    public void setRightSelected(List<Profissional> rightSelected){
         this.rightSelected = rightSelected;
     }
     
-    public SelectItem[] getLeftAvailable(){
+    public List<Profissional> getLeftAvailable(){
         return leftAvailable;
     }
     
-    public SelectItem[] getRightAvailable(){
+    public List<Profissional> getRightAvailable(){
         return rightAvailable;
     }
     
@@ -183,6 +167,7 @@ public class RtController implements Serializable {
     public void prepareCreate() {
         current = new Rt();
         selectedItemIndex = -1;
+        populateProfissional();
     }
 
     public void create() {
@@ -206,10 +191,7 @@ public class RtController implements Serializable {
     public void prepareEdit() {
         current = (Rt) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        profissionalSelected.clear();
-        for(RtHasProfissional prof : current.getRtHasProfissionalCollection()){
-            profissionalSelected.add(prof.getProfissional());
-        }
+        populateProfissional();     
     }
 
     public void update() {
@@ -344,10 +326,6 @@ public class RtController implements Serializable {
         return JsfUtil.getSelectItems(getJpaController().findRtEntities(), true);
     }
     
-    public List<Profissional> getProfissionalSelected(){
-        return profissionalSelected;
-    }
-    
     public List<SelectItem> getItemsRtTipo(){
         List<SelectItem> tipos = new ArrayList<SelectItem>();
         tipos.add(new SelectItem("", "---"));
@@ -355,6 +333,22 @@ public class RtController implements Serializable {
         tipos.add(new SelectItem(2, "DESEMBARQUE"));
         tipos.add(new SelectItem(3, "TRANSFERÊNCIA"));
         return tipos;
+    }
+    
+    private void populateProfissional(){
+        leftAvailable = new ArrayList<>();
+        rightAvailable = new ArrayList<>();
+        
+        for(Profissional itemProfissional : profissionalJpaController.findProfissionalEntities()){
+            leftAvailable.add(itemProfissional);
+        }
+        
+        if(current.getRtHasProfissionalCollection() != null){
+            for(RtHasProfissional itemRtHasProfissional : current.getRtHasProfissionalCollection()){
+                rightAvailable.add(itemRtHasProfissional.getProfissional());
+            }
+            leftAvailable.removeAll(rightAvailable);
+        }
     }
     
     @FacesConverter(forClass = Rt.class)
@@ -392,6 +386,46 @@ public class RtController implements Serializable {
                 return getStringKey(o.getId());
             } else {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Rt.class.getName());
+            }
+        }
+
+    }
+    
+    @FacesConverter(value = "profissionalConverter", forClass = Profissional.class)
+    public static class ProfissionalControllerConverter implements Converter {
+        ProfissionalJpaController profissionalJpaController = new ProfissionalJpaController(Persistence.createEntityManagerFactory("sisplatPU"));
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            ProfissionalController controller = (ProfissionalController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "profissionalController");
+            return profissionalJpaController.findProfissional(getKey(value));
+        }
+
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
+            return key;
+        }
+
+        String getStringKey(java.lang.Integer value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
+
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof Profissional) {
+                Profissional o = (Profissional) object;
+                return getStringKey(o.getId());
+            } else {
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Profissional.class.getName());
             }
         }
 

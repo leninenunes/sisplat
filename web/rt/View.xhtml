@@ -32,6 +32,12 @@
                 <p><h:outputText value="#{rtController.selected.localDesembarqueId.nome}" title="#{bundle.ViewRtTitle_localDesembarqueId}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_statusId}"/></strong></p>
                 <p><h:outputText value="#{rtController.selected.statusId.nome}" title="#{bundle.ViewRtTitle_statusId}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtHasProfissionalLabel_profissional}"/></strong></p>
+                <p>
+                    <ui:repeat var="profissionalCollection" value="#{rtController.selected.rtHasProfissionalCollection}">
+                        <h:outputText value="#{profissionalCollection.profissional.nome}"/><br/>
+                    </ui:repeat>
+                </p>
             </div>
         </div>
     </ui:define>
