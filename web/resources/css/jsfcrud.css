@@ -194,3 +194,7 @@ tr.jsfcrud_even_row {
         margin-top: 6px;
         font-size: 95%;
     }
+
+    .lefttoright{
+        width: 300px;
+    }

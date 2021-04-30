@@ -46,7 +46,7 @@
                 </h:selectOneMenu>
                 <h:message for="statusId" style="color: red" />
                 <h:panelGrid columns="3">
-                    <h:selectManyListbox class="form-control" id="left" value="#{rtController.leftSelected}" converter="profissionalConverter">
+                    <h:selectManyListbox class="form-control lefttoright" size="4" id="left" value="#{rtController.leftSelected}" converter="profissionalConverter">
                         <f:selectItems value="#{rtController.leftAvailable}" />
                         <f:ajax event="dblclick" execute="left" render="left right" listener="#{rtController.leftToRight}"/>
                     </h:selectManyListbox>
@@ -59,7 +59,7 @@
                             <f:ajax execute="right" render="right left" listener="#{rtController.rightToLeft}" />
                         </h:commandButton>
                     </h:panelGroup>
-                    <h:selectManyListbox class="form-control" id="right" value="#{rtController.rightSelected}" converter="profissionalConverter">
+                    <h:selectManyListbox class="form-control lefttoright" size="4" id="right" value="#{rtController.rightSelected}" converter="profissionalConverter">
                         <f:selectItems value="#{rtController.rightAvailable}" />
                     </h:selectManyListbox>
                 </h:panelGrid>
