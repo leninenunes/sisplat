@@ -163,7 +163,7 @@ public class Escopo implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Escopo[ id=" + id + " ]";
+        return descricao + " (" + contratoId.getDescricao() + ")";
     }
     
 }

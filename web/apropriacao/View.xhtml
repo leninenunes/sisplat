@@ -16,24 +16,26 @@
                 <p><h:outputText value="#{apropriacaoController.selected.id}" title="#{bundle.ViewApropriacaoTitle_id}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewApropriacaoLabel_data}"/></strong></p>
                 <p><h:outputText value="#{apropriacaoController.selected.data}" title="#{bundle.ViewApropriacaoTitle_data}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <f:convertDateTime type="date" />
                     </h:outputText></p>
                 <p><strong><h:outputText value="#{bundle.ViewApropriacaoLabel_inicio}"/></strong></p>
                 <p><h:outputText value="#{apropriacaoController.selected.inicio}" title="#{bundle.ViewApropriacaoTitle_inicio}">
-                        <f:convertDateTime pattern="HH:mm:ss" />
+                        <f:convertDateTime type="time" pattern="HH:mm" />
                     </h:outputText></p>
                 <p><strong><h:outputText value="#{bundle.ViewApropriacaoLabel_termino}"/></strong></p>
                 <p><h:outputText value="#{apropriacaoController.selected.termino}" title="#{bundle.ViewApropriacaoTitle_termino}">
-                        <f:convertDateTime pattern="HH:mm:ss" />
+                        <f:convertDateTime type="time" pattern="HH:mm" />
                     </h:outputText></p>
                 <p><strong><h:outputText value="#{bundle.ViewApropriacaoLabel_intervalo}"/></strong></p>
                 <p><h:outputText value="#{apropriacaoController.selected.intervalo}" title="#{bundle.ViewApropriacaoTitle_intervalo}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewApropriacaoLabel_tag}"/></strong></p>
                 <p><h:outputText value="#{apropriacaoController.selected.tag}" title="#{bundle.ViewApropriacaoTitle_tag}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewEscopoLabel_contratoId}"/></strong></p>
+                <p><h:outputText value="#{apropriacaoController.selected.escopoId.contratoDescricao}" title="#{bundle.ViewEscopoTitle_contratoId}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewApropriacaoLabel_escopoId}"/></strong></p>
-                <p><h:outputText value="#{apropriacaoController.selected.escopoId}" title="#{bundle.ViewApropriacaoTitle_escopoId}"/></p>
+                <p><h:outputText value="#{apropriacaoController.selected.escopoId.descricao}" title="#{bundle.ViewApropriacaoTitle_escopoId}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewApropriacaoLabel_profissionalId}"/></strong></p>
-                <p><h:outputText value="#{apropriacaoController.selected.profissionalId}" title="#{bundle.ViewApropriacaoTitle_profissionalId}"/></p>
+                <p><h:outputText value="#{apropriacaoController.selected.profissionalId.nome}" title="#{bundle.ViewApropriacaoTitle_profissionalId}"/></p>
             </div>
         </div>
     </ui:define>

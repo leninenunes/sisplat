@@ -12,22 +12,19 @@
     <ui:define name="contentModal">
         <div class="row col-md-12">
             <h:panelGrid class="form-group col-md-6">
-                <h:outputLabel value="#{bundle.EditApropriacaoLabel_id}" for="id" />
-                <h:inputText class="form-control" id="id" value="#{apropriacaoController.selected.id}" title="#{bundle.EditApropriacaoTitle_id}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_id}"/>
-                <h:message for="id" style="color: red" />
                 <h:outputLabel value="#{bundle.EditApropriacaoLabel_data}" for="data" />
-                <h:inputText class="form-control" id="data" value="#{apropriacaoController.selected.data}" title="#{bundle.EditApropriacaoTitle_data}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_data}">
-                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                <h:inputText class="form-control data-apropriacao" id="data" value="#{apropriacaoController.selected.data}" title="#{bundle.EditApropriacaoTitle_data}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_data}">
+                    <f:convertDateTime type="date" />
                 </h:inputText>
                 <h:message for="data" style="color: red" />
                 <h:outputLabel value="#{bundle.EditApropriacaoLabel_inicio}" for="inicio" />
-                <h:inputText class="form-control" id="inicio" value="#{apropriacaoController.selected.inicio}" title="#{bundle.EditApropriacaoTitle_inicio}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_inicio}">
-                    <f:convertDateTime pattern="HH:mm:ss" />
+                <h:inputText class="form-control hora" id="inicio" value="#{apropriacaoController.selected.inicio}" title="#{bundle.EditApropriacaoTitle_inicio}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_inicio}">
+                    <f:convertDateTime type="time" pattern="HH:mm" />
                 </h:inputText>
                 <h:message for="inicio" style="color: red" />
                 <h:outputLabel value="#{bundle.EditApropriacaoLabel_termino}" for="termino" />
-                <h:inputText class="form-control" id="termino" value="#{apropriacaoController.selected.termino}" title="#{bundle.EditApropriacaoTitle_termino}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_termino}">
-                    <f:convertDateTime pattern="HH:mm:ss" />
+                <h:inputText class="form-control hora" id="termino" value="#{apropriacaoController.selected.termino}" title="#{bundle.EditApropriacaoTitle_termino}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_termino}">
+                    <f:convertDateTime type="time" pattern="HH:mm" />
                 </h:inputText>
                 <h:message for="termino" style="color: red" />
                 <h:outputLabel value="#{bundle.EditApropriacaoLabel_intervalo}" for="intervalo" />

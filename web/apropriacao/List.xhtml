@@ -35,20 +35,20 @@
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateApropriacaoLabel_data}" for="data" />
-                        <h:inputText class="form-control" id="data" value="#{apropriacaoController.filtered.data}" title="#{bundle.CreateApropriacaoTitle_data}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <h:inputText class="form-control date" id="data" value="#{apropriacaoController.filtered.data}" title="#{bundle.CreateApropriacaoTitle_data}">
+                            <f:convertDateTime type="date" />
                         </h:inputText>
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateApropriacaoLabel_inicio}" for="inicio" />
-                        <h:inputText class="form-control" id="inicio" value="#{apropriacaoController.filtered.inicio}" title="#{bundle.CreateApropriacaoTitle_inicio}">
-                            <f:convertDateTime pattern="HH:mm:ss" />
+                        <h:inputText class="form-control hora" id="inicio" value="#{apropriacaoController.filtered.inicio}" title="#{bundle.CreateApropriacaoTitle_inicio}">
+                            <f:convertDateTime type="time" pattern="HH:mm" />
                         </h:inputText>
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateApropriacaoLabel_termino}" for="termino" />
-                        <h:inputText class="form-control" id="termino" value="#{apropriacaoController.filtered.termino}" title="#{bundle.CreateApropriacaoTitle_termino}">
-                            <f:convertDateTime pattern="HH:mm:ss" />
+                        <h:inputText class="form-control hora" id="termino" value="#{apropriacaoController.filtered.termino}" title="#{bundle.CreateApropriacaoTitle_termino}">
+                            <f:convertDateTime type="time" pattern="HH:mm" />
                         </h:inputText>
                     </div>
                     <div class="form-group col-md-3">
@@ -95,7 +95,7 @@
                                     <h:outputText value="#{bundle.ListApropriacaoTitle_data}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.data}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                    <f:convertDateTime type="date" />
                                 </h:outputText>
                             </h:column>
                             <h:column>
@@ -103,7 +103,7 @@
                                     <h:outputText value="#{bundle.ListApropriacaoTitle_inicio}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.inicio}">
-                                    <f:convertDateTime pattern="HH:mm:ss" />
+                                    <f:convertDateTime type="time" pattern="HH:mm" />
                                 </h:outputText>
                             </h:column>
                             <h:column>
@@ -111,7 +111,7 @@
                                     <h:outputText value="#{bundle.ListApropriacaoTitle_termino}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.termino}">
-                                    <f:convertDateTime pattern="HH:mm:ss" />
+                                    <f:convertDateTime type="time" pattern="HH:mm" />
                                 </h:outputText>
                             </h:column>
                             <h:column>
@@ -128,15 +128,21 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListEscopoTitle_contratoId}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.escopoId.contratoId.descricao}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
                                     <h:outputText value="#{bundle.ListApropriacaoTitle_escopoId}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.escopoId}"/>
+                                <h:outputText value="#{item.escopoId.descricao}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListApropriacaoTitle_profissionalId}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.profissionalId}"/>
+                                <h:outputText value="#{item.profissionalId.nome}"/>
                             </h:column>
                             <h:column>
                                 <h:commandLink 
@@ -218,7 +224,7 @@
                 </div>
             </h:form>
         </main>
-        <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal fade" id="modalCreate" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <h:form id="formCreate">
@@ -228,6 +234,7 @@
                         </div>
                         <div class="modal-body">
                             <ui:include src="Create.xhtml" />
+                            <script>maskInput();</script>
                         </div>
                         <div class="modal-footer">
                             <h:commandLink class="btn btn-primary" value="#{bundle.CreateApropriacaoSaveLink}">
@@ -239,7 +246,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal fade" id="modalEdit" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <h:form id="formEdit">
@@ -249,6 +256,7 @@
                         </div>
                         <div class="modal-body">
                             <ui:include src="Edit.xhtml" />
+                            <script>maskInput();</script>
                         </div>
                         <div class="modal-footer">
                             <h:commandLink class="btn btn-primary" value="#{bundle.EditApropriacaoSaveLink}">
