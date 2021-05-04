@@ -12,6 +12,7 @@
     <class>model.Escopo</class>
     <class>model.UnidadeMedida</class>
     <class>model.Status</class>
+    <class>model.Funcao</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sisplat?useSSL=false&amp;useTimezone=true&amp;serverTimezone=UTC"/>

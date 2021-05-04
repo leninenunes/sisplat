@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -34,6 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Profissional.findByNome", query = "SELECT p FROM Profissional p WHERE p.nome = :nome")
     , @NamedQuery(name = "Profissional.findByMatricula", query = "SELECT p FROM Profissional p WHERE p.matricula = :matricula")})
 public class Profissional implements Serializable {
+
+    @JoinColumn(name = "funcao_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Funcao funcaoId;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -130,6 +136,14 @@ public class Profissional implements Serializable {
     @Override
     public String toString() {
         return nome + " - " + matricula;
+    }
+
+    public Funcao getFuncaoId() {
+        return funcaoId;
+    }
+
+    public void setFuncaoId(Funcao funcaoId) {
+        this.funcaoId = funcaoId;
     }
     
 }
