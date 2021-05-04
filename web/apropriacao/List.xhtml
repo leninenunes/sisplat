@@ -146,6 +146,12 @@
                                 <h:outputText value="#{item.profissionalId.nome}"/>
                             </h:column>
                             <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListProfissionalTitle_funcaoId}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.profissionalId.funcaoId.nome}"/>
+                            </h:column>
+                            <h:column>
                                 <h:commandLink 
                                     class="view" title="#{bundle.ListApropriacaoViewLink}">
                                     <f:ajax event="click" render="formView" listener="#{apropriacaoController.prepareView}" />

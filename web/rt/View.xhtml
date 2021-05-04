@@ -47,6 +47,12 @@
                             </f:facet>
                             <h:outputText value="#{item.profissional.nome}"/>
                         </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfissionalTitle_funcaoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profissional.funcaoId.nome}"/>
+                        </h:column>
                     </h:dataTable>
                 </h:panelGroup>
             </div>

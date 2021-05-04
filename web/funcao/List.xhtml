@@ -8,12 +8,12 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="title">
-        <h:outputText value="#{bundle.AppTitle} - #{bundle.ListProfissionalTitle}"></h:outputText>
+        <h:outputText value="#{bundle.AppTitle} - #{bundle.ListFuncaoTitle}"></h:outputText>
     </ui:define>
     <ui:define name="content">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-2">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-1 mb-2 border-bottom">
-                <div class="col-sm-8"><h2>#{bundle.ListProfissionalTitle}</h2></div>
+                <div class="col-sm-8"><h2>#{bundle.ListFuncaoTitle}</h2></div>
             </div>
             <h:form id="formList">
                 <h:panelGroup id="messagePanel" layout="list" rendered="#{facesContext.validationFailed==false}" >
@@ -21,88 +21,66 @@
                     <script>validationSucess();</script>
                 </h:panelGroup>
                 <div class="float-right">
-                    <h:commandLink class="btn btn-primary" value="#{bundle.ListProfissionalCreateLink}">
-                        <f:ajax render="formCreate" event="click" listener="#{profissionalController.prepareCreate}"/>
+                    <h:commandLink class="btn btn-primary" value="#{bundle.ListFuncaoCreateLink}">
+                        <f:ajax render="formCreate" event="click" listener="#{funcaoController.prepareCreate}"/>
                         <f:passThroughAttribute name="data-toggle" value="modal"/>
                         <f:passThroughAttribute name="data-target" value="#modalCreate"/>
                     </h:commandLink>
                 </div>
                 <a class="btn btn-primary" data-toggle="collapse" href="#filter" role="button" aria-expanded="false">#{bundle.Filter}</a>
-                <div id="filter" class="row collapse #{profissionalController.filterShow}">					
+                <div id="filter" class="row collapse #{funcaoController.filterShow}">					
                     <div class="form-group col-md-3">
-                        <h:outputLabel value="#{bundle.CreateProfissionalLabel_id}" for="id" />
-                        <h:inputText class="form-control" id="id" value="#{profissionalController.filtered.id}" title="#{bundle.CreateProfissionalTitle_id}"/>
+                        <h:outputLabel value="#{bundle.CreateFuncaoLabel_id}" for="id" />
+                        <h:inputText class="form-control" id="id" value="#{funcaoController.filtered.id}" title="#{bundle.CreateFuncaoTitle_id}"/>
                     </div>
                     <div class="form-group col-md-3">
-                        <h:outputLabel value="#{bundle.CreateProfissionalLabel_nome}" for="nome" />
-                        <h:inputText class="form-control" id="nome" value="#{profissionalController.filtered.nome}" title="#{bundle.CreateProfissionalTitle_nome}"/>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <h:outputLabel value="#{bundle.CreateProfissionalLabel_matricula}" for="matricula" />
-                        <h:inputText class="form-control" id="matricula" value="#{profissionalController.filtered.matricula}" title="#{bundle.CreateProfissionalTitle_matricula}"/>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <h:outputLabel value="#{bundle.CreateProfissionalLabel_funcaoId}" for="funcaoId" />
-                        <h:selectOneMenu class="form-control" id="contratoId" value="#{profissionalController.filtered.funcaoId}" title="#{bundle.CreateProfissionalTitle_funcaoId}">
-                            <f:selectItems value="#{funcaoController.itemsAvailableSelectOne}"/>
-                        </h:selectOneMenu>
+                        <h:outputLabel value="#{bundle.CreateFuncaoLabel_nome}" for="nome" />
+                        <h:inputText class="form-control" id="nome" value="#{funcaoController.filtered.nome}" title="#{bundle.CreateFuncaoTitle_nome}"/>
                     </div>
                     <div class="form-group col-md-3" style="margin-top: auto;">
                         <h:commandButton class="btn btn-primary" value="#{bundle.Search}">
-                            <f:ajax event="click" render="formList" listener="#{profissionalController.filter}" execute="@form" />
+                            <f:ajax event="click" render="formList" listener="#{funcaoController.filter}" execute="@form" />
                         </h:commandButton>
                         <h:commandButton class="btn btn-default" value="#{bundle.Clean}">
-                            <f:ajax event="click" render="formList" listener="#{profissionalController.clearFilter}" execute="@form" />
+                            <f:ajax event="click" render="formList" listener="#{funcaoController.clearFilter}" execute="@form" />
                         </h:commandButton>
                     </div>
                     <script>maskInput();</script>
                 </div>
                 <div class="table-responsive">
-                    <h:outputText escape="false" value="#{bundle.ListProfissionalEmpty}" rendered="#{profissionalController.items.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{profissionalController.items.rowCount > 0}">
-                        <h:dataTable value="#{profissionalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" class="table table-striped table-hover table-bordered" rules="all" style="border:solid 1px">
+                    <h:outputText escape="false" value="#{bundle.ListFuncaoEmpty}" rendered="#{funcaoController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{funcaoController.items.rowCount > 0}">
+                        <h:dataTable value="#{funcaoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" class="table table-striped table-hover table-bordered" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListProfissionalTitle_id}"/>
+                                    <h:outputText value="#{bundle.ListFuncaoTitle_id}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.id}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListProfissionalTitle_nome}"/>
+                                    <h:outputText value="#{bundle.ListFuncaoTitle_nome}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.nome}"/>
                             </h:column>
                             <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListProfissionalTitle_matricula}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.matricula}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListProfissionalTitle_funcaoId}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.funcaoId.nome}"/>
-                            </h:column>
-                            <h:column>
                                 <h:commandLink 
-                                    class="view" title="#{bundle.ListProfissionalViewLink}">
-                                    <f:ajax event="click" render="formView" listener="#{profissionalController.prepareView}" />
+                                    class="view" title="#{bundle.ListFuncaoViewLink}">
+                                    <f:ajax event="click" render="formView" listener="#{funcaoController.prepareView}" />
                                     <f:passThroughAttribute name="data-toggle" value="modal"/>
                                     <f:passThroughAttribute name="data-target" value="#modalView"/>
                                     <i class="fas fa-list"/>
                                 </h:commandLink>
                                 <h:commandLink 
-                                    class="edit" title="#{bundle.ListProfissionalEditLink}">
-                                    <f:ajax event="click" render="formEdit" listener="#{profissionalController.prepareEdit}" />
+                                    class="edit" title="#{bundle.ListFuncaoEditLink}">
+                                    <f:ajax event="click" render="formEdit" listener="#{funcaoController.prepareEdit}" />
                                     <f:passThroughAttribute name="data-toggle" value="modal"/>
                                     <f:passThroughAttribute name="data-target" value="#modalEdit"/>
                                     <i class="far fa-edit"/>
                                 </h:commandLink>
                                 <h:commandLink 
-                                    class="delete" title="#{bundle.ListProfissionalDestroyLink}">
-                                    <f:ajax event="click" render="formDelete" listener="#{profissionalController.prepareDestroy}" />
+                                    class="delete" title="#{bundle.ListFuncaoDestroyLink}">
+                                    <f:ajax event="click" render="formDelete" listener="#{funcaoController.prepareDestroy}" />
                                     <f:passThroughAttribute name="data-toggle" value="modal"/>
                                     <f:passThroughAttribute name="data-target" value="#modalDelete"/>
                                     <i class="far fa-trash-alt"/>
@@ -111,52 +89,52 @@
                         </h:dataTable>
                         <div class="col-md-12">
                             <h:outputLabel value="#{bundle.RowsPerPage} " />
-                            <h:selectOneMenu id="inputPageSize" value="#{profissionalController.pageSize}">
-                                <f:ajax event="change" render="formList" listener="#{profissionalController.updatePageSize}" />
-                                <f:selectItems value="#{profissionalController.listPageSize}" />
+                            <h:selectOneMenu id="inputPageSize" value="#{funcaoController.pageSize}">
+                                <f:ajax event="change" render="formList" listener="#{funcaoController.updatePageSize}" />
+                                <f:selectItems value="#{funcaoController.listPageSize}" />
                             </h:selectOneMenu>
                         </div>
                         <div class="col-md-6">
-                            #{bundle.Page} <h:outputText value="#{profissionalController.pagination.page + 1} "/> #{bundle.PageOf}
-                            <h:outputText value="#{profissionalController.pagination.totalPage + 1} "/> #{bundle.ShowingRecords} 
-                            <h:outputText value="#{profissionalController.pagination.pageFirstItem + 1} #{bundle.RecordsUpTo} 
-                                          #{profissionalController.pagination.pageLastItem + 1} #{bundle.RecordsOf} #{profissionalController.pagination.itemsCount}"/>
+                            #{bundle.Page} <h:outputText value="#{funcaoController.pagination.page + 1} "/> #{bundle.PageOf}
+                            <h:outputText value="#{funcaoController.pagination.totalPage + 1} "/> #{bundle.ShowingRecords} 
+                            <h:outputText value="#{funcaoController.pagination.pageFirstItem + 1} #{bundle.RecordsUpTo} 
+                                          #{funcaoController.pagination.pageLastItem + 1} #{bundle.RecordsOf} #{funcaoController.pagination.itemsCount}"/>
                         </div>
                         <div class="col-md-12">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item">
-                                    <h:commandLink class="page-link" action="#{profissionalController.first}" value="#{bundle.First}">
-                                        <f:ajax event="click" render="formList" listener="#{profissionalController.first}" execute="@form" />
+                                    <h:commandLink class="page-link" action="#{funcaoController.first}" value="#{bundle.First}">
+                                        <f:ajax event="click" render="formList" listener="#{funcaoController.first}" execute="@form" />
                                     </h:commandLink>
                                 </li>
-                                <li class="page-item #{profissionalController.pagination.disabledPreviousPage}">
+                                <li class="page-item #{funcaoController.pagination.disabledPreviousPage}">
                                     <h:commandLink class="page-link" value="#{bundle.Previous}">
-                                        <f:ajax event="click" render="formList" listener="#{profissionalController.previous}" execute="@form" />
+                                        <f:ajax event="click" render="formList" listener="#{funcaoController.previous}" execute="@form" />
                                     </h:commandLink>
                                 </li>
-                                <li class="page-item #{profissionalController.pagination.activePrimaryPage}">
-                                    <h:commandLink class="page-link" value="#{profissionalController.pagination.page + 1}" rendered="#{profissionalController.pagination.hasPrimaryPage}">
-                                        <f:ajax event="click" render="formList" listener="#{profissionalController.priPage}" execute="@form" />
+                                <li class="page-item #{funcaoController.pagination.activePrimaryPage}">
+                                    <h:commandLink class="page-link" value="#{funcaoController.pagination.page + 1}" rendered="#{funcaoController.pagination.hasPrimaryPage}">
+                                        <f:ajax event="click" render="formList" listener="#{funcaoController.priPage}" execute="@form" />
                                     </h:commandLink>
                                 </li>
-                                <li class="page-item #{profissionalController.pagination.activeSecondPage}">
-                                    <h:commandLink class="page-link" value="#{profissionalController.pagination.page + 2}" rendered="#{profissionalController.pagination.hasSecondPage}">
-                                        <f:ajax event="click" render="formList" listener="#{profissionalController.secPage}" execute="@form" />
+                                <li class="page-item #{funcaoController.pagination.activeSecondPage}">
+                                    <h:commandLink class="page-link" value="#{funcaoController.pagination.page + 2}" rendered="#{funcaoController.pagination.hasSecondPage}">
+                                        <f:ajax event="click" render="formList" listener="#{funcaoController.secPage}" execute="@form" />
                                     </h:commandLink>
                                 </li>
-                                <li class="page-item #{profissionalController.pagination.activeThirdPage}">
-                                    <h:commandLink class="page-link" value="#{profissionalController.pagination.page + 3}" rendered="#{profissionalController.pagination.hasThirdPage}">
-                                        <f:ajax event="click" render="formList" listener="#{profissionalController.thiPage}" execute="@form" />
+                                <li class="page-item #{funcaoController.pagination.activeThirdPage}">
+                                    <h:commandLink class="page-link" value="#{funcaoController.pagination.page + 3}" rendered="#{funcaoController.pagination.hasThirdPage}">
+                                        <f:ajax event="click" render="formList" listener="#{funcaoController.thiPage}" execute="@form" />
                                     </h:commandLink>
                                 </li>
-                                <li class="page-item #{profissionalController.pagination.disabledNextPage}">
+                                <li class="page-item #{funcaoController.pagination.disabledNextPage}">
                                     <h:commandLink class="page-link" value="#{bundle.Next}">
-                                        <f:ajax event="click" render="formList" listener="#{profissionalController.next}" execute="@form" />
+                                        <f:ajax event="click" render="formList" listener="#{funcaoController.next}" execute="@form" />
                                     </h:commandLink>
                                 </li>
                                 <li class="page-item">
-                                    <h:commandLink class="page-link" action="#{profissionalController.last}" value="#{bundle.Last}">
-                                        <f:ajax event="click" render="formList" listener="#{profissionalController.last}" execute="@form" />
+                                    <h:commandLink class="page-link" action="#{funcaoController.last}" value="#{bundle.Last}">
+                                        <f:ajax event="click" render="formList" listener="#{funcaoController.last}" execute="@form" />
                                     </h:commandLink>
                                 </li>
                             </ul>
@@ -170,15 +148,15 @@
                 <div class="modal-content">
                     <h:form id="formCreate">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="modalLabel">#{bundle.CreateProfissionalTitle}</h4>
+                            <h4 class="modal-title" id="modalLabel">#{bundle.CreateFuncaoTitle}</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Create.xhtml" />
                         </div>
                         <div class="modal-footer">
-                            <h:commandLink class="btn btn-primary" value="#{bundle.CreateProfissionalSaveLink}">
-                                <f:ajax event="click" render="formList formCreate" listener="#{profissionalController.create}" execute="@form" />
+                            <h:commandLink class="btn btn-primary" value="#{bundle.CreateFuncaoSaveLink}">
+                                <f:ajax event="click" render="formList formCreate" listener="#{funcaoController.create}" execute="@form" />
                             </h:commandLink>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><h:outputText value="#{bundle.Cancel}" /></button>
                         </div>
@@ -191,15 +169,15 @@
                 <div class="modal-content">
                     <h:form id="formEdit">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="modalLabel">#{bundle.EditProfissionalTitle} <h:outputText value="#{profissionalController.selected.id}" title="#{bundle.EditProfissionalTitle_id}" /></h4>
+                            <h4 class="modal-title" id="modalLabel">#{bundle.EditFuncaoTitle} <h:outputText value="#{funcaoController.selected.id}" title="#{bundle.EditFuncaoTitle_id}" /></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
                             <ui:include src="Edit.xhtml" />
                         </div>
                         <div class="modal-footer">
-                            <h:commandLink class="btn btn-primary" value="#{bundle.EditProfissionalSaveLink}">
-                                <f:ajax event="click" render="formList formEdit" listener="#{profissionalController.update}" execute="@form" />
+                            <h:commandLink class="btn btn-primary" value="#{bundle.EditFuncaoSaveLink}">
+                                <f:ajax event="click" render="formList formEdit" listener="#{funcaoController.update}" execute="@form" />
                             </h:commandLink>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><h:outputText value="#{bundle.Cancel}" /></button>
                         </div>
@@ -212,15 +190,15 @@
                 <div class="modal-content">
                     <h:form id="formDelete">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="modalLabel">#{bundle.DeleteProfissionalTitle} <h:outputText value="#{profissionalController.selected.id}" /></h4>
+                            <h4 class="modal-title" id="modalLabel">#{bundle.DeleteFuncaoTitle} <h:outputText value="#{funcaoController.selected.id}" /></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">
-                            #{bundle.DeleteProfissionalTitleQuestion} <h:outputText value="#{profissionalController.selected.id}" title="#{bundle.ListProfissionalTitle_id}" />?
+                            #{bundle.DeleteFuncaoTitleQuestion} <h:outputText value="#{funcaoController.selected.id}" title="#{bundle.ListFuncaoTitle_id}" />?
                         </div>
                         <div class="modal-footer">
                             <h:commandLink class="btn btn-primary" value="#{bundle.Yes}">
-                                <f:ajax event="click" render="formList" listener="#{profissionalController.destroy}" execute="@form" />
+                                <f:ajax event="click" render="formList" listener="#{funcaoController.destroy}" execute="@form" />
                             </h:commandLink>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><h:outputText value="#{bundle.Not}" /></button>
                         </div>
@@ -233,7 +211,7 @@
                 <div class="modal-content">
                     <h:form id="formView">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="modalLabel">#{bundle.ViewProfissionalTitle} <h:outputText value="#{profissionalController.selected.id}" title="#{bundle.ViewProfissionalTitle_id}"/></h4>
+                            <h4 class="modal-title" id="modalLabel">#{bundle.ViewFuncaoTitle} <h:outputText value="#{funcaoController.selected.id}" title="#{bundle.ViewFuncaoTitle_id}"/></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         </div>
                         <div class="modal-body">

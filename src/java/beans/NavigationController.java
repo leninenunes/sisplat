@@ -63,6 +63,10 @@ public class NavigationController implements Serializable {
         return "/profissional/List?faces-redirect=true";
     }
     
+    public String funcao(){
+        return "/funcao/List?faces-redirect=true";
+    }
+    
     public String rtHasProfissional(){
         return "/rtHasProfissional/List?faces-redirect=true";
     }

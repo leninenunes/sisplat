@@ -105,7 +105,7 @@ public class Funcao implements Serializable {
 
     @Override
     public String toString() {
-        return "beans.Funcao[ id=" + id + " ]";
+        return nome;
     }
     
 }

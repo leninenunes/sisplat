@@ -18,6 +18,11 @@
                 <h:outputLabel value="#{bundle.CreateProfissionalLabel_matricula}" for="matricula" />
                 <h:inputText class="form-control" id="matricula" value="#{profissionalController.selected.matricula}" title="#{bundle.CreateProfissionalTitle_matricula}" required="true" requiredMessage="#{bundle.CreateProfissionalRequiredMessage_matricula}"/>
                 <h:message for="matricula" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateProfissionalLabel_funcaoId}" for="funcaoId" />
+                <h:selectOneMenu class="form-control" id="funcaoId" value="#{profissionalController.selected.funcaoId}" title="#{bundle.CreateProfissionalTitle_funcaoId}" required="true" requiredMessage="#{bundle.CreateProfissionalRequiredMessage_funcaoId}">
+                    <f:selectItems value="#{funcaoController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:message for="funcaoId" style="color: red" />
             </h:panelGrid>
         </div>
     </ui:define>

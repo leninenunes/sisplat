@@ -252,6 +252,9 @@ public class ProfissionalJpaController implements Serializable {
             if(profissional.getMatricula() != null && !profissional.getMatricula().equals("")){
                 predicates.add(cb.like(rt.get(Profissional_.matricula), "%" + profissional.getMatricula() + "%"));
             }
+            if(profissional.getFuncaoId() != null){
+                predicates.add(cb.equal(rt.get(Profissional_.funcaoId), profissional.getFuncaoId()));
+            }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
             
@@ -288,6 +291,9 @@ public class ProfissionalJpaController implements Serializable {
             }
             if(profissional.getMatricula() != null && !profissional.getMatricula().equals("")){
                 predicates.add(cb.like(rt.get(Profissional_.matricula), "%" + profissional.getMatricula() + "%"));
+            }
+            if(profissional.getFuncaoId() != null){
+                predicates.add(cb.equal(rt.get(Profissional_.funcaoId), profissional.getFuncaoId()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(rt));

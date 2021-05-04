@@ -135,7 +135,7 @@ public class Profissional implements Serializable {
 
     @Override
     public String toString() {
-        return nome + " - " + matricula;
+        return nome + " - " + matricula + " - " + funcaoId.getNome();
     }
 
     public Funcao getFuncaoId() {
