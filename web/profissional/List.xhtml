@@ -49,6 +49,7 @@
                             <f:ajax event="click" render="formList" listener="#{profissionalController.clearFilter}" execute="@form" />
                         </h:commandButton>
                     </div>
+                    <script>maskInput();</script>
                 </div>
                 <div class="table-responsive">
                     <h:outputText escape="false" value="#{bundle.ListProfissionalEmpty}" rendered="#{profissionalController.items.rowCount == 0}"/>

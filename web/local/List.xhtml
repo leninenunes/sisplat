@@ -51,6 +51,7 @@
                             <f:ajax event="click" render="formList" listener="#{localController.clearFilter}" execute="@form" />
                         </h:commandButton>
                     </div>
+                    <script>maskInput();</script>
                 </div>
                 <div class="table-responsive">
                     <h:outputText escape="false" value="#{bundle.ListLocalEmpty}" rendered="#{localController.items.rowCount == 0}"/>

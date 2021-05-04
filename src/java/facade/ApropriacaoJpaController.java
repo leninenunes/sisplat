@@ -186,8 +186,26 @@ public class ApropriacaoJpaController implements Serializable {
             if(apropriacao.getId() != null && apropriacao.getId() != 0){
                 predicates.add(cb.equal(rt.get(Apropriacao_.id), apropriacao.getId()));
             }
+            if(apropriacao.getData() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.data), apropriacao.getData()));
+            }
+            if(apropriacao.getInicio() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.inicio), apropriacao.getInicio()));
+            }
+            if(apropriacao.getTermino() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.termino), apropriacao.getTermino()));
+            }
+            if(apropriacao.getIntervalo() > 0){
+                predicates.add(cb.equal(rt.get(Apropriacao_.intervalo), apropriacao.getIntervalo()));
+            }
             if(apropriacao.getTag() != null && !apropriacao.getTag().equals("")){
                 predicates.add(cb.like(rt.get(Apropriacao_.tag), "%" + apropriacao.getTag() + "%"));
+            }
+            if(apropriacao.getEscopoId() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.escopoId), apropriacao.getEscopoId()));
+            }
+            if(apropriacao.getProfissionalId() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.profissionalId), apropriacao.getProfissionalId()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
@@ -220,8 +238,26 @@ public class ApropriacaoJpaController implements Serializable {
             if(apropriacao.getId() != null && apropriacao.getId() != 0){
                 predicates.add(cb.equal(rt.get(Apropriacao_.id), apropriacao.getId()));
             }
+            if(apropriacao.getData() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.data), apropriacao.getData()));
+            }
+            if(apropriacao.getInicio() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.inicio), apropriacao.getInicio()));
+            }
+            if(apropriacao.getTermino() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.termino), apropriacao.getTermino()));
+            }
+            if(apropriacao.getIntervalo() > 0){
+                predicates.add(cb.equal(rt.get(Apropriacao_.intervalo), apropriacao.getIntervalo()));
+            }
             if(apropriacao.getTag() != null && !apropriacao.getTag().equals("")){
                 predicates.add(cb.like(rt.get(Apropriacao_.tag), "%" + apropriacao.getTag() + "%"));
+            }
+            if(apropriacao.getEscopoId() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.escopoId), apropriacao.getEscopoId()));
+            }
+            if(apropriacao.getProfissionalId() != null){
+                predicates.add(cb.equal(rt.get(Apropriacao_.profissionalId), apropriacao.getProfissionalId()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(rt));

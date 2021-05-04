@@ -45,6 +45,7 @@
                             <f:ajax event="click" render="formList" listener="#{statusController.clearFilter}" execute="@form" />
                         </h:commandButton>
                     </div>
+                    <script>maskInput();</script>
                 </div>
                 <div class="table-responsive">
                     <h:outputText escape="false" value="#{bundle.ListStatusEmpty}" rendered="#{statusController.items.rowCount == 0}"/>

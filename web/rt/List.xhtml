@@ -81,6 +81,7 @@
                             <f:ajax event="click" render="formList" listener="#{rtController.clearFilter}" execute="@form" />
                         </h:commandButton>
                     </div>
+                    <script>maskInput();</script>
                 </div>
                 <div class="table-responsive">
                     <h:outputText escape="false" value="#{bundle.ListRtEmpty}" rendered="#{rtController.items.rowCount == 0}"/>

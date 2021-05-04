@@ -4,10 +4,12 @@ import model.Rt;
 import beans.util.JsfUtil;
 import beans.util.PaginationHelper;
 import facade.ProfissionalJpaController;
+import facade.RtHasProfissionalJpaController;
 import facade.RtJpaController;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -21,6 +23,7 @@ import javax.faces.model.SelectItem;
 import javax.persistence.Persistence;
 import model.Profissional;
 import model.RtHasProfissional;
+import model.RtHasProfissionalPK;
 
 @ManagedBean(name = "rtController")
 @SessionScoped
@@ -172,6 +175,18 @@ public class RtController implements Serializable {
 
     public void create() {
         try {
+//            Collection<RtHasProfissional> rtHasProfissionalColNew = new ArrayList<RtHasProfissional>();
+//            RtHasProfissional rtHasProfissional;
+//            
+//            for(Profissional itemProfissional : rightAvailable){
+//                rtHasProfissional = new RtHasProfissional();
+//                rtHasProfissional.setRtHasProfissionalPK(new model.RtHasProfissionalPK());
+//                rtHasProfissional.getRtHasProfissionalPK().setRtId(current.getId());
+//                rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(itemProfissional.getId());
+//                rtHasProfissional.setStatusId(current.getStatusId());
+//                rtHasProfissionalColNew.add(rtHasProfissional);
+//            }
+//            current.setRtHasProfissionalCollection(rtHasProfissionalColNew);
             getJpaController().create(current);
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addSuccessMessage(FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtCreated"));
@@ -196,6 +211,19 @@ public class RtController implements Serializable {
 
     public void update() {
         try {
+//            current.getRtHasProfissionalCollection().clear();
+//            Collection<RtHasProfissional> rtHasProfissionalColNew = new ArrayList<RtHasProfissional>();
+//            RtHasProfissional rtHasProfissional;
+//            
+//            for(Profissional itemProfissional : rightAvailable){
+//                rtHasProfissional = new RtHasProfissional();
+//                rtHasProfissional.setRtHasProfissionalPK(new model.RtHasProfissionalPK());
+//                rtHasProfissional.getRtHasProfissionalPK().setRtId(current.getId());
+//                rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(itemProfissional.getId());
+//                rtHasProfissionalColNew.add(rtHasProfissional);
+//            }
+//            
+//            current.setRtHasProfissionalCollection(rtHasProfissionalColNew);
             getJpaController().edit(current);
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addSuccessMessage(FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtUpdated"));
@@ -426,6 +454,57 @@ public class RtController implements Serializable {
                 return getStringKey(o.getId());
             } else {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Profissional.class.getName());
+            }
+        }
+
+    }
+    
+    @FacesConverter(value="rtHasProfissional", forClass = RtHasProfissional.class)
+    public static class RtHasProfissionalControllerConverter implements Converter {
+        RtHasProfissionalJpaController rtHasProfissionalJpaController = new RtHasProfissionalJpaController(Persistence.createEntityManagerFactory("sisplatPU"));
+        private static final String SEPARATOR = "#";
+        private static final String SEPARATOR_ESCAPED = "\\#";
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            RtHasProfissionalController controller = (RtHasProfissionalController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "rtHasProfissionalController");
+            return rtHasProfissionalJpaController.findRtHasProfissional(getKey(value));
+        }
+
+        model.RtHasProfissionalPK getKey(String value) {
+            model.RtHasProfissionalPK key;
+            String values[] = value.split(SEPARATOR_ESCAPED);
+            key = new model.RtHasProfissionalPK();
+            key.setId(Integer.parseInt(values[0]));
+            key.setRtId(Integer.parseInt(values[1]));
+            key.setProfissionalId(Integer.parseInt(values[2]));
+            return key;
+        }
+
+        String getStringKey(model.RtHasProfissionalPK value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value.getId());
+            sb.append(SEPARATOR);
+            sb.append(value.getRtId());
+            sb.append(SEPARATOR);
+            sb.append(value.getProfissionalId());
+            return sb.toString();
+        }
+
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof RtHasProfissional) {
+                RtHasProfissional o = (RtHasProfissional) object;
+                return getStringKey(o.getRtHasProfissionalPK());
+            } else {
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + RtHasProfissional.class.getName());
             }
         }
 
