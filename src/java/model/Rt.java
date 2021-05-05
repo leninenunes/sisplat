@@ -195,7 +195,7 @@ public class Rt implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Rt[ id=" + id + " ]";
+        return id + " - " + getTipoNome() + " - " + dataViagem;
     }
 
     public String getComentario() {

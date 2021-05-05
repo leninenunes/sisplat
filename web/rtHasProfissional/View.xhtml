@@ -12,14 +12,26 @@
     <ui:define name="contentModal">
         <div class="row col-md-12">
             <div class="col-md-6">
-                <p><strong><h:outputText value="#{bundle.ViewRtHasProfissionalLabel_rtHasProfissionalPK_id}"/></strong></p>
-                <p><h:outputText value="#{rtHasProfissionalController.selected.rtHasProfissionalPK.id}" title="#{bundle.ViewRtHasProfissionalTitle_rtHasProfissionalPK_id}"/></p>
-                <p><strong><h:outputText value="#{bundle.ViewRtHasProfissionalLabel_profissional}"/></strong></p>
-                <p><h:outputText value="#{rtHasProfissionalController.selected.profissional}" title="#{bundle.ViewRtHasProfissionalTitle_profissional}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtHasProfissionalLabel_rt}"/></strong></p>
                 <p><h:outputText value="#{rtHasProfissionalController.selected.rt}" title="#{bundle.ViewRtHasProfissionalTitle_rt}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_tipo}"/></strong></p>
+                <p><h:outputText value="#{rtHasProfissionalController.selected.rt.tipoNome}" title="#{bundle.ViewRtTitle_tipo}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_dataViagem}"/></strong></p>
+                <p>
+                    <h:outputText value="#{rtHasProfissionalController.selected.rt.dataViagem}" title="#{bundle.ViewRtTitle_dataViagem}">
+                        <f:convertDateTime type="date" />
+                    </h:outputText>
+                </p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_horaViagem}"/></strong></p>
+                <p>
+                    <h:outputText value="#{rtHasProfissionalController.selected.rt.horaViagem}" title="#{bundle.ViewRtTitle_horaViagem}">
+                        <f:convertDateTime type="time" pattern="HH:mm" />
+                    </h:outputText>
+                </p>
+                <p><strong><h:outputText value="#{bundle.ViewRtHasProfissionalLabel_profissional}"/></strong></p>
+                <p><h:outputText value="#{rtHasProfissionalController.selected.profissional.nome}" title="#{bundle.ViewRtHasProfissionalTitle_profissional}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtHasProfissionalLabel_statusId}"/></strong></p>
-                <p><h:outputText value="#{rtHasProfissionalController.selected.statusId}" title="#{bundle.ViewRtHasProfissionalTitle_statusId}"/></p>
+                <p><h:outputText value="#{rtHasProfissionalController.selected.statusId.nome}" title="#{bundle.ViewRtHasProfissionalTitle_statusId}"/></p>
             </div>
         </div>
     </ui:define>

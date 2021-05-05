@@ -226,12 +226,15 @@ public class RtHasProfissionalJpaController implements Serializable {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             Root<RtHasProfissional> rt = cq.from(RtHasProfissional.class);
             List<Predicate> predicates = new ArrayList<Predicate>();
-//            if(rtHasProfissional.getRt() != null && rtHasProfissional.getRt().getId() != 0){
-//                predicates.add(cb.equal(rt.get(RtHasProfissional_.rt.getName()), rtHasProfissional.getRt().getId()));
-//            }
-//            if(rtHasProfissional.getProfissional().getId() != null && !rtHasProfissional.getProfissional().getNome().equals("")){
-//                predicates.add(cb.like(rt.get(RtHasProfissional_.profissional.getName()), "%" + rtHasProfissional.getProfissional().getNome() + "%"));
-//            }
+            if(rtHasProfissional.getRt() != null && rtHasProfissional.getRt().getId() != 0){
+                predicates.add(cb.equal(rt.get(RtHasProfissional_.rt), rtHasProfissional.getRt()));
+            }
+            if(rtHasProfissional.getProfissional() != null && !rtHasProfissional.getProfissional().getNome().equals("")){
+                predicates.add(cb.equal(rt.get(RtHasProfissional_.profissional), rtHasProfissional.getProfissional()));
+            }
+            if(rtHasProfissional.getStatusId() != null ){
+                predicates.add(cb.equal(rt.get(RtHasProfissional_.statusId), rtHasProfissional.getStatusId()));
+            }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
             
@@ -260,12 +263,15 @@ public class RtHasProfissionalJpaController implements Serializable {
             Root<RtHasProfissional> rt = cq.from(RtHasProfissional.class);
             CriteriaBuilder cb = em.getCriteriaBuilder();
             List<Predicate> predicates = new ArrayList<Predicate>();
-//            if(rtHasProfissional.getRt().getId() != null && rtHasProfissional.getRt().getId() != 0){
-//                predicates.add(cb.equal(rt.get(RtHasProfissional_.rt.getName()), rtHasProfissional.getRt().getId()));
-//            }
-//            if(rtHasProfissional.getProfissional().getId() != null && !rtHasProfissional.getProfissional().getNome().equals("")){
-//                predicates.add(cb.like(rt.get(RtHasProfissional_.profissional.getName()), "%" + rtHasProfissional.getProfissional().getNome() + "%"));
-//            }
+            if(rtHasProfissional.getRt() != null && rtHasProfissional.getRt().getId() != 0){
+                predicates.add(cb.equal(rt.get(RtHasProfissional_.rt), rtHasProfissional.getRt()));
+            }
+            if(rtHasProfissional.getProfissional() != null && !rtHasProfissional.getProfissional().getNome().equals("")){
+                predicates.add(cb.equal(rt.get(RtHasProfissional_.profissional), rtHasProfissional.getProfissional()));
+            }
+            if(rtHasProfissional.getStatusId() != null ){
+                predicates.add(cb.equal(rt.get(RtHasProfissional_.statusId), rtHasProfissional.getStatusId()));
+            }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);

@@ -12,19 +12,6 @@
     <ui:define name="contentModal">
         <div class="row col-md-12">
             <h:panelGrid class="form-group col-md-6">
-                <h:outputLabel value="#{bundle.EditRtHasProfissionalLabel_rtHasProfissionalPK_id}" for="rtHasProfissionalPK_id" />
-                <h:inputText class="form-control" id="rtHasProfissionalPK_id" value="#{rtHasProfissionalController.selected.rtHasProfissionalPK.id}" title="#{bundle.EditRtHasProfissionalTitle_rtHasProfissionalPK_id}" required="true" requiredMessage="#{bundle.EditRtHasProfissionalRequiredMessage_rtHasProfissionalPK_id}"/>
-                <h:message for="rtHasProfissionalPK_id" style="color: red" />
-                <h:outputLabel value="#{bundle.EditRtHasProfissionalLabel_profissional}" for="profissional" />
-                <h:selectOneMenu class="form-control" id="profissional" value="#{rtHasProfissionalController.selected.profissional}" title="#{bundle.EditRtHasProfissionalTitle_profissional}" required="true" requiredMessage="#{bundle.EditRtHasProfissionalRequiredMessage_profissional}">
-                    <f:selectItems value="#{profissionalController.itemsAvailableSelectOne}"/>
-                </h:selectOneMenu>
-                <h:message for="profissional" style="color: red" />
-                <h:outputLabel value="#{bundle.EditRtHasProfissionalLabel_rt}" for="rt" />
-                <h:selectOneMenu class="form-control" id="rt" value="#{rtHasProfissionalController.selected.rt}" title="#{bundle.EditRtHasProfissionalTitle_rt}" required="true" requiredMessage="#{bundle.EditRtHasProfissionalRequiredMessage_rt}">
-                    <f:selectItems value="#{rtController.itemsAvailableSelectOne}"/>
-                </h:selectOneMenu>
-                <h:message for="rt" style="color: red" />
                 <h:outputLabel value="#{bundle.EditRtHasProfissionalLabel_statusId}" for="statusId" />
                 <h:selectOneMenu class="form-control" id="statusId" value="#{rtHasProfissionalController.selected.statusId}" title="#{bundle.EditRtHasProfissionalTitle_statusId}" required="true" requiredMessage="#{bundle.EditRtHasProfissionalRequiredMessage_statusId}">
                     <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
