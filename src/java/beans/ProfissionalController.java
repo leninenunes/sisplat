@@ -47,7 +47,7 @@ public class ProfissionalController implements Serializable {
     
     public boolean isHasStatusIndisponivel(){
         if(current.getStatus() != null){
-            return (current.getStatus() == 1 || current.getStatus() == 2);
+            return (current.getStatus() == 2 || current.getStatus() == 3);
         }
         return false;
     }
@@ -165,7 +165,7 @@ public class ProfissionalController implements Serializable {
     public void prepareEdit() {
         current = (Profissional) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        if(current.getStatus() == 3){
+        if(current.getStatus() == 4){
             statusCheck = true;
         }else{
             statusCheck = false;
@@ -186,14 +186,14 @@ public class ProfissionalController implements Serializable {
     
     public void verifyStatusCheckUpdate(){
         if(statusCheck == true){
-            current.setStatus(3);
+            current.setStatus(4);
         }else{
             if(current.getStatus() != null){
-                if(current.getStatus() == 3 && statusCheck == false){
-                    current.setStatus(0);
+                if(current.getStatus() == 4 && statusCheck == false){
+                    current.setStatus(1);
                 }
             }else{
-                current.setStatus(0);
+                current.setStatus(1);
             }
         }
     }
@@ -317,6 +317,16 @@ public class ProfissionalController implements Serializable {
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(getJpaController().findProfissionalEntities(), true);
+    }
+    
+    public List<SelectItem> getItemsStatus(){
+        List<SelectItem> status = new ArrayList<SelectItem>();
+        status.add(new SelectItem("", "---"));
+        status.add(new SelectItem(1,"Disponível"));
+        status.add(new SelectItem(2, "Programado"));
+        status.add(new SelectItem(3, "Embarcado"));
+        status.add(new SelectItem(4, "Indisponível"));
+        return status;
     }
 
     @FacesConverter(forClass = Profissional.class)

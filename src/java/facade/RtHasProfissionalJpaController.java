@@ -23,7 +23,6 @@ import model.Rt;
 import model.RtHasProfissional;
 import model.RtHasProfissionalPK;
 import model.RtHasProfissional_;
-import model.Status;
 
 /**
  *
@@ -44,8 +43,8 @@ public class RtHasProfissionalJpaController implements Serializable {
         if (rtHasProfissional.getRtHasProfissionalPK() == null) {
             rtHasProfissional.setRtHasProfissionalPK(new RtHasProfissionalPK());
         }
-        rtHasProfissional.getRtHasProfissionalPK().setRtId(rtHasProfissional.getRt().getId());
         rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(rtHasProfissional.getProfissional().getId());
+        rtHasProfissional.getRtHasProfissionalPK().setRtId(rtHasProfissional.getRt().getId());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -60,11 +59,6 @@ public class RtHasProfissionalJpaController implements Serializable {
                 rt = em.getReference(rt.getClass(), rt.getId());
                 rtHasProfissional.setRt(rt);
             }
-            Status statusId = rtHasProfissional.getStatusId();
-            if (statusId != null) {
-                statusId = em.getReference(statusId.getClass(), statusId.getId());
-                rtHasProfissional.setStatusId(statusId);
-            }
             em.persist(rtHasProfissional);
             if (profissional != null) {
                 profissional.getRtHasProfissionalCollection().add(rtHasProfissional);
@@ -73,10 +67,6 @@ public class RtHasProfissionalJpaController implements Serializable {
             if (rt != null) {
                 rt.getRtHasProfissionalCollection().add(rtHasProfissional);
                 rt = em.merge(rt);
-            }
-            if (statusId != null) {
-                statusId.getRtHasProfissionalCollection().add(rtHasProfissional);
-                statusId = em.merge(statusId);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -92,8 +82,8 @@ public class RtHasProfissionalJpaController implements Serializable {
     }
 
     public void edit(RtHasProfissional rtHasProfissional) throws NonexistentEntityException, Exception {
-        rtHasProfissional.getRtHasProfissionalPK().setRtId(rtHasProfissional.getRt().getId());
         rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(rtHasProfissional.getProfissional().getId());
+        rtHasProfissional.getRtHasProfissionalPK().setRtId(rtHasProfissional.getRt().getId());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -103,8 +93,6 @@ public class RtHasProfissionalJpaController implements Serializable {
             Profissional profissionalNew = rtHasProfissional.getProfissional();
             Rt rtOld = persistentRtHasProfissional.getRt();
             Rt rtNew = rtHasProfissional.getRt();
-            Status statusIdOld = persistentRtHasProfissional.getStatusId();
-            Status statusIdNew = rtHasProfissional.getStatusId();
             if (profissionalNew != null) {
                 profissionalNew = em.getReference(profissionalNew.getClass(), profissionalNew.getId());
                 rtHasProfissional.setProfissional(profissionalNew);
@@ -112,10 +100,6 @@ public class RtHasProfissionalJpaController implements Serializable {
             if (rtNew != null) {
                 rtNew = em.getReference(rtNew.getClass(), rtNew.getId());
                 rtHasProfissional.setRt(rtNew);
-            }
-            if (statusIdNew != null) {
-                statusIdNew = em.getReference(statusIdNew.getClass(), statusIdNew.getId());
-                rtHasProfissional.setStatusId(statusIdNew);
             }
             rtHasProfissional = em.merge(rtHasProfissional);
             if (profissionalOld != null && !profissionalOld.equals(profissionalNew)) {
@@ -133,14 +117,6 @@ public class RtHasProfissionalJpaController implements Serializable {
             if (rtNew != null && !rtNew.equals(rtOld)) {
                 rtNew.getRtHasProfissionalCollection().add(rtHasProfissional);
                 rtNew = em.merge(rtNew);
-            }
-            if (statusIdOld != null && !statusIdOld.equals(statusIdNew)) {
-                statusIdOld.getRtHasProfissionalCollection().remove(rtHasProfissional);
-                statusIdOld = em.merge(statusIdOld);
-            }
-            if (statusIdNew != null && !statusIdNew.equals(statusIdOld)) {
-                statusIdNew.getRtHasProfissionalCollection().add(rtHasProfissional);
-                statusIdNew = em.merge(statusIdNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -180,11 +156,6 @@ public class RtHasProfissionalJpaController implements Serializable {
             if (rt != null) {
                 rt.getRtHasProfissionalCollection().remove(rtHasProfissional);
                 rt = em.merge(rt);
-            }
-            Status statusId = rtHasProfissional.getStatusId();
-            if (statusId != null) {
-                statusId.getRtHasProfissionalCollection().remove(rtHasProfissional);
-                statusId = em.merge(statusId);
             }
             em.remove(rtHasProfissional);
             em.getTransaction().commit();
@@ -226,14 +197,14 @@ public class RtHasProfissionalJpaController implements Serializable {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             Root<RtHasProfissional> rt = cq.from(RtHasProfissional.class);
             List<Predicate> predicates = new ArrayList<Predicate>();
-            if(rtHasProfissional.getRt() != null && rtHasProfissional.getRt().getId() != 0){
+            if(rtHasProfissional.getRt() != null){
                 predicates.add(cb.equal(rt.get(RtHasProfissional_.rt), rtHasProfissional.getRt()));
             }
-            if(rtHasProfissional.getProfissional() != null && !rtHasProfissional.getProfissional().getNome().equals("")){
+            if(rtHasProfissional.getProfissional() != null){
                 predicates.add(cb.equal(rt.get(RtHasProfissional_.profissional), rtHasProfissional.getProfissional()));
             }
-            if(rtHasProfissional.getStatusId() != null ){
-                predicates.add(cb.equal(rt.get(RtHasProfissional_.statusId), rtHasProfissional.getStatusId()));
+            if(rtHasProfissional.getStatus() != null && rtHasProfissional.getStatus() != 0){
+                predicates.add(cb.equal(rt.get(RtHasProfissional_.status), rtHasProfissional.getStatus()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
@@ -263,14 +234,14 @@ public class RtHasProfissionalJpaController implements Serializable {
             Root<RtHasProfissional> rt = cq.from(RtHasProfissional.class);
             CriteriaBuilder cb = em.getCriteriaBuilder();
             List<Predicate> predicates = new ArrayList<Predicate>();
-            if(rtHasProfissional.getRt() != null && rtHasProfissional.getRt().getId() != 0){
+            if(rtHasProfissional.getRt() != null){
                 predicates.add(cb.equal(rt.get(RtHasProfissional_.rt), rtHasProfissional.getRt()));
             }
-            if(rtHasProfissional.getProfissional() != null && !rtHasProfissional.getProfissional().getNome().equals("")){
+            if(rtHasProfissional.getProfissional() != null){
                 predicates.add(cb.equal(rt.get(RtHasProfissional_.profissional), rtHasProfissional.getProfissional()));
             }
-            if(rtHasProfissional.getStatusId() != null ){
-                predicates.add(cb.equal(rt.get(RtHasProfissional_.statusId), rtHasProfissional.getStatusId()));
+            if(rtHasProfissional.getStatus() != null && rtHasProfissional.getStatus() != 0){
+                predicates.add(cb.equal(rt.get(RtHasProfissional_.status), rtHasProfissional.getStatus()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(rt));

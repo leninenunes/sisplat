@@ -6,6 +6,8 @@
 package model;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -29,6 +31,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "RtHasProfissional.findByProfissionalId", query = "SELECT r FROM RtHasProfissional r WHERE r.rtHasProfissionalPK.profissionalId = :profissionalId")})
 public class RtHasProfissional implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "status")
+    private Integer status;
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected RtHasProfissionalPK rtHasProfissionalPK;
@@ -38,9 +44,9 @@ public class RtHasProfissional implements Serializable {
     @JoinColumn(name = "rt_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Rt rt;
-    @JoinColumn(name = "status_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Status statusId;
+//    @JoinColumn(name = "status_id", referencedColumnName = "id")
+//    @ManyToOne(optional = false)
+//    private Status statusId;
 
     public RtHasProfissional() {
     }
@@ -76,13 +82,23 @@ public class RtHasProfissional implements Serializable {
     public void setRt(Rt rt) {
         this.rt = rt;
     }
-
-    public Status getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Status statusId) {
-        this.statusId = statusId;
+    
+    public String getStatusBundle(){
+        String statusBundle = "";
+        if(this.status != null){
+            switch(this.status){
+                case 1:
+                    statusBundle = "RtStatusProgramado";
+                    break;
+                case 2:
+                    statusBundle = "RtStatusLiberado";
+                    break;
+                case 3:
+                    statusBundle = "RtStatusCancelado";
+                    break;
+            }
+        }
+        return statusBundle;
     }
 
     @Override
@@ -108,6 +124,14 @@ public class RtHasProfissional implements Serializable {
     @Override
     public String toString() {
         return "model.RtHasProfissional[ rtHasProfissionalPK=" + rtHasProfissionalPK + " ]";
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
     
 }

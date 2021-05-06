@@ -149,6 +149,27 @@ public class Profissional implements Serializable {
     public void setFuncaoId(Funcao funcaoId) {
         this.funcaoId = funcaoId;
     }
+    
+    public String getStatusBundle(){
+        String statusBundle = "";
+        if(this.status != null){
+            switch(this.status){
+                case 1:
+                    statusBundle = "ProfissionalStatusDisponivel";
+                    break;
+                case 2:
+                    statusBundle = "ProfissionalStatusProgramado";
+                    break;
+                case 3:
+                    statusBundle = "ProfissionalStatusEmbarcado";
+                    break;
+                case 4:
+                    statusBundle = "ProfissionalStatusIndisponivel";
+                    break;
+            }
+        }
+        return statusBundle;
+    }
 
     public Integer getStatus() {
         return status;
@@ -156,27 +177,6 @@ public class Profissional implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-    
-    public String getStatusBundle(){
-        String statusBundle = "";
-        if(this.status != null){
-            switch(this.status){
-                case 0:
-                    statusBundle = "ProfissionalStatusDisponivel";
-                    break;
-                case 1:
-                    statusBundle = "ProfissionalStatusProgramado";
-                    break;
-                case 2:
-                    statusBundle = "ProfissionalStatusEmbarcado";
-                    break;
-                case 3:
-                    statusBundle = "ProfissionalStatusIndisponivel";
-                    break;
-            }
-        }
-        return statusBundle;
     }
     
 }

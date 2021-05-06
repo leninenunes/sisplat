@@ -23,11 +23,11 @@
                     <f:selectItems value="#{rtController.itemsAvailableSelectOne}"/>
                 </h:selectOneMenu>
                 <h:message for="rt" style="color: red" />
-                <h:outputLabel value="#{bundle.CreateRtHasProfissionalLabel_statusId}" for="statusId" />
-                <h:selectOneMenu class="form-control" id="statusId" value="#{rtHasProfissionalController.selected.statusId}" title="#{bundle.CreateRtHasProfissionalTitle_statusId}" required="true" requiredMessage="#{bundle.CreateRtHasProfissionalRequiredMessage_statusId}">
-                    <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                <h:outputLabel value="#{bundle.CreateRtHasProfissionalLabel_status}" for="status" />
+                <h:selectOneMenu class="form-control" id="status" value="#{rtHasProfissionalController.selected.status}" title="#{bundle.CreateRtHasProfissionalTitle_status}" required="true" requiredMessage="#{bundle.CreateRtHasProfissionalRequiredMessage_status}">
+                    <f:selectItems value="#{rtController.itemsRtStatus}"/>
                 </h:selectOneMenu>
-                <h:message for="statusId" style="color: red" />
+                <h:message for="status" style="color: red" />
             </h:panelGrid>
         </div>
     </ui:define>

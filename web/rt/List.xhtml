@@ -68,9 +68,9 @@
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group col-md-3">
-                        <h:outputLabel value="#{bundle.CreateRtLabel_statusId}" for="statusId" />
-                        <h:selectOneMenu class="form-control" id="statusId" value="#{rtController.filtered.statusId}" title="#{bundle.CreateRtTitle_statusId}">
-                            <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                        <h:outputLabel value="#{bundle.CreateRtLabel_status}" for="status" />
+                        <h:selectOneMenu class="form-control" id="status" value="#{rtController.filtered.status}" title="#{bundle.CreateRtTitle_status}">
+                            <f:selectItems value="#{rtController.itemsRtStatus}"/>
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group col-md-3" style="margin-top: auto;">
@@ -97,7 +97,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListRtTitle_tipo}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.tipoNome}"/>
+                                <h:outputText value="#{bundle[item.tipoBundle]}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -135,9 +135,9 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListRtTitle_statusId}"/>
+                                    <h:outputText value="#{bundle.ListRtTitle_status}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.statusId.nome}"/>
+                                <h:outputText value="#{bundle[item.statusBundle]}"/>
                             </h:column>
                             <h:column>
                                 <h:commandLink class="view" title="#{bundle.ListRtViewLink}">

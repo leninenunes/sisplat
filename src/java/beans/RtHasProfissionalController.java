@@ -131,8 +131,8 @@ public class RtHasProfissionalController implements Serializable {
 
     public void create() {
         try {
-            current.getRtHasProfissionalPK().setRtId(current.getRt().getId());
             current.getRtHasProfissionalPK().setProfissionalId(current.getProfissional().getId());
+            current.getRtHasProfissionalPK().setRtId(current.getRt().getId());
             getJpaController().create(current);
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addSuccessMessage(FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtHasProfissionalCreated"));
@@ -156,8 +156,8 @@ public class RtHasProfissionalController implements Serializable {
 
     public void update() {
         try {
-            current.getRtHasProfissionalPK().setRtId(current.getRt().getId());
             current.getRtHasProfissionalPK().setProfissionalId(current.getProfissional().getId());
+            current.getRtHasProfissionalPK().setRtId(current.getRt().getId());
             getJpaController().edit(current);
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addSuccessMessage(FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtHasProfissionalUpdated"));

@@ -15,7 +15,7 @@
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_id}"/></strong></p>
                 <p><h:outputText value="#{rtController.selected.id}" title="#{bundle.ViewRtTitle_id}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_tipo}"/></strong></p>
-                <p><h:outputText value="#{rtController.selected.tipoNome}" title="#{bundle.ViewRtTitle_tipo}"/></p>
+                <p><h:outputText value="#{bundle[rtController.selected.tipoBundle]}" title="#{bundle.ViewRtTitle_tipo}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_dataViagem}"/></strong></p>
                 <p><h:outputText value="#{rtController.selected.dataViagem}" title="#{bundle.ViewRtTitle_dataViagem}">
                         <f:convertDateTime type="date" />
@@ -30,8 +30,8 @@
                 <p><h:outputText value="#{rtController.selected.localEmbarqueId.nome}" title="#{bundle.ViewRtTitle_localEmbarqueId}"/></p>
                 <p><strong><h:outputText value="#{bundle.ViewRtLabel_localDesembarqueId}"/></strong></p>
                 <p><h:outputText value="#{rtController.selected.localDesembarqueId.nome}" title="#{bundle.ViewRtTitle_localDesembarqueId}"/></p>
-                <p><strong><h:outputText value="#{bundle.ViewRtLabel_statusId}"/></strong></p>
-                <p><h:outputText value="#{rtController.selected.statusId.nome}" title="#{bundle.ViewRtTitle_statusId}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewRtLabel_status}"/></strong></p>
+                <p><h:outputText value="#{bundle[rtController.selected.statusBundle]}" title="#{bundle.ViewRtTitle_status}"/></p>
                 <p><strong><h:outputText value="#{bundle.ListRtHasProfissionalTitle_profissional}"/></strong></p>
                 <h:panelGroup>
                     <h:dataTable value="#{rtController.selected.rtHasProfissionalCollection}" var="item" border="0" cellpadding="2" cellspacing="0" class="table table-striped table-hover table-bordered" rules="all" style="border:solid 1px">

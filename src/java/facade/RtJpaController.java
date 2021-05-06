@@ -13,7 +13,6 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.Local;
-import model.Status;
 import model.RtHasProfissional;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -58,11 +57,6 @@ public class RtJpaController implements Serializable {
                 localDesembarqueId = em.getReference(localDesembarqueId.getClass(), localDesembarqueId.getId());
                 rt.setLocalDesembarqueId(localDesembarqueId);
             }
-            Status statusId = rt.getStatusId();
-            if (statusId != null) {
-                statusId = em.getReference(statusId.getClass(), statusId.getId());
-                rt.setStatusId(statusId);
-            }
             Collection<RtHasProfissional> attachedRtHasProfissionalCollection = new ArrayList<RtHasProfissional>();
             for (RtHasProfissional rtHasProfissionalCollectionRtHasProfissionalToAttach : rt.getRtHasProfissionalCollection()) {
                 rtHasProfissionalCollectionRtHasProfissionalToAttach = em.getReference(rtHasProfissionalCollectionRtHasProfissionalToAttach.getClass(), rtHasProfissionalCollectionRtHasProfissionalToAttach.getRtHasProfissionalPK());
@@ -77,10 +71,6 @@ public class RtJpaController implements Serializable {
             if (localDesembarqueId != null) {
                 localDesembarqueId.getRtCollection().add(rt);
                 localDesembarqueId = em.merge(localDesembarqueId);
-            }
-            if (statusId != null) {
-                statusId.getRtCollection().add(rt);
-                statusId = em.merge(statusId);
             }
             for (RtHasProfissional rtHasProfissionalCollectionRtHasProfissional : rt.getRtHasProfissionalCollection()) {
                 Rt oldRtOfRtHasProfissionalCollectionRtHasProfissional = rtHasProfissionalCollectionRtHasProfissional.getRt();
@@ -109,8 +99,6 @@ public class RtJpaController implements Serializable {
             Local localEmbarqueIdNew = rt.getLocalEmbarqueId();
             Local localDesembarqueIdOld = persistentRt.getLocalDesembarqueId();
             Local localDesembarqueIdNew = rt.getLocalDesembarqueId();
-            Status statusIdOld = persistentRt.getStatusId();
-            Status statusIdNew = rt.getStatusId();
             Collection<RtHasProfissional> rtHasProfissionalCollectionOld = persistentRt.getRtHasProfissionalCollection();
             Collection<RtHasProfissional> rtHasProfissionalCollectionNew = rt.getRtHasProfissionalCollection();
             List<String> illegalOrphanMessages = null;
@@ -132,10 +120,6 @@ public class RtJpaController implements Serializable {
             if (localDesembarqueIdNew != null) {
                 localDesembarqueIdNew = em.getReference(localDesembarqueIdNew.getClass(), localDesembarqueIdNew.getId());
                 rt.setLocalDesembarqueId(localDesembarqueIdNew);
-            }
-            if (statusIdNew != null) {
-                statusIdNew = em.getReference(statusIdNew.getClass(), statusIdNew.getId());
-                rt.setStatusId(statusIdNew);
             }
             Collection<RtHasProfissional> attachedRtHasProfissionalCollectionNew = new ArrayList<RtHasProfissional>();
             for (RtHasProfissional rtHasProfissionalCollectionNewRtHasProfissionalToAttach : rtHasProfissionalCollectionNew) {
@@ -160,14 +144,6 @@ public class RtJpaController implements Serializable {
             if (localDesembarqueIdNew != null && !localDesembarqueIdNew.equals(localDesembarqueIdOld)) {
                 localDesembarqueIdNew.getRtCollection().add(rt);
                 localDesembarqueIdNew = em.merge(localDesembarqueIdNew);
-            }
-            if (statusIdOld != null && !statusIdOld.equals(statusIdNew)) {
-                statusIdOld.getRtCollection().remove(rt);
-                statusIdOld = em.merge(statusIdOld);
-            }
-            if (statusIdNew != null && !statusIdNew.equals(statusIdOld)) {
-                statusIdNew.getRtCollection().add(rt);
-                statusIdNew = em.merge(statusIdNew);
             }
             for (RtHasProfissional rtHasProfissionalCollectionNewRtHasProfissional : rtHasProfissionalCollectionNew) {
                 if (!rtHasProfissionalCollectionOld.contains(rtHasProfissionalCollectionNewRtHasProfissional)) {
@@ -230,11 +206,6 @@ public class RtJpaController implements Serializable {
                 localDesembarqueId.getRtCollection().remove(rt);
                 localDesembarqueId = em.merge(localDesembarqueId);
             }
-            Status statusId = rt.getStatusId();
-            if (statusId != null) {
-                statusId.getRtCollection().remove(rt);
-                statusId = em.merge(statusId);
-            }
             em.remove(rt);
             em.getTransaction().commit();
         } finally {
@@ -284,8 +255,8 @@ public class RtJpaController implements Serializable {
             if(rt.getLocalDesembarqueId() != null){
                 predicates.add(cb.equal(root.get(Rt_.localDesembarqueId), rt.getLocalDesembarqueId()));
             }
-            if(rt.getStatusId() != null){
-                predicates.add(cb.equal(root.get(Rt_.statusId), rt.getStatusId()));
+            if(rt.getStatus() != null && rt.getStatus() != 0){
+                predicates.add(cb.equal(root.get(Rt_.status), rt.getStatus()));
             }
             if(rt.getTipo() != null && rt.getTipo() != 0){
                 predicates.add(cb.equal(root.get(Rt_.tipo), rt.getTipo()));
@@ -336,8 +307,8 @@ public class RtJpaController implements Serializable {
             if(rt.getLocalDesembarqueId() != null){
                 predicates.add(cb.equal(root.get(Rt_.localDesembarqueId), rt.getLocalDesembarqueId()));
             }
-            if(rt.getStatusId() != null){
-                predicates.add(cb.equal(root.get(Rt_.statusId), rt.getStatusId()));
+            if(rt.getStatus() != null && rt.getStatus() != 0){
+                predicates.add(cb.equal(root.get(Rt_.status), rt.getStatus()));
             }
             if(rt.getTipo() != null && rt.getTipo() != 0){
                 predicates.add(cb.equal(root.get(Rt_.tipo), rt.getTipo()));

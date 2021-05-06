@@ -42,9 +42,9 @@
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group col-md-3">
-                        <h:outputLabel value="#{bundle.CreateRtHasProfissionalLabel_statusId}" for="statusId" />
-                        <h:selectOneMenu class="form-control" id="statusId" value="#{rtHasProfissionalController.filtered.statusId}" title="#{bundle.CreateRtHasProfissionalTitle_statusId}">
-                            <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                        <h:outputLabel value="#{bundle.CreateRtHasProfissionalLabel_status}" for="status" />
+                        <h:selectOneMenu class="form-control" id="status" value="#{rtHasProfissionalController.filtered.status}" title="#{bundle.CreateRtHasProfissionalTitle_status}">
+                            <f:selectItems value="#{rtController.itemsRtStatus}"/>
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group col-md-3" style="margin-top: auto;">
@@ -71,7 +71,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListRtTitle_tipo}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.rt.tipoNome}"/>
+                                <h:outputText value="#{bundle[item.rt.tipoBundle]}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -97,9 +97,9 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListRtHasProfissionalTitle_statusId}"/>
+                                    <h:outputText value="#{bundle.ListRtHasProfissionalTitle_status}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.statusId.nome}"/>
+                                <h:outputText value="#{bundle[item.statusBundle]}"/>
                             </h:column>
                             <h:column>
                                 <h:commandLink 

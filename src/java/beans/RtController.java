@@ -363,6 +363,15 @@ public class RtController implements Serializable {
         return tipos;
     }
     
+    public List<SelectItem> getItemsRtStatus(){
+        List<SelectItem> status = new ArrayList<SelectItem>();
+        status.add(new SelectItem("", "---"));
+        status.add(new SelectItem(1,"Programado"));
+        status.add(new SelectItem(2, "Liberado"));
+        status.add(new SelectItem(3, "Cancelado"));
+        return status;
+    }
+    
     private void populateProfissional(){
         leftAvailable = new ArrayList<>();
         rightAvailable = new ArrayList<>();

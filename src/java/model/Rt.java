@@ -42,6 +42,13 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Rt.findByHoraViagem", query = "SELECT r FROM Rt r WHERE r.horaViagem = :horaViagem")})
 public class Rt implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "tipo")
+    private Integer tipo;
+    @Basic(optional = false)
+    @Column(name = "status")
+    private Integer status;
+
     @Lob
     @Column(name = "comentario")
     private String comentario;
@@ -52,9 +59,6 @@ public class Rt implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "tipo")
-    private Integer tipo;
     @Basic(optional = false)
     @Column(name = "data_viagem")
     @Temporal(TemporalType.TIMESTAMP)
@@ -69,9 +73,9 @@ public class Rt implements Serializable {
     @JoinColumn(name = "local_desembarque_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Local localDesembarqueId;
-    @JoinColumn(name = "status_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Status statusId;
+//    @JoinColumn(name = "status_id", referencedColumnName = "id")
+//    @ManyToOne(optional = false)
+//    private Status statusId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rt")
     private Collection<RtHasProfissional> rtHasProfissionalCollection;
 
@@ -97,30 +101,41 @@ public class Rt implements Serializable {
         this.id = id;
     }
 
-    public Integer getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Integer tipo) {
-        this.tipo = tipo;
-    }
     
-    public String getTipoNome(){
-        String tipoNome = "";
+    public String getTipoBundle(){
+        String tipoBundle = "";
         if(this.tipo != null){
             switch (this.tipo) {
-                case 1 :
-                    tipoNome = "EMBARQUE";
+                case 1:
+                    tipoBundle = "RtTipoEmbarque";
                     break;
-                case 2 :
-                    tipoNome = "DESEMBARQUE";
+                case 2:
+                    tipoBundle = "RtTipoDesembarque";
                     break;
-                case 3 :
-                    tipoNome = "TRANSFERÊNCIA";
+                case 3:
+                    tipoBundle = "RtTipoTransferencia";
                     break;
             }
         }
-        return tipoNome;
+        return tipoBundle;
+    }
+    
+    public String getStatusBundle(){
+        String statusBundle = "";
+        if(this.status != null){
+            switch(this.status){
+                case 1:
+                    statusBundle = "RtStatusProgramado";
+                    break;
+                case 2:
+                    statusBundle = "RtStatusLiberado";
+                    break;
+                case 3:
+                    statusBundle = "RtStatusCancelado";
+                    break;
+            }
+        }
+        return statusBundle;
     }
     
     public Date getDataViagem() {
@@ -156,14 +171,6 @@ public class Rt implements Serializable {
         this.localDesembarqueId = localDesembarqueId;
     }
 
-    public Status getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Status statusId) {
-        this.statusId = statusId;
-    }
-
     @XmlTransient
     public Collection<RtHasProfissional> getRtHasProfissionalCollection() {
         return rtHasProfissionalCollection;
@@ -195,7 +202,7 @@ public class Rt implements Serializable {
 
     @Override
     public String toString() {
-        return id + " - " + getTipoNome() + " - " + dataViagem;
+        return id + " - " + dataViagem;
     }
 
     public String getComentario() {
@@ -204,6 +211,22 @@ public class Rt implements Serializable {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    public Integer getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
 }

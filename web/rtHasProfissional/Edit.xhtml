@@ -12,11 +12,11 @@
     <ui:define name="contentModal">
         <div class="row col-md-12">
             <h:panelGrid class="form-group col-md-6">
-                <h:outputLabel value="#{bundle.EditRtHasProfissionalLabel_statusId}" for="statusId" />
-                <h:selectOneMenu class="form-control" id="statusId" value="#{rtHasProfissionalController.selected.statusId}" title="#{bundle.EditRtHasProfissionalTitle_statusId}" required="true" requiredMessage="#{bundle.EditRtHasProfissionalRequiredMessage_statusId}">
-                    <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                <h:outputLabel value="#{bundle.EditRtHasProfissionalLabel_status}" for="status" />
+                <h:selectOneMenu class="form-control" id="status" value="#{rtHasProfissionalController.selected.status}" title="#{bundle.EditRtHasProfissionalTitle_status}" required="true" requiredMessage="#{bundle.EditRtHasProfissionalRequiredMessage_status}">
+                    <f:selectItems value="#{rtController.itemsRtStatus}"/>
                 </h:selectOneMenu>
-                <h:message for="statusId" style="color: red" />
+                <h:message for="status" style="color: red" />
             </h:panelGrid>
         </div>
     </ui:define>

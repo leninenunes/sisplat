@@ -35,6 +35,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Local.findByNome", query = "SELECT l FROM Local l WHERE l.nome = :nome")})
 public class Local implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "tipo")
+    private Integer tipo;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,9 +48,6 @@ public class Local implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @Basic(optional = false)
-    @Column(name = "tipo")
-    private Integer tipo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "localEmbarqueId")
     private Collection<Rt> rtCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "localDesembarqueId")
@@ -81,13 +82,6 @@ public class Local implements Serializable {
         this.nome = nome;
     }
     
-    public Integer getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Integer tipo) {
-        this.tipo = tipo;
-    }
     
     public String getTipoNome(){
         String tipoNome = "";
@@ -145,6 +139,14 @@ public class Local implements Serializable {
     @Override
     public String toString() {
         return nome;
+    }
+
+    public Integer getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
     }
     
 }

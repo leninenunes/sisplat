@@ -40,11 +40,11 @@
                     <f:selectItems value="#{localController.itemsAvailableSelectOne}"/>
                 </h:selectOneMenu>
                 <h:message for="localDesembarqueId" style="color: red" />
-                <h:outputLabel value="#{bundle.CreateRtLabel_statusId}" for="statusId" />
-                <h:selectOneMenu class="form-control" id="statusId" value="#{rtController.selected.statusId}" title="#{bundle.CreateRtTitle_statusId}" required="true" requiredMessage="#{bundle.CreateRtRequiredMessage_statusId}">
-                    <f:selectItems value="#{statusController.itemsAvailableSelectOne}"/>
+                <h:outputLabel value="#{bundle.CreateRtLabel_status}" for="status" />
+                <h:selectOneMenu class="form-control" id="status" value="#{rtController.selected.status}" title="#{bundle.CreateRtTitle_status}" required="true" requiredMessage="#{bundle.CreateRtRequiredMessage_status}">
+                    <f:selectItems value="#{rtController.itemsRtStatus}"/>
                 </h:selectOneMenu>
-                <h:message for="statusId" style="color: red" />
+                <h:message for="status" style="color: red" />
                 <h:outputLabel value="#{bundle.CreateRtHasProfissionalLabel_profissional}"/>
                 <h:panelGrid columns="3">
                     <h:selectManyListbox class="form-control lefttoright" size="4" id="left" value="#{rtController.leftSelected}" converter="profissionalConverter">

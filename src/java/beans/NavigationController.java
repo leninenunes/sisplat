@@ -39,10 +39,6 @@ public class NavigationController implements Serializable {
         return "/local/List?faces-redirect=true";
     }
     
-    public String status(){
-        return "/status/List?faces-redirect=true";
-    }
-    
     public String contrato(){
         return "/contrato/List?faces-redirect=true";
     }

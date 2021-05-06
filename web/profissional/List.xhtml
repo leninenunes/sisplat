@@ -43,8 +43,14 @@
                     </div>
                     <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.CreateProfissionalLabel_funcaoId}" for="funcaoId" />
-                        <h:selectOneMenu class="form-control" id="contratoId" value="#{profissionalController.filtered.funcaoId}" title="#{bundle.CreateProfissionalTitle_funcaoId}">
+                        <h:selectOneMenu class="form-control" id="funcaoId" value="#{profissionalController.filtered.funcaoId}" title="#{bundle.CreateProfissionalTitle_funcaoId}">
                             <f:selectItems value="#{funcaoController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <h:outputLabel value="#{bundle.ProfissionalStatusLabel}" for="funcaoId" />
+                        <h:selectOneMenu class="form-control" id="status" value="#{profissionalController.filtered.status}" title="#{bundle.ProfissionalStatusTitle}">
+                            <f:selectItems value="#{profissionalController.itemsStatus}"/>
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group col-md-3" style="margin-top: auto;">
