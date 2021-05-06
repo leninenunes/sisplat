@@ -86,6 +86,12 @@
                                 <h:outputText value="#{item.funcaoId.nome}"/>
                             </h:column>
                             <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ProfissionalStatusTitle}"/>
+                                </f:facet>
+                                <h:outputText value="#{bundle[item.statusBundle]}"/>
+                            </h:column>
+                            <h:column>
                                 <h:commandLink 
                                     class="view" title="#{bundle.ListProfissionalViewLink}">
                                     <f:ajax event="click" render="formView" listener="#{profissionalController.prepareView}" />

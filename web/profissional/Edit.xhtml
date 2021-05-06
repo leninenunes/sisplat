@@ -23,6 +23,11 @@
                     <f:selectItems value="#{funcaoController.itemsAvailableSelectOne}"/>
                 </h:selectOneMenu>
                 <h:message for="funcaoId" style="color: red" />
+                <br/>
+                <h:panelGrid class="form-check">
+                    <h:selectBooleanCheckbox class="form-check-input" id="statusCheck" label="#{bundle.ProfissionalStatusLabel}" value="#{profissionalController.statusCheck}" title="#{bundle.ProfissionalStatusTitle}" disabled="#{profissionalController.hasStatusIndisponivel}" />
+                    <h:outputLabel class="form-check-label" for="statusCheck" value="#{bundle.ProfissionalIndisponivelLabel}"/>
+                </h:panelGrid>
             </h:panelGrid>
         </div>
     </ui:define>

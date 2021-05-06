@@ -37,6 +37,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Profissional.findByMatricula", query = "SELECT p FROM Profissional p WHERE p.matricula = :matricula")})
 public class Profissional implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "status")
+    private Integer status;
+
     @JoinColumn(name = "funcao_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Funcao funcaoId;
@@ -144,6 +148,35 @@ public class Profissional implements Serializable {
 
     public void setFuncaoId(Funcao funcaoId) {
         this.funcaoId = funcaoId;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+    
+    public String getStatusBundle(){
+        String statusBundle = "";
+        if(this.status != null){
+            switch(this.status){
+                case 0:
+                    statusBundle = "ProfissionalStatusDisponivel";
+                    break;
+                case 1:
+                    statusBundle = "ProfissionalStatusProgramado";
+                    break;
+                case 2:
+                    statusBundle = "ProfissionalStatusEmbarcado";
+                    break;
+                case 3:
+                    statusBundle = "ProfissionalStatusIndisponivel";
+                    break;
+            }
+        }
+        return statusBundle;
     }
     
 }

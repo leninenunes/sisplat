@@ -32,10 +32,26 @@ public class ProfissionalController implements Serializable {
     private Integer pageSize = 10;
     private Profissional filtered;
     private String filterShow;
+    private Boolean statusCheck = false;
 
     public ProfissionalController() {
     }
-
+    
+    public void setStatusCheck(Boolean statusCheck){
+        this.statusCheck = statusCheck;
+    }
+    
+    public Boolean getStatusCheck(){
+        return statusCheck;
+    }
+    
+    public boolean isHasStatusIndisponivel(){
+        if(current.getStatus() != null){
+            return (current.getStatus() == 1 || current.getStatus() == 2);
+        }
+        return false;
+    }
+    
     public Profissional getSelected() {
         if (current == null) {
             current = new Profissional();
@@ -124,10 +140,12 @@ public class ProfissionalController implements Serializable {
     public void prepareCreate() {
         current = new Profissional();
         selectedItemIndex = -1;
+        statusCheck = false;
     }
 
     public void create() {
         try {
+            verifyStatusCheckUpdate();
             getJpaController().create(current);
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addSuccessMessage(FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("ProfissionalCreated"));
@@ -147,16 +165,36 @@ public class ProfissionalController implements Serializable {
     public void prepareEdit() {
         current = (Profissional) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        if(current.getStatus() == 3){
+            statusCheck = true;
+        }else{
+            statusCheck = false;
+        }
     }
 
     public void update() {
         try {
+            verifyStatusCheckUpdate();
             getJpaController().edit(current);
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addSuccessMessage(FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("ProfissionalUpdated"));
         } catch (Exception e) {
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addErrorMessage(e, FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("PersistenceErrorOccured"));
+        }
+    }
+    
+    public void verifyStatusCheckUpdate(){
+        if(statusCheck == true){
+            current.setStatus(3);
+        }else{
+            if(current.getStatus() != null){
+                if(current.getStatus() == 3 && statusCheck == false){
+                    current.setStatus(0);
+                }
+            }else{
+                current.setStatus(0);
+            }
         }
     }
 
