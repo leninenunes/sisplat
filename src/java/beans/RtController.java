@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -26,7 +27,7 @@ import model.RtHasProfissional;
 import model.RtHasProfissionalPK;
 
 @ManagedBean(name = "rtController")
-@SessionScoped
+@ViewScoped
 public class RtController implements Serializable {
 
     private Rt current;

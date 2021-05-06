@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -21,7 +22,7 @@ import javax.faces.model.SelectItem;
 import javax.persistence.Persistence;
 
 @ManagedBean(name = "rtHasProfissionalController")
-@SessionScoped
+@ViewScoped
 public class RtHasProfissionalController implements Serializable {
 
     private RtHasProfissional current;

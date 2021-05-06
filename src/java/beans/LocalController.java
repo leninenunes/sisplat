@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -21,7 +22,7 @@ import javax.faces.model.SelectItem;
 import javax.persistence.Persistence;
 
 @ManagedBean(name = "localController")
-@SessionScoped
+@ViewScoped
 public class LocalController implements Serializable {
 
     private Local current;
