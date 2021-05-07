@@ -39,9 +39,7 @@
                 </h:selectOneMenu>
                 <h:message for="escopoId" style="color: red" />
                 <h:outputLabel value="#{bundle.EditApropriacaoLabel_profissionalId}" for="profissionalId" />
-                <h:selectOneMenu class="form-control" id="profissionalId" value="#{apropriacaoController.selected.profissionalId}" title="#{bundle.EditApropriacaoTitle_profissionalId}" required="true" requiredMessage="#{bundle.EditApropriacaoRequiredMessage_profissionalId}">
-                    <f:selectItems value="#{profissionalController.itemsAvailableSelectOne}"/>
-                </h:selectOneMenu>
+                <h:inputText class="form-control" id="profissionalId" disabled="true" value="#{apropriacaoController.selected.profissionalId.nome}" title="#{bundle.EditApropriacaoTitle_profissionalId}" />
                 <h:message for="profissionalId" style="color: red" />
             </h:panelGrid>
         </div>

@@ -66,4 +66,20 @@ public class NavigationController implements Serializable {
     public String rtHasProfissional(){
         return "/rtHasProfissional/List?faces-redirect=true";
     }
+    
+    public String dashboardEmbarques(){
+        return "/dashboards/embarques?faces-redirect=true";
+    }
+    
+    public String dashboardDesmbarques(){
+        return "/dashboards/desembarques?faces-redirect=true";
+    }
+    
+    public String dashboardApropriacoes(){
+        return "/dashboards/apropriacoes?faces-redirect=true";
+    }
+    
+    public String dashboardProfissionais(){
+        return "/dashboards/profissionais?faces-redirect=true";
+    }
 }

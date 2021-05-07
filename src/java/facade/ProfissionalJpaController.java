@@ -236,6 +236,24 @@ public class ProfissionalJpaController implements Serializable {
         }
     }
     
+    public List<Profissional> findProfissionalDisponivel(Integer status){
+        EntityManager em = getEntityManager();
+        try{
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            Root<Profissional> rt = cq.from(Profissional.class);
+            List<Predicate> predicates = new ArrayList<Predicate>();
+            predicates.add(cb.equal(rt.get(Profissional_.status), status));
+            
+            cq.where(predicates.toArray(new Predicate[] {}));
+            Query q = em.createQuery(cq);
+            
+            return q.getResultList();
+        }finally{
+            em.close();
+        }
+    }
+    
     public List<Profissional> findProfissionalFilter(Profissional profissional, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {

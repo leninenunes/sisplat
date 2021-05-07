@@ -1,72 +1,69 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
-    <div class="sidebar-sticky">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">
-            <i class="fas fa-signal"></i>
-            Dashboard
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-map-marker"></i>
-            Embarques
-          </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fas fa-map-marker-alt"></i>
-              Desembarques
-            </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-user-clock"></i>
-            Apropriação
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-user"></i>
-            Profissionais
-          </a>
-        </li>
-        </ul>
-<!--        <li class="nav-item">
-            <a class="nav-link active" href="#">
-                <i class="fas fa-list"></i>
-                Listas
-            </a>
-        </li>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="far fa-file"></i>
-              Embarques
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="far fa-file"></i>
-              Desembarques
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="far fa-file"></i>
-              Apropriação
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="far fa-file"></i>
-              Profissionais
-            </a>
-          </li>
-        </ul>-->
-    </div>
-</nav>
+    <h:form>
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <h:commandLink class="nav-link active" action="#">
+                            <i class="fas fa-signal"/> Dashboard
+                        </h:commandLink>
+                    </li>
+                    <li class="nav-item">
+                        <h:commandLink class="nav-link" action="#{navigationController.dashboardEmbarques}">
+                            <i class="fas fa-map-marker"/> Embarques
+                        </h:commandLink>
+                    </li>
+                    <li class="nav-item">
+                        <h:commandLink class="nav-link" action="#{navigationController.dashboardDesmbarques}">
+                            <i class="fas fa-map-marker-alt"/> Desembarques
+                        </h:commandLink>
+                    </li>
+                    <li class="nav-item">
+                        <h:commandLink class="nav-link" action="#{navigationController.dashboardApropriacoes}">
+                            <i class="fas fa-user-clock"/> Apropriações
+                        </h:commandLink>
+                    </li>
+                    <li class="nav-item">
+                        <h:commandLink class="nav-link" action="#{navigationController.dashboardProfissionais}">
+                            <i class="fas fa-user"/> Profissionais
+                        </h:commandLink>
+                    </li>
+                  </ul>
+        <!--        <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="fas fa-list"></i>
+                        Listas
+                    </a>
+                </li>
+                <ul class="nav flex-column mb-2">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="far fa-file"></i>
+                      Embarques
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="far fa-file"></i>
+                      Desembarques
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="far fa-file"></i>
+                      Apropriação
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                      <i class="far fa-file"></i>
+                      Profissionais
+                    </a>
+                  </li>
+                </ul>-->
+            </div>
+        </nav>
+    </h:form>
 </html>

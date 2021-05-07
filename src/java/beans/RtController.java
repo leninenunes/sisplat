@@ -377,7 +377,7 @@ public class RtController implements Serializable {
         leftAvailable = new ArrayList<>();
         rightAvailable = new ArrayList<>();
         
-        for(Profissional itemProfissional : profissionalJpaController.findProfissionalEntities()){
+        for(Profissional itemProfissional : profissionalJpaController.findProfissionalDisponivel(1)){
             leftAvailable.add(itemProfissional);
         }
         

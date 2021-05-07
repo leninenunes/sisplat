@@ -15,7 +15,7 @@
                 <h:inputHidden class="form-control" id="rtHasProfissionalPK_id" value="#{rtHasProfissionalController.selected.rtHasProfissionalPK.id}"/>
                 <h:outputLabel value="#{bundle.CreateRtHasProfissionalLabel_profissional}" for="profissional" />
                 <h:selectOneMenu class="form-control" id="profissional" value="#{rtHasProfissionalController.selected.profissional}" title="#{bundle.CreateRtHasProfissionalTitle_profissional}" required="true" requiredMessage="#{bundle.CreateRtHasProfissionalRequiredMessage_profissional}">
-                    <f:selectItems value="#{profissionalController.itemsAvailableSelectOne}"/>
+                    <f:selectItems value="#{profissionalController.itemsAvailableSelectOneDisponivel}"/>
                 </h:selectOneMenu>
                 <h:message for="profissional" style="color: red" />
                 <h:outputLabel value="#{bundle.CreateRtHasProfissionalLabel_rt}" for="rt" />

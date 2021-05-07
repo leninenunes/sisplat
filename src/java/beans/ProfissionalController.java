@@ -320,6 +320,14 @@ public class ProfissionalController implements Serializable {
         return JsfUtil.getSelectItems(getJpaController().findProfissionalEntities(), true);
     }
     
+    public SelectItem[] getItemsAvailableSelectOneDisponivel() {
+        return JsfUtil.getSelectItems(getJpaController().findProfissionalDisponivel(1), true);
+    }
+    
+    public SelectItem[] getItemsAvailableSelectOneEmbarcado() {
+        return JsfUtil.getSelectItems(getJpaController().findProfissionalDisponivel(3), true);
+    }
+    
     public List<SelectItem> getItemsStatus(){
         List<SelectItem> status = new ArrayList<SelectItem>();
         status.add(new SelectItem("", "---"));
