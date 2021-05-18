@@ -184,7 +184,7 @@ public class RtController implements Serializable {
 //                rtHasProfissional.setRtHasProfissionalPK(new model.RtHasProfissionalPK());
 //                rtHasProfissional.getRtHasProfissionalPK().setRtId(current.getId());
 //                rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(itemProfissional.getId());
-//                rtHasProfissional.setStatusId(current.getStatusId());
+//                rtHasProfissional.setStatus(current.getStatus());
 //                rtHasProfissionalColNew.add(rtHasProfissional);
 //            }
 //            current.setRtHasProfissionalCollection(rtHasProfissionalColNew);

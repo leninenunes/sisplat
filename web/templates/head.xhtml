@@ -4,7 +4,7 @@
     <h:body>
         <h:form>
             <nav class="navbar navbar-dark fixed-top bg-dark navbar-expand-lg shadow">
-                <h:link outcome="/index"><h:graphicImage library="images" name="logo_ufpr_branca.png" width="50px" title="Sisplat" alt="Sisplat" /> </h:link>
+                <h:link outcome="/index"><h:graphicImage library="images" name="favicon.ico" width="30px" title="Sisplat" alt="Sisplat" /> </h:link>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -40,6 +40,11 @@
                 <div class="float-right">
                     <h:commandLink class="#{localeMB.classEn}" value="English" action="#{localeMB.englishLocale}" style="padding-right: 12px;" />
                     <h:commandLink class="#{localeMB.classPt}" value="Português" action="#{localeMB.portugueseLocale}" />
+                </div>
+                <div class="float-right px-2">
+                    <h:commandLink action="#{loginController.doLogout}">
+                        <i class="fas fa-unlock" /> #{bundle.Exit}
+                    </h:commandLink>
                 </div>
             </nav>
         </h:form>

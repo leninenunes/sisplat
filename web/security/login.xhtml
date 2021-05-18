@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{localeMB.currentLocale}">
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <link rel="shorcut icon" href="#{resource['/images/favicon.ico']}" />
+            <title><ui:insert name="title">#{bundle.AppTitle}</ui:insert></title>
+            <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+            <h:outputStylesheet library="css" name="signin.css"/>
+        </h:head>
+        <h:body class="text-center">
+            <main class="form-signin">
+                <h:graphicImage class="mb-4" library="images" name="favicon.ico" width="72" height="57" />
+                <h1 class="h3 mb-3 fw-normal">#{bundle.AppTitle}</h1>
+                <h:form id="formLogin">
+                    <div class="form-floating" enctype="multipart/form-data">
+                        <h:inputText class="form-control" id="login" a:placeholder="login" />
+                    </div>
+                    <div class="form-floating">
+                        <h:inputSecret class="form-control" id="senha" a:placeholder="senha" />
+                    </div>
+                    <h:commandButton class="w-100 btn btn-lg btn-primary" value="Entrar" action="#{loginController.doLogin}" />
+                </h:form>
+                <p class="mt-5 mb-3 text-muted">&copy; 2018–2021</p>
+            </main>
+        </h:body>
+    </f:view>
+</html>
+
