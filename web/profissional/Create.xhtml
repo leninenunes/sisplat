@@ -23,6 +23,11 @@
                     <f:selectItems value="#{funcaoController.itemsAvailableSelectOne}"/>
                 </h:selectOneMenu>
                 <h:message for="funcaoId" style="color: red" />
+                <h:outputLabel value="#{bundle.CreateProfissionalLabel_empresaId}" for="empresaId" />
+                <h:selectOneMenu class="form-control" id="empresaId" value="#{profissionalController.selected.empresaId}" title="#{bundle.CreateProfissionalTitle_empresaId}" required="true" requiredMessage="#{bundle.CreateProfissionalRequiredMessage_empresaId}">
+                    <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                </h:selectOneMenu>
+                <h:message for="empresaId" style="color: red" />
                 <br/>
                 <h:panelGrid class="form-check">
                     <h:selectBooleanCheckbox class="form-check-input" id="statusCheck" label="#{bundle.ProfissionalStatusLabel}" value="#{profissionalController.statusCheck}" title="#{bundle.ProfissionalStatusTitle}" disabled="#{profissionalController.hasStatusIndisponivel}" />

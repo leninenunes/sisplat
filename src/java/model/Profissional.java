@@ -40,6 +40,9 @@ public class Profissional implements Serializable {
     @Basic(optional = false)
     @Column(name = "status")
     private Integer status;
+    @JoinColumn(name = "empresa_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Empresa empresaId;
 
     @JoinColumn(name = "funcao_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -177,6 +180,14 @@ public class Profissional implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Empresa getEmpresaId() {
+        return empresaId;
+    }
+
+    public void setEmpresaId(Empresa empresaId) {
+        this.empresaId = empresaId;
     }
     
 }

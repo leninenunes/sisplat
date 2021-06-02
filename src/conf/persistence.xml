@@ -13,6 +13,7 @@
     <class>model.UnidadeMedida</class>
     <class>model.Status</class>
     <class>model.Funcao</class>
+    <class>model.Empresa</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>

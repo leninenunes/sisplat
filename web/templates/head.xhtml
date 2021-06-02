@@ -26,13 +26,14 @@
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="mn_administracao" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administração</a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <h:commandLink class="dropdown-item" action="#{navigationController.local}" value="Locais" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.usuario}" value="Usuários" />
                               <h:commandLink class="dropdown-item" action="#{navigationController.contrato}" value="Contratos" />
-                              <h:commandLink class="dropdown-item" action="#{navigationController.escopo}" value="Escopos" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.local}" value="Locais" />
                               <h:commandLink class="dropdown-item" action="#{navigationController.unidadeMedida}" value="Unidade de Medida" />
-                              <h:commandLink class="dropdown-item" action="#{navigationController.subcontrato}" value="Subcontratos" />
-                              <h:commandLink class="dropdown-item" action="#{navigationController.profissional}" value="Profissional" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.escopo}" value="Escopos" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.empresa}" value="Empresas" />
                               <h:commandLink class="dropdown-item" action="#{navigationController.funcao}" value="Funcão" />
+                              <h:commandLink class="dropdown-item" action="#{navigationController.profissional}" value="Profissional" />
                           </div>
                       </li>
                   </ul>

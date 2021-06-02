@@ -176,17 +176,22 @@ public class RtController implements Serializable {
 
     public void create() {
         try {
-//            Collection<RtHasProfissional> rtHasProfissionalColNew = new ArrayList<RtHasProfissional>();
+            Collection<RtHasProfissional> rtHasProfissionalColNew = new ArrayList<RtHasProfissional>();
 //            RtHasProfissional rtHasProfissional;
-//            
-//            for(Profissional itemProfissional : rightAvailable){
-//                rtHasProfissional = new RtHasProfissional();
-//                rtHasProfissional.setRtHasProfissionalPK(new model.RtHasProfissionalPK());
-//                rtHasProfissional.getRtHasProfissionalPK().setRtId(current.getId());
-//                rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(itemProfissional.getId());
-//                rtHasProfissional.setStatus(current.getStatus());
+            
+            RtHasProfissionalJpaController rtHasProfissionalJpaController = new RtHasProfissionalJpaController(Persistence.createEntityManagerFactory("sisplatPU"));
+            for(Profissional itemProfissional : rightAvailable){
+                RtHasProfissional rtHasProfissional = new RtHasProfissional();
+                rtHasProfissional.setRtHasProfissionalPK(new model.RtHasProfissionalPK());
+                rtHasProfissional.setRt(current);
+                rtHasProfissional.setProfissional(itemProfissional);
+                rtHasProfissional.setStatus(current.getStatus());
+                rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(itemProfissional.getId());
+                rtHasProfissional.getRtHasProfissionalPK().setRtId(rtHasProfissional.getRt().getId());
 //                rtHasProfissionalColNew.add(rtHasProfissional);
-//            }
+                rtHasProfissionalJpaController.create(rtHasProfissional);
+            }
+            
 //            current.setRtHasProfissionalCollection(rtHasProfissionalColNew);
             getJpaController().create(current);
             FacesContext context = FacesContext.getCurrentInstance();
@@ -212,19 +217,26 @@ public class RtController implements Serializable {
 
     public void update() {
         try {
-//            current.getRtHasProfissionalCollection().clear();
+//            current.setRtHasProfissionalCollection(null);
 //            Collection<RtHasProfissional> rtHasProfissionalColNew = new ArrayList<RtHasProfissional>();
-//            RtHasProfissional rtHasProfissional;
-//            
-//            for(Profissional itemProfissional : rightAvailable){
-//                rtHasProfissional = new RtHasProfissional();
-//                rtHasProfissional.setRtHasProfissionalPK(new model.RtHasProfissionalPK());
-//                rtHasProfissional.getRtHasProfissionalPK().setRtId(current.getId());
-//                rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(itemProfissional.getId());
+            
+            RtHasProfissionalJpaController rtHasProfissionalJpaController = new RtHasProfissionalJpaController(Persistence.createEntityManagerFactory("sisplatPU"));
+            for(Profissional itemProfissional : rightAvailable){
+                RtHasProfissional rtHasProfissional = new RtHasProfissional();
+                rtHasProfissional.setRtHasProfissionalPK(new model.RtHasProfissionalPK());
+//                rtHasProfissional.setRtHasProfissionalPK(new RtHasProfissionalPK());
+                rtHasProfissional.setRt(current);
+                rtHasProfissional.setProfissional(itemProfissional);
+                rtHasProfissional.setStatus(current.getStatus());
+                rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(itemProfissional.getId());
+                rtHasProfissional.getRtHasProfissionalPK().setRtId(current.getId());
 //                rtHasProfissionalColNew.add(rtHasProfissional);
-//            }
-//            
+//                current.getRtHasProfissionalCollection().add(rtHasProfissional);
+                rtHasProfissionalJpaController.create(rtHasProfissional);
+            }
+            
 //            current.setRtHasProfissionalCollection(rtHasProfissionalColNew);
+//            current.getRtHasProfissionalCollection().addAll(rtHasProfissionalColNew);
             getJpaController().edit(current);
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addSuccessMessage(FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtUpdated"));

@@ -273,6 +273,9 @@ public class ProfissionalJpaController implements Serializable {
             if(profissional.getFuncaoId() != null){
                 predicates.add(cb.equal(rt.get(Profissional_.funcaoId), profissional.getFuncaoId()));
             }
+            if(profissional.getEmpresaId() != null){
+                predicates.add(cb.equal(rt.get(Profissional_.empresaId), profissional.getEmpresaId()));
+            }
             if(profissional.getStatus() != null && profissional.getStatus() != 0){
                 predicates.add(cb.equal(rt.get(Profissional_.status), profissional.getStatus()));
             }
@@ -315,6 +318,9 @@ public class ProfissionalJpaController implements Serializable {
             }
             if(profissional.getFuncaoId() != null){
                 predicates.add(cb.equal(rt.get(Profissional_.funcaoId), profissional.getFuncaoId()));
+            }
+            if(profissional.getEmpresaId() != null){
+                predicates.add(cb.equal(rt.get(Profissional_.empresaId), profissional.getEmpresaId()));
             }
             if(profissional.getStatus() != null && profissional.getStatus() != 0){
                 predicates.add(cb.equal(rt.get(Profissional_.status), profissional.getStatus()));

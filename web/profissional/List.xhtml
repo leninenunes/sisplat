@@ -48,6 +48,12 @@
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group col-md-3">
+                        <h:outputLabel value="#{bundle.CreateProfissionalLabel_empresaId}" for="empresaId" />
+                        <h:selectOneMenu class="form-control" id="empresaId" value="#{profissionalController.filtered.empresaId}" title="#{bundle.CreateProfissionalTitle_empresaId}">
+                            <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="form-group col-md-3">
                         <h:outputLabel value="#{bundle.ProfissionalStatusLabel}" for="funcaoId" />
                         <h:selectOneMenu class="form-control" id="status" value="#{profissionalController.filtered.status}" title="#{bundle.ProfissionalStatusTitle}">
                             <f:selectItems value="#{profissionalController.itemsStatus}"/>
@@ -90,6 +96,12 @@
                                     <h:outputText value="#{bundle.ListProfissionalTitle_funcaoId}"/>
                                 </f:facet>
                                 <h:outputText value="#{item.funcaoId.nome}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListProfissionalTitle_empresaId}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.empresaId.nome}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">

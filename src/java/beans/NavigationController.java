@@ -51,8 +51,8 @@ public class NavigationController implements Serializable {
         return "/unidadeMedida/List?faces-redirect=true";
     }
     
-    public String subcontrato(){
-        return "/subcontrato/List?faces-redirect=true";
+    public String empresa(){
+        return "/empresa/List?faces-redirect=true";
     }
     
     public String profissional(){
