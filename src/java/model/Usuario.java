@@ -116,18 +116,15 @@ public class Usuario implements Serializable {
                     nivelBundle = "UsuarioComum";
                     break;
                 case 2:
-                    nivelBundle = "Admin";
-                    break;
-                case 3:
                     nivelBundle = "GestorContratos";
                     break;
-                case 4:
+                case 3:
                     nivelBundle = "GestorEfetivo";
                     break;
-                case 5:
+                case 4:
                     nivelBundle = "ProgramadorEmbarque";
                     break;
-                case 6:
+                case 5:
                     nivelBundle = "ApropriadorHoras";
                     break;
             }

@@ -286,11 +286,10 @@ public class UsuarioController implements Serializable {
         List<SelectItem> nivel = new ArrayList<SelectItem>();
         nivel.add(new SelectItem("", "---"));
         nivel.add(new SelectItem(1,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("UsuarioComum")));
-        nivel.add(new SelectItem(2,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("Admin")));
-        nivel.add(new SelectItem(3,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("GestorContratos")));
-        nivel.add(new SelectItem(4,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("GestorEfetivo")));
-        nivel.add(new SelectItem(5,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("ProgramadorEmbarque")));
-        nivel.add(new SelectItem(6,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("ApropriadorHoras")));
+        nivel.add(new SelectItem(2,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("GestorContratos")));
+        nivel.add(new SelectItem(3,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("GestorEfetivo")));
+        nivel.add(new SelectItem(4,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("ProgramadorEmbarque")));
+        nivel.add(new SelectItem(5,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("ApropriadorHoras")));
         return nivel;
     }
 
