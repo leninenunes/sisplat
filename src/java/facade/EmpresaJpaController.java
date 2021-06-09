@@ -195,8 +195,8 @@ public class EmpresaJpaController implements Serializable {
             if(empresa.getNome() != null && !empresa.getNome().equals("")){
                 predicates.add(cb.like(rt.get(Empresa_.nome), "%" + empresa.getNome() + "%"));
             }
-            if(empresa.getCnpj() != null && !empresa.getCnpj().equals("")){
-                predicates.add(cb.like(rt.get(Empresa_.cnpj), "%" + empresa.getCnpj() + "%"));
+            if(empresa.getRegistro() != null && empresa.getRegistro() != 0){
+                predicates.add(cb.equal(rt.get(Empresa_.registro), empresa.getRegistro()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             Query q = em.createQuery(cq);
@@ -232,8 +232,8 @@ public class EmpresaJpaController implements Serializable {
             if(empresa.getNome() != null && !empresa.getNome().equals("")){
                 predicates.add(cb.like(rt.get(Empresa_.nome), "%" + empresa.getNome() + "%"));
             }
-            if(empresa.getCnpj() != null && !empresa.getCnpj().equals("")){
-                predicates.add(cb.like(rt.get(Empresa_.cnpj), "%" + empresa.getCnpj() + "%"));
+            if(empresa.getRegistro() != null && empresa.getRegistro() != 0){
+                predicates.add(cb.equal(rt.get(Empresa_.registro), empresa.getRegistro()));
             }
             cq.where(predicates.toArray(new Predicate[] {}));
             cq.select(em.getCriteriaBuilder().count(rt));

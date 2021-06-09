@@ -34,12 +34,12 @@
                         <h:inputText class="form-control" id="id" value="#{empresaController.filtered.id}" title="#{bundle.CreateEmpresaTitle_id}"/>
                     </div>
                     <div class="form-group col-md-3">
-                        <h:outputLabel value="#{bundle.CreateEmpresaLabel_nome}" for="nome" />
-                        <h:inputText class="form-control" id="nome" value="#{empresaController.filtered.nome}" title="#{bundle.CreateEmpresaTitle_nome}"/>
+                        <h:outputLabel value="#{bundle.CreateEmpresaLabel_registro}" for="registro" />
+                        <h:inputText class="form-control" id="registro" value="#{empresaController.filtered.registro}" title="#{bundle.CreateEmpresaTitle_registro}"/>
                     </div>
                     <div class="form-group col-md-3">
-                        <h:outputLabel value="#{bundle.CreateEmpresaLabel_cnpj}" for="cnpj" />
-                        <h:inputText class="form-control" id="cnpj" value="#{empresaController.filtered.cnpj}" title="#{bundle.CreateEmpresaTitle_cnpj}"/>
+                        <h:outputLabel value="#{bundle.CreateEmpresaLabel_nome}" for="nome" />
+                        <h:inputText class="form-control" id="nome" value="#{empresaController.filtered.nome}" title="#{bundle.CreateEmpresaTitle_nome}"/>
                     </div>
                     <div class="form-group col-md-3" style="margin-top: auto;">
                         <h:commandButton class="btn btn-primary" value="#{bundle.Search}">
@@ -63,15 +63,15 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListEmpresaTitle_nome}"/>
+                                    <h:outputText value="#{bundle.ListEmpresaTitle_registro}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.nome}"/>
+                                <h:outputText value="#{item.registro}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListEmpresaTitle_cnpj}"/>
+                                    <h:outputText value="#{bundle.ListEmpresaTitle_nome}"/>
                                 </f:facet>
-                                <h:outputText value="#{item.cnpj}"/>
+                                <h:outputText value="#{item.nome}"/>
                             </h:column>
                             <h:column>
                                 <h:commandLink 

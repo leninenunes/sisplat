@@ -12,12 +12,12 @@
     <ui:define name="contentModal">
         <div class="row col-md-12">
             <h:panelGrid class="form-group col-md-6">
+                <h:outputLabel value="#{bundle.CreateEmpresaLabel_registro}" for="registro" />
+                <h:inputText class="form-control" id="registro" value="#{empresaController.selected.registro}" title="#{bundle.CreateEmpresaTitle_registro}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_registro}"/>
+                <h:message for="registro" style="color: red" />
                 <h:outputLabel value="#{bundle.CreateEmpresaLabel_nome}" for="nome" />
                 <h:inputText class="form-control" id="nome" value="#{empresaController.selected.nome}" title="#{bundle.CreateEmpresaTitle_nome}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_nome}"/>
                 <h:message for="nome" style="color: red" />
-                <h:outputLabel value="#{bundle.CreateEmpresaLabel_cnpj}" for="cnpj" />
-                <h:inputText class="form-control" id="cnpj" value="#{empresaController.selected.cnpj}" title="#{bundle.CreateEmpresaTitle_cnpj}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_cnpj}"/>
-                <h:message for="cnpj" style="color: red" />
             </h:panelGrid>
         </div>
     </ui:define>

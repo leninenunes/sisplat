@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e")
     , @NamedQuery(name = "Empresa.findById", query = "SELECT e FROM Empresa e WHERE e.id = :id")
     , @NamedQuery(name = "Empresa.findByNome", query = "SELECT e FROM Empresa e WHERE e.nome = :nome")
-    , @NamedQuery(name = "Empresa.findByCnpj", query = "SELECT e FROM Empresa e WHERE e.cnpj = :cnpj")})
+    , @NamedQuery(name = "Empresa.findByRegistro", query = "SELECT e FROM Empresa e WHERE e.registro = :registro")})
 public class Empresa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,8 +45,8 @@ public class Empresa implements Serializable {
     @Column(name = "nome")
     private String nome;
     @Basic(optional = false)
-    @Column(name = "cnpj")
-    private String cnpj;
+    @Column(name = "registro")
+    private Integer registro;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresaId")
     private Collection<Profissional> profissionalCollection;
 
@@ -57,10 +57,10 @@ public class Empresa implements Serializable {
         this.id = id;
     }
 
-    public Empresa(Integer id, String nome, String cnpj) {
+    public Empresa(Integer id, String nome, Integer registro) {
         this.id = id;
         this.nome = nome;
-        this.cnpj = cnpj;
+        this.registro = registro;
     }
 
     public Integer getId() {
@@ -79,14 +79,14 @@ public class Empresa implements Serializable {
         this.nome = nome;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public Integer getRegistro() {
+        return registro;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setRegistro(Integer registro) {
+        this.registro = registro;
     }
-
+    
     @XmlTransient
     public Collection<Profissional> getProfissionalCollection() {
         return profissionalCollection;
