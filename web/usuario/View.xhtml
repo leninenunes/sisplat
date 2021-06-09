@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/templates/ModalTemplate.xhtml">
+
+    <ui:define name="titleModal">
+        <h:outputText value="#{bundle.ViewUsuarioTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="contentModal">
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <p><strong><h:outputText value="#{bundle.ViewUsuarioLabel_id}"/></strong></p>
+                <p><h:outputText value="#{usuarioController.selected.id}" title="#{bundle.ViewUsuarioTitle_id}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewUsuarioLabel_login}"/></strong></p>
+                <p><h:outputText value="#{usuarioController.selected.login}" title="#{bundle.ViewUsuarioTitle_login}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewUsuarioLabel_nome}"/></strong></p>
+                <p><h:outputText value="#{usuarioController.selected.nome}" title="#{bundle.ViewUsuarioTitle_nome}"/></p>
+                <p><strong><h:outputText value="#{bundle.ViewUsuarioLabel_nivel}"/></strong></p>
+                <p><h:outputText value="#{bundle[usuarioController.selected.nivelBundle]}" title="#{bundle.ViewUsuarioTitle_nivel}"/></p>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

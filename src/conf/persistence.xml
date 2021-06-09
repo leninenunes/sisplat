@@ -7,13 +7,12 @@
     <class>model.Local</class>
     <class>model.Profissional</class>
     <class>model.Rt</class>
-    <class>model.Subcontrato</class>
     <class>model.Contrato</class>
     <class>model.Escopo</class>
     <class>model.UnidadeMedida</class>
-    <class>model.Status</class>
     <class>model.Funcao</class>
     <class>model.Empresa</class>
+    <class>model.Usuario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>

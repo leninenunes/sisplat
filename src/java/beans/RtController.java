@@ -368,20 +368,22 @@ public class RtController implements Serializable {
     }
     
     public List<SelectItem> getItemsRtTipo(){
+        FacesContext context = FacesContext.getCurrentInstance();
         List<SelectItem> tipos = new ArrayList<SelectItem>();
         tipos.add(new SelectItem("", "---"));
-        tipos.add(new SelectItem(1, "EMBARQUE"));
-        tipos.add(new SelectItem(2, "DESEMBARQUE"));
-        tipos.add(new SelectItem(3, "TRANSFERÊNCIA"));
+        tipos.add(new SelectItem(1,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtTipoEmbarque")));
+        tipos.add(new SelectItem(2, FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtTipoDesembarque")));
+        tipos.add(new SelectItem(3, FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtTipoTransferencia")));
         return tipos;
     }
     
     public List<SelectItem> getItemsRtStatus(){
+        FacesContext context = FacesContext.getCurrentInstance();
         List<SelectItem> status = new ArrayList<SelectItem>();
         status.add(new SelectItem("", "---"));
-        status.add(new SelectItem(1,"Programado"));
-        status.add(new SelectItem(2, "Liberado"));
-        status.add(new SelectItem(3, "Cancelado"));
+        status.add(new SelectItem(1,FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtStatusProgramado")));
+        status.add(new SelectItem(2, FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtStatusLiberado")));
+        status.add(new SelectItem(3, FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtStatusCancelado")));
         return status;
     }
     
