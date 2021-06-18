@@ -116,13 +116,6 @@
                                     <f:passThroughAttribute name="data-target" value="#modalEdit"/>
                                     <i class="far fa-edit"/>
                                 </h:commandLink>
-                                <h:commandLink 
-                                    class="delete" title="#{bundle.ListRtHasProfissionalDestroyLink}">
-                                    <f:ajax event="click" render="formDelete" listener="#{rtHasProfissionalController.prepareDestroy}" />
-                                    <f:passThroughAttribute name="data-toggle" value="modal"/>
-                                    <f:passThroughAttribute name="data-target" value="#modalDelete"/>
-                                    <i class="far fa-trash-alt"/>
-                                </h:commandLink>
                             </h:column>
                         </h:dataTable>
                         <div class="col-md-12">
