@@ -6,11 +6,18 @@ import beans.util.PaginationHelper;
 import facade.ProfissionalJpaController;
 import facade.RtHasProfissionalJpaController;
 import facade.RtJpaController;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
@@ -21,10 +28,22 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import model.Profissional;
 import model.RtHasProfissional;
 import model.RtHasProfissionalPK;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.JasperRunManager;
+import net.sf.jasperreports.engine.query.JRJpaQueryExecuterFactory;
 
 @ManagedBean(name = "rtController")
 @ViewScoped
@@ -401,6 +420,95 @@ public class RtController implements Serializable {
             }
             leftAvailable.removeAll(rightAvailable);
         }
+    }
+    
+    public String printReport2() throws JRException, IOException{
+        current = (Rt) getItems().getRowData();
+        
+        String path = "/WEB-INF/reports/rt.jrxml";
+        InputStream jasperTemplate = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(path);
+//        FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/rt.jrxml");
+        
+//        JasperReport jasperReport = JasperCompileManager.compileReport(jasperTemplate);
+//        File relatorioJasper = new File(jasperReport.toString());
+        File relatorioJasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/rt.jasper"));
+        Map parametros = new HashMap();
+        parametros.put("param_rt_id", current.getId());
+        
+        byte[] bytes = null;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("sisplatPU");
+        EntityManager em =emf.createEntityManager();
+        
+        try{
+            parametros.put(JRJpaQueryExecuterFactory.PARAMETER_JPA_ENTITY_MANAGER, em);
+            bytes = JasperRunManager.runReportToPdf(relatorioJasper.getPath(), parametros);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
+//            if(em.isOpen()) em.close();
+//            if(emf.isOpen()) emf.close();
+        }
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        
+//        if(bytes != null && bytes.length > 0){
+            response.setContentType("application/pdf");
+            response.setContentLength(bytes.length);
+            ServletOutputStream outputStream = response.getOutputStream();
+            outputStream.write(bytes,0,bytes.length);
+            
+            outputStream.flush();
+            outputStream.close();
+//        }
+        
+//        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros);
+//        response.setHeader("Content-Disposition", "attachment; filename=\"relatorio.pdf\"");
+//        JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+        
+        
+        FacesContext.getCurrentInstance().renderResponse();
+        FacesContext.getCurrentInstance().responseComplete();
+        
+        return null;
+    }
+    
+    public String printReport() throws JRException, IOException{
+        current = (Rt) getItems().getRowData();
+        
+        String path = "/WEB-INF/reports/rt.jrxml";
+        String pathSubReport = "/WEB-INF/reports/rtHeader.jrxml";
+        InputStream jasperTemplate = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(path);
+        InputStream jasperTemplateSr = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(pathSubReport);
+        
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperTemplate);
+        JasperReport jasperReportSr = JasperCompileManager.compileReport(jasperTemplateSr);
+        
+        Map parametros = new HashMap();
+        parametros.put("param_rt_id", current.getId());
+        parametros.put("SubReportParam", jasperReportSr);
+        
+        Connection conn = null;
+        
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sisplat?useSSL=false&useTimezone=true&serverTimezone=UTC", "developer", "bode123");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, conn);
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        
+        ServletOutputStream outputStream = response.getOutputStream();
+        
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "attachment; filename=\"relatorio.pdf\"");
+        JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+        
+        outputStream.flush();
+        outputStream.close();
+        FacesContext.getCurrentInstance().renderResponse();
+        FacesContext.getCurrentInstance().responseComplete();
+        
+        return null;
     }
     
     @FacesConverter(forClass = Rt.class)

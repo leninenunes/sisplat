@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rtHeader" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e9e31d9a-c93e-432c-895e-65d2a8938cfd">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql - Lenine"/>
+	<style name="Style1" mode="Opaque" forecolor="#000000" backcolor="#FFFFFF" vTextAlign="Middle" pattern="" fontSize="14" isBold="false">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{status}.contains("Liberado"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#00B050"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{status}.contains("Programado"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#00B0F0"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{status}.contains("Cancelado"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF0000"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="param_rt_id" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+tbl_rt.id rt_id,
+tipo_rt_descricao(tbl_rt.tipo) rt_tipo,
+DATE_FORMAT(tbl_rt.data_viagem, "%d/%m/%Y") rt_data_viagem,
+DATE_FORMAT(tbl_rt.hora_viagem, "%H:%i") rt_hora_viagem,
+tbl_local_emb.nome rt_embarque,
+tbl_local_des.nome rt_desembarque,
+status_descricao(tbl_rt.status) status,
+tbl_rt.comentario rt_comentario
+FROM rt tbl_rt
+LEFT JOIN local tbl_local_emb ON tbl_local_emb.id=tbl_rt.local_embarque_id
+LEFT JOIN local tbl_local_des ON tbl_local_des.id=tbl_rt.local_desembarque_id
+WHERE tbl_rt.id=$P{param_rt_id}]]>
+	</queryString>
+	<field name="rt_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="rt_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rt"/>
+	</field>
+	<field name="rt_tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rt_tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="rt_tipo"/>
+	</field>
+	<field name="rt_data_viagem" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rt_data_viagem"/>
+		<property name="com.jaspersoft.studio.field.label" value="rt_data_viagem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rt"/>
+	</field>
+	<field name="rt_hora_viagem" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rt_hora_viagem"/>
+		<property name="com.jaspersoft.studio.field.label" value="rt_hora_viagem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rt"/>
+	</field>
+	<field name="rt_embarque" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="rt_embarque"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="local"/>
+	</field>
+	<field name="rt_desembarque" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="rt_desembarque"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="local"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+	</field>
+	<field name="rt_comentario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="comentario"/>
+		<property name="com.jaspersoft.studio.field.label" value="rt_comentario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rt"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="1" width="70" height="30" backcolor="#BFBFBF" uuid="d22f476e-0d53-4c6c-95e5-053bc4880428">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9be5c845-42ee-487f-8964-c4b64b0fc24d"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data da Viagem]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="71" y="1" width="70" height="30" backcolor="#BFBFBF" uuid="a6b39c23-8f5b-4144-8d5b-893d64c75d33">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bc55a891-6fb2-496d-aa10-3e66066d0659"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora da Viagem]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="141" y="1" width="250" height="30" backcolor="#BFBFBF" uuid="2cbf3f0f-dc1d-4b2d-81c8-9f5e54d41da3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e5724fd-0ce3-48c7-a349-9c7b25baf7be"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Local do Embarque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="391" y="1" width="250" height="30" backcolor="#BFBFBF" uuid="8f69e9fa-47f2-4bfe-915d-df205657d4e4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b032dde4-c04f-4276-bd7f-5b297b3b04bd"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Local do Desembarque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="641" y="1" width="160" height="30" backcolor="#BFBFBF" uuid="e6605c18-a076-4f33-a44d-06a6bc24633c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d2888e0-a484-4d4c-aea3-224e7fe28b33"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[STATUS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="91" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<textField>
+				<reportElement x="1" y="1" width="70" height="20" uuid="5f9a41d8-6758-4b43-99bb-8b8c68372d33">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9be5c845-42ee-487f-8964-c4b64b0fc24d"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rt_data_viagem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="1" width="70" height="20" uuid="b477e832-3e26-42a8-a6eb-05d38ffd5918">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bc55a891-6fb2-496d-aa10-3e66066d0659"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rt_hora_viagem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="1" width="250" height="20" uuid="efb5e8ed-fe3d-4ccc-aef7-9af472afac4a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e5724fd-0ce3-48c7-a349-9c7b25baf7be"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rt_embarque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="1" width="250" height="20" uuid="9474bac4-25f5-4b8b-9d33-ff077a557f38">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b032dde4-c04f-4276-bd7f-5b297b3b04bd"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rt_desembarque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style1" mode="Opaque" x="641" y="1" width="160" height="20" uuid="7108c3c1-a617-450a-a1a5-b40a07012d6d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d2888e0-a484-4d4c-aea3-224e7fe28b33"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="48" width="800" height="40" forecolor="#FF0000" uuid="718d886a-75d9-4f36-a7f2-f261bd476733"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{rt_comentario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="30" width="800" height="18" backcolor="#BFBFBF" uuid="37e77a3e-27c7-49ee-a10e-55f0947338b7"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observação]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -152,10 +152,7 @@
                                     <f:passThroughAttribute name="data-target" value="#modalEdit"/>
                                     <i class="far fa-edit"/>
                                 </h:commandLink>
-                                <h:commandLink class="print" title="#{bundle.ListRtPrintLink}">
-                                    <f:ajax event="click" render="formPrint" listener="#{rtController.prepareDestroy}" />
-                                    <f:passThroughAttribute name="data-toggle" value="modal"/>
-                                    <f:passThroughAttribute name="data-target" value="#modalPrint"/>
+                                <h:commandLink class="print" title="#{bundle.ListRtPrintLink}" action="#{rtController.printReport}">
                                     <i class="fas fa-print"/>
                                 </h:commandLink>
                             </h:column>
