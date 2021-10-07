@@ -197,7 +197,7 @@ public class RtController implements Serializable {
         try {
             Collection<RtHasProfissional> rtHasProfissionalColNew = new ArrayList<RtHasProfissional>();
 //            RtHasProfissional rtHasProfissional;
-            
+            getJpaController().create(current);
             RtHasProfissionalJpaController rtHasProfissionalJpaController = new RtHasProfissionalJpaController(Persistence.createEntityManagerFactory("sisplatPU"));
             for(Profissional itemProfissional : rightAvailable){
                 RtHasProfissional rtHasProfissional = new RtHasProfissional();
@@ -212,7 +212,7 @@ public class RtController implements Serializable {
             }
             
 //            current.setRtHasProfissionalCollection(rtHasProfissionalColNew);
-            getJpaController().create(current);
+//            getJpaController().create(current);
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addSuccessMessage(FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtCreated"));
             clearFilter();
@@ -238,25 +238,32 @@ public class RtController implements Serializable {
         try {
 //            current.setRtHasProfissionalCollection(null);
 //            Collection<RtHasProfissional> rtHasProfissionalColNew = new ArrayList<RtHasProfissional>();
-            
+            getJpaController().edit(current);
             RtHasProfissionalJpaController rtHasProfissionalJpaController = new RtHasProfissionalJpaController(Persistence.createEntityManagerFactory("sisplatPU"));
+            
+            for(RtHasProfissional rtHasProfissionalDelete : current.getRtHasProfissionalCollection()){
+                rtHasProfissionalJpaController.destroy(rtHasProfissionalDelete.getRtHasProfissionalPK());
+            }
             for(Profissional itemProfissional : rightAvailable){
                 RtHasProfissional rtHasProfissional = new RtHasProfissional();
                 rtHasProfissional.setRtHasProfissionalPK(new model.RtHasProfissionalPK());
+                
 //                rtHasProfissional.setRtHasProfissionalPK(new RtHasProfissionalPK());
                 rtHasProfissional.setRt(current);
                 rtHasProfissional.setProfissional(itemProfissional);
                 rtHasProfissional.setStatus(current.getStatus());
                 rtHasProfissional.getRtHasProfissionalPK().setProfissionalId(itemProfissional.getId());
-                rtHasProfissional.getRtHasProfissionalPK().setRtId(current.getId());
+                rtHasProfissional.getRtHasProfissionalPK().setRtId(rtHasProfissional.getRt().getId());
 //                rtHasProfissionalColNew.add(rtHasProfissional);
 //                current.getRtHasProfissionalCollection().add(rtHasProfissional);
+//                rtHasProfissionalJpaController.destroy(rtHasProfissional.getRtHasProfissionalPK());
                 rtHasProfissionalJpaController.create(rtHasProfissional);
             }
             
 //            current.setRtHasProfissionalCollection(rtHasProfissionalColNew);
 //            current.getRtHasProfissionalCollection().addAll(rtHasProfissionalColNew);
-            getJpaController().edit(current);
+            
+//            getJpaController().edit(current);
             FacesContext context = FacesContext.getCurrentInstance();
             JsfUtil.addSuccessMessage(FacesContext.getCurrentInstance().getApplication().getResourceBundle(context, "bundle").getString("RtUpdated"));
         } catch (Exception e) {
@@ -475,16 +482,20 @@ public class RtController implements Serializable {
         current = (Rt) getItems().getRowData();
         
         String path = "/WEB-INF/reports/rt.jrxml";
-        String pathSubReport = "/WEB-INF/reports/rtHeader.jrxml";
+        String pathSubReportHead = "/WEB-INF/reports/rtHeader.jrxml";
+        String pathSubReportTitle = "/WEB-INF/reports/rtTitle.jrxml";
         InputStream jasperTemplate = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(path);
-        InputStream jasperTemplateSr = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(pathSubReport);
+        InputStream jasperTemplateSrHead = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(pathSubReportHead);
+        InputStream jasperTemplateSrTitle = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(pathSubReportTitle);
         
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperTemplate);
-        JasperReport jasperReportSr = JasperCompileManager.compileReport(jasperTemplateSr);
+        JasperReport jasperReportSrHead = JasperCompileManager.compileReport(jasperTemplateSrHead);
+        JasperReport jasperReportSrTitle = JasperCompileManager.compileReport(jasperTemplateSrTitle);
         
         Map parametros = new HashMap();
         parametros.put("param_rt_id", current.getId());
-        parametros.put("SubReportParam", jasperReportSr);
+        parametros.put("SubReportParamHead", jasperReportSrHead);
+        parametros.put("SubReportParamTitle", jasperReportSrTitle);
         
         Connection conn = null;
         
@@ -500,7 +511,7 @@ public class RtController implements Serializable {
         ServletOutputStream outputStream = response.getOutputStream();
         
         response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", "attachment; filename=\"relatorio.pdf\"");
+        response.setHeader("Content-Disposition", "attachment; filename=\"RT_"+current.getId()+".pdf\"");
         JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
         
         outputStream.flush();

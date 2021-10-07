@@ -4,7 +4,8 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql - Lenine"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="param_rt_id" class="java.lang.Integer"/>
-	<parameter name="SubReportParam" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SubReportParamHead" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SubReportParamTitle" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[SELECT 
 tbl_prof.matricula profissional_matricula,
@@ -42,14 +43,18 @@ ORDER BY tbl_has_rt.rt_id]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="24" width="802" height="30" backcolor="#DDEBF7" uuid="1e8c54f1-d8a0-4e92-89e0-c88a7924e71a"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="19" isBold="true"/>
-				</textElement>
-				<text><![CDATA[REQUISIÇÃO DE TRANSPORTE]]></text>
-			</staticText>
+		<band height="43" splitType="Stretch">
+			<subreport>
+				<reportElement x="-20" y="0" width="200" height="40" uuid="933b43c1-75f9-401f-9b6f-1d4970891d80"/>
+				<subreportParameter name="param_rt_id">
+					<subreportParameterExpression><![CDATA[$P{param_rt_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SubReportParamTitle">
+					<subreportParameterExpression><![CDATA[$P{SubReportParamTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SubReportParamTitle}]]></subreportExpression>
+			</subreport>
 		</band>
 	</title>
 	<pageHeader>
@@ -71,7 +76,7 @@ ORDER BY tbl_has_rt.rt_id]]>
 					<subreportParameterExpression><![CDATA[$P{param_rt_id}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SubReportParam}]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SubReportParamHead}]]></subreportExpression>
 			</subreport>
 		</band>
 	</pageHeader>
@@ -209,7 +214,18 @@ ORDER BY tbl_has_rt.rt_id]]>
 		<band height="49" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="622" y="24" width="100" height="30" uuid="f9c5ceb7-ef8e-4c2d-b1a1-283f1675f5c5"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="722" y="24" width="100" height="30" uuid="b81c5393-ac64-4eb0-94af-d61c224509cb"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

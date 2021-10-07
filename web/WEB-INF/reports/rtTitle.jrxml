@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rtTitle" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40d6be68-af2d-4ba5-9687-f34578235990">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql - Lenine"/>
+	<parameter name="param_rt_id" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+tbl_rt.id rt_id,
+tipo_rt_descricao(tbl_rt.tipo) rt_tipo
+FROM rt tbl_rt
+WHERE tbl_rt.id=$P{param_rt_id}]]>
+	</queryString>
+	<field name="rt_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="rt_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="rt"/>
+	</field>
+	<field name="rt_tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rt_tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="rt_tipo"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="40" backcolor="#DDEBF7" uuid="a1eeb674-8c75-4d87-8ef6-0464e983dcca">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RT DE "+$F{rt_tipo}+" Nº "+$F{rt_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>
