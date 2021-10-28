@@ -20,12 +20,13 @@
                 <h1 class="h3 mb-3 fw-normal">#{bundle.AppTitle}</h1>
                 <h:form id="formLogin">
                     <div class="form-floating" enctype="multipart/form-data">
-                        <h:inputText class="form-control" id="login" a:placeholder="login" />
+                        <h:inputText class="form-control" id="login" a:placeholder="login" value="#{loginController.login}"/>
                     </div>
                     <div class="form-floating">
-                        <h:inputSecret class="form-control" id="senha" a:placeholder="senha" />
+                        <h:inputSecret class="form-control" id="senha" a:placeholder="senha" value="#{loginController.senha}"/>
                     </div>
                     <h:commandButton class="w-100 btn btn-lg btn-primary" value="Entrar" action="#{loginController.doLogin}" />
+                    <h:messages class="" errorClass="alert alert-danger" infoClass="alert alert-success" style="list-style-type: none; padding-left: 0; margin-top: 5px;" />
                 </h:form>
                 <p class="mt-5 mb-3 text-muted">&copy; 2018–2021</p>
             </main>
