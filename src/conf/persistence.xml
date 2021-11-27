@@ -17,8 +17,8 @@
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
       <property name="eclipselink.cache.shared.default" value="false"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sisplat?useSSL=false&amp;useTimezone=true&amp;serverTimezone=UTC"/>
-      <property name="javax.persistence.jdbc.user" value="developer"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql.sisplat.com:3306/sisplat?useSSL=false&amp;useTimezone=true&amp;serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="sisplat"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="bode123"/>
     </properties>
