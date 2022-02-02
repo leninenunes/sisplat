@@ -500,7 +500,7 @@ public class RtController implements Serializable {
         Connection conn = null;
         
         try{
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sisplat?useSSL=false&useTimezone=true&serverTimezone=UTC", "developer", "bode123");
+            conn = DriverManager.getConnection("jdbc:mysql://mysql.sisplat.com:3306/sisplat?useSSL=false&useTimezone=true&serverTimezone=UTC", "sisplat", "bode123");
         } catch (Exception e) {
             e.printStackTrace();
         }
