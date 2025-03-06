@@ -1,4 +1,4 @@
-# 🛢️ Sisplat - Sistema de Controle de Embarques em Plataforma de Petroleo
+# 🛢️ Sisplat, Sistema de Controle de Embarques em Plataforma de Petróleo
 Aplicação Monolita Web (MVC) desenvolvida com Java como trabalho de conclusão de curso
 
 Sistema web para controle de embarque e desembarque de profissionais em plataformas de petróleo, que realizam obras de construção e manutenção industrial gerenciadas por empreiteiras de engenharia eletromecânica, incluindo a gestão dos serviços executados a bordo.
